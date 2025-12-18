@@ -10825,6 +10825,6 @@ textarea.form-control-lg {
   }
 }
 body {
-  background: href("assets/villa.png") no-repeat center center fixed;
+  background: url("https://tyrellwomack.github.io/main/assets/villa.png") no-repeat center center fixed;
   background-size: cover;
 }
