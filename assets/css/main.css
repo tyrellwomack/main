@@ -141,7 +141,7 @@ input, select, textarea {
 
 	body, input, select, textarea {
 		color: #ffffff;
-		font-family: Helvetica /*"Source Sans Pro", sans-serif*/ !important;
+		font-family: "Source Sans Pro", sans-serif;
 		font-weight: 300;
 		font-size: 1rem;
 		line-height: 1.65;
@@ -262,7 +262,7 @@ input, select, textarea {
 	code {
 		background: rgba(255, 255, 255, 0.075);
 		border-radius: 4px;
-		font-family: Helvetica /*"Courier New", monospace*/ !important;
+		font-family: "Courier New", monospace;
 		font-size: 0.9rem;
 		margin: 0 0.25rem;
 		padding: 0.25rem 0.65rem;
@@ -270,7 +270,7 @@ input, select, textarea {
 
 	pre {
 		-webkit-overflow-scrolling: touch;
-		font-family: Helvetica /*"Courier New", monospace */ !important;
+		font-family: "Courier New", monospace;
 		font-size: 0.9rem;
 		margin: 0 0 2rem 0;
 	}
@@ -941,7 +941,7 @@ input, select, textarea {
 	}
 
 		table tbody tr {
-			border: solid 1px #ffffff;
+			border: solid 0px #ffffff;
 			border-left: 0;
 			border-right: 0;
 		}
@@ -967,7 +967,7 @@ input, select, textarea {
 		}
 
 		table tfoot {
-			border-top: solid 2px #ffffff;
+			border-top: solid 0px #ffffff;
 		}
 
 		table.alt {
@@ -1139,10 +1139,9 @@ input, select, textarea {
 			-webkit-transition-delay: 0.75s;
 			-ms-transition-delay: 0.75s;
 			transition-delay: 0.75s;
-   			background: #131519;
-    		opacity: 0.6;
-			/*background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("../../images/overlay.png")*/;
-			background-size: auto, 256px 256px;
+			background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("../../images/overlay.png");
+			background-size: auto,
+ 256px 256px;
 			background-position: center,
  center;
 			background-repeat: no-repeat,
@@ -1345,7 +1344,7 @@ input, select, textarea {
 			list-style: none;
 			padding-left: 0;
 			border: solid 1px #ffffff;
-			border-radius: 0px;
+			border-radius: 4px;
 		}
 
 			#header nav ul li {
