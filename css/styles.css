@@ -3622,7 +3622,7 @@ textarea.form-control-lg {
   display: block;
   padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
   font-size: var(--bs-nav-link-font-size);
-  font-weight: var(--bs-nav-link-font-weight);
+  font-weight: bold;/*var(--bs-nav-link-font-weight)*/;
   color: white /*var(--bs-nav-link-color)*/;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
