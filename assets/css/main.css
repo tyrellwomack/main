@@ -1268,7 +1268,7 @@ input, select, textarea {
 			-ms-transition: opacity 0.325s ease-in-out;
 			transition: opacity 0.325s ease-in-out;
 			position: relative;
-			margin-top: 3.5rem;
+			/*margin-top: 3.5rem;*/
 		}
 
 			#header > *:before {
@@ -1279,7 +1279,7 @@ input, select, textarea {
 				left: calc(50% - 1px);
 				width: 1px;
 				height: calc(3.5rem + 1px);
-				background: #ffffff;
+				/*background: #ffffff;*/
 			}
 
 		#header > :first-child {
@@ -1303,7 +1303,7 @@ input, select, textarea {
 			}
 
 		#header .content {
-			border-style: solid;
+			/*border-style: solid;*/
 			border-color: #ffffff;
 			border-top-width: 1px;
 			border-bottom-width: 1px;
@@ -1542,11 +1542,11 @@ input, select, textarea {
 			-webkit-transition: opacity 0.325s ease-in-out, -webkit-transform 0.325s ease-in-out;
 			-ms-transition: opacity 0.325s ease-in-out, -ms-transform 0.325s ease-in-out;
 			transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out;
-			padding: 4.5rem 2.5rem 1.5rem 2.5rem ;
+			padding: 1.5rem 2.5rem 1.5rem 2.5rem ;
 			position: relative;
 			width: 40rem;
 			max-width: 100%;
-			background-color: rgba(27, 31, 34, 0.85);
+			/*background-color: rgba(27, 31, 34, 0.85);*/
 			border-radius: 4px;
 			opacity: 0;
 		}
