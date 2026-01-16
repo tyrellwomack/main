@@ -38,7 +38,7 @@
 								<!--<li><a href="https://www.ebay.com/usr/tyrellwomack">Sale</a></li>-->
 								<li><a href="https://whop.com/tyrell-womack/">Studio</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
-								<li><a href="#contact">Subscribe</a></li>
+								<li><a href="#contact">follow</a></li>
 							</ul>
 						</nav>
 					</header>
@@ -96,7 +96,7 @@
 										</div>-->
 									</div>
 									<ul class="actions">
-										<li><input type="submit" value="Subscribe" class="primary" /></li>
+										<li><input type="submit" value="follow" class="primary" /></li>
 										<li><input type="reset" value="Reset" /></li>
 									</ul>
 								</form>
@@ -361,6 +361,21 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 		<!-- BG -->
 			<div id="bg"></div>
+
+		<!-- PHP -->
+		<script>
+<?php
+// ... email processing code ...
+
+if ($success) {
+    header('Location: /thankyou.html');
+    die(); // Important to stop script execution after redirect
+} else {
+    // handle error
+}
+?>
+
+		</script>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
