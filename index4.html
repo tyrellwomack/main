@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Tyrell Womack Related | Thank You</title>
+		<title>Tyrell Womack Related</title>
 		<!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 		<meta charset="utf-8" />
@@ -27,7 +27,7 @@
 						<div class="content">
 							<div class="inner">
 								<!--<h1>Dimension</h1>-->
-								<h2>Thank You!<!--<a href="https://html5up.net">HTML5 UP</a> and released<br />
+								<h2>Tyrell Womack Related <!--<a href="https://html5up.net">HTML5 UP</a> and released<br />
 								for free under the <a href="https://html5up.net/license">Creative Commons</a> license.</p>-->
 							</div>
 						</div>
@@ -37,7 +37,7 @@
 								<!--<li><a href="https://www.ebay.com/usr/tyrellwomack">Sale</a></li>-->
 								<li><a href="https://whop.com/tyrell-womack/">Studio</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
-								<!--<li><a href="#contact">Subscribe</a></li>-->
+								<li><a href="#contact">follow</a></li>
 							</ul>
 						</nav>
 					</header>
@@ -76,29 +76,26 @@
 								<!--<h3>Feel free to email me.</h3>-->
 								<!--<a href="mailto:tyrell.womack@outlook.com">tyrell.womack@outlook.com</a>-->
 
-								<form method="post" action="https://script.google.com/macros/s/AKfycbxOGxEMnofnVR8DOWRovxkEgURCSQJHpLQfBFiyQwNO1ERkpAn09NwzlAUMxwmBApM/exec">
-									<div class="fields">
-										<!--<div class="field half">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" />
-										</div>-->
-										<div class="field full">
-											<label for="email">Email</label>
-											<input type="text" pattern=".+@example\.com" required name="email" id="email" placeholder="name@website.com"/>
-										</div>
+								<form id="submit-to-google-sheet">
+          <div class="form-group">
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input
+              class="form-control"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            Submit
+          </button>
+        </form>
 
 
-
-										<!--<div class="field">
-											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="4"></textarea>
-										</div>-->
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Subscribe" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
 								<!--<ul class="icons">
 									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -362,8 +359,36 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<div id="bg"></div>
 
 
+    <script>
+      const scriptURL =                       
+      "https://script.google.com/macros/s/AKfycbxOGxEMnofnVR8DOWRovxkEgURCSQJHpLQfBFiyQwNO1ERkpAn09NwzlAUMxwmBApM/exec";
+      const form = document.forms["submit-to-google-sheet"];
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        var formData = new FormData(form);
+        var ex = document.getElementById("ex").checked;
+        var age = document.getElementById("age").checked;
 
+        if (age) {
+          formData.append("age", "Yes");
+        } else {
+          formData.append("age", "No");
+        }
+        if (ex) {
+          formData.append("ex", "Yes");
+        } else {
+          formData.append("ex", "No");
+        }
 
+        fetch(scriptURL, { method: "POST", body: formData })
+          .then((response) => {
+            swal("Done", "Submitted Successfully.", "success");
+          })
+          .catch((error) => {
+            swal("Error", "Something went wrong. please try again!", "error");
+          });
+      });
+    </script>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -372,7 +397,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/main2.js"></script>
-			<script src="Google Sheet.js"></script>
+			<script src="asstes/js/Google Sheet.js"></script>
 
 	</body>
 </html>
