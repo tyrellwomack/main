@@ -1031,7 +1031,7 @@ input, select, textarea {
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			background-color: rgba(255, 255, 255, 0.075);
+			background-color: rgba(255, 255, 255, 0.075)!important;
 		}
 
 		input[type="submit"]:active,
@@ -1039,7 +1039,7 @@ input, select, textarea {
 		input[type="button"]:active,
 		button:active,
 		.button:active {
-			background-color: rgba(255, 255, 255, 0.175);
+			background-color: rgba(255, 255, 255, 0.175)!important;
 		}
 
 		input[type="submit"].icon:before,
@@ -1073,7 +1073,7 @@ input, select, textarea {
 		input[type="button"].primary,
 		button.primary,
 		.button.primary {
-			background-color: #ffffff;
+			background-color: #ffffff !important;
 			color: #1b1f22 !important;
 			font-weight: 600;
 		}
