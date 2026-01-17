@@ -1302,7 +1302,7 @@ input, select, textarea {
 			border-color: #ffffff;
 			border-top-width: 1px;
 			border-bottom-width: 1px;
-			max-width: 100%;
+			max-width: 75%;
 		}
 
 			#header .content .inner {
