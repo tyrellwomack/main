@@ -171,7 +171,7 @@ input, select, textarea {
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #ffffff;
-		font-weight: 600;
+		/*font-weight: 600;*/
 		line-height: 1.5;
 		margin: 0 0 1rem 0;
 		text-transform: uppercase;
@@ -1134,7 +1134,7 @@ input, select, textarea {
 			-webkit-transition-delay: 0.75s;
 			-ms-transition-delay: 0.75s;
 			transition-delay: 0.75s;
-			background-image: linear-gradient(to top, rgba(0, 0, 0, 0.53)), url("../../images/overlay.png");
+			background-image: linear-gradient(to top, rgba(0, 0, 0, 0.70)), url("../../images/overlay.png");
 			background-size: auto,
  256px 256px;
 			background-position: center,
