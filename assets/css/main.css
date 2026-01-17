@@ -1135,7 +1135,7 @@ input, select, textarea {
 			-ms-transition-delay: 0.75s;
 			transition-delay: 0.75s;
 			background-image: linear-gradient(to top, rgba(0, 0, 0, 0.70)), url("../../images/overlay.png");
-			background-size: auto,
+			background-size: 100%,
  256px 256px;
 			background-position: center,
  center;
