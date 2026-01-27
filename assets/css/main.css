@@ -643,7 +643,7 @@ input, select, textarea {
 		.image:before {
 			pointer-events: none;
 			background-image: url("../../images/overlay.png");
-			background-color: rgba(19, 21, 25, 0.5);
+			/*background-color: rgba(19, 21, 25, 0.5);*/
 			border-radius: 4px;
 			content: '';
 			display: block;
@@ -1541,6 +1541,24 @@ input, select, textarea {
 			padding: 1.5rem 2.5rem 1.5rem 2.5rem ;
 			position: relative;
 			width: 40rem;
+			max-width: 100%;
+			/*background-color: rgba(27, 31, 34, 0.85);*/
+			border-radius: 4px;
+			opacity: 0;
+		}
+
+		#main2 article {
+			-moz-transform: translateY(0.25rem);
+			-webkit-transform: translateY(0.25rem);
+			-ms-transform: translateY(0.25rem);
+			transform: translateY(0.25rem);
+			-moz-transition: opacity 0.325s ease-in-out, -moz-transform 0.325s ease-in-out;
+			-webkit-transition: opacity 0.325s ease-in-out, -webkit-transform 0.325s ease-in-out;
+			-ms-transition: opacity 0.325s ease-in-out, -ms-transform 0.325s ease-in-out;
+			transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out;
+			padding: 1.5rem 2.5rem 1.5rem 2.5rem ;
+			position: relative;
+			width: 50rem;
 			max-width: 100%;
 			/*background-color: rgba(27, 31, 34, 0.85);*/
 			border-radius: 4px;
