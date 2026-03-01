@@ -716,6 +716,7 @@ input, select, textarea {
 
 		}
 
+
 /* List */
 
 	ol {
@@ -1636,6 +1637,12 @@ input, select, textarea {
 			}
 
 		}
+	.overlay-btn{
+		position: absolute;
+		top: 50%; /* Moves the top edge of the button to the middle of the container */
+    	left: 50%; /* Moves the left edge of the button to the middle of the container */
+   		transform: translate(-50%, -50%);
+	}
 
 /* Footer */
 
