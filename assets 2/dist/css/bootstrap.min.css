@@ -10,7 +10,7 @@
 @media (min-width: 992px) {
 		.col-lg-6{
 			flex:0 0 auto;
-			width:55%
+			width:55%!important;
 		}
 }
 
