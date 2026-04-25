@@ -121,7 +121,13 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Play</button>
+                  <button type="button" onclick="document.getElementById('myAudio').play()" class="btn btn-sm btn-outline-secondary">Play</button>
+
+                  <button type="button" onclick="document.getElementById('myAudio').pause(); document.getElementById('myAudio').currentTime = 0;" class="btn btn-sm btn-outline-secondary">Stop</button>
+
+                                <audio id="myAudio">
+                                    <source src="../music/musicfiles/ComeTasteItMastering.mp3" type="audio/mpeg">
+                                </audio>
 
                   <button type="button" class="btn btn-sm btn-outline-secondary">Download</button>
                   
@@ -140,10 +146,16 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Play</button>
+                  <button type="button" onclick="document.getElementById('myAudio').play()" class="btn btn-sm btn-outline-secondary">Play</button>
+
+                  <button type="button" onclick="document.getElementById('myAudio').pause(); document.getElementById('myAudio').currentTime = 0;" class="btn btn-sm btn-outline-secondary">Stop</button>
+
+                                <audio id="myAudio">
+                                    <source src="../music/musicfiles/WhatItMeansMastering.mp3" type="audio/mpeg">
+                                </audio>
 
                   <button type="button" class="btn btn-sm btn-outline-secondary">Download</button>
-
+                  
                 </div>
               </div>
             </div>
