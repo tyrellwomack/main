@@ -139,7 +139,8 @@ input, select, textarea {
 		font-family: "Source Sans Pro", sans-serif;
 		font-weight: 300;
 		font-size: 1rem;
-		line-height: 1.65;
+		line-height: 2.4;
+		vertical-align: middle;
 	}
 
 	a {
@@ -299,7 +300,7 @@ input, select, textarea {
 /* Form */
 
 	form {
-		margin: 0 0 2rem 0;
+		margin: 0 0 0rem 0;
 	}
 
 		form > :last-child {
@@ -1017,7 +1018,7 @@ input, select, textarea {
 		display: inline-block;
 		font-size: 0.8rem;
 		font-weight: 300;
-		height: 2.75rem;
+		/*height: 2.75rem;*/
 		letter-spacing: 0.2rem;
 		line-height: 2.75rem;
 		outline: 0;
