@@ -461,3 +461,23 @@ $(document).ready(function() {
 })
 
 // End Lazy Load Images
+
+
+// Play Button
+
+
+
+document.getElementById("playButton").addEventListener("click", function() {
+    this.style.backgroundColor = "black"; // Change to your desired color
+    this.style.color = "white";
+    this.style.borderColor = "black";
+});
+
+document.getElementById("stopButton").addEventListener("click", function() {
+
+
+});
+
+
+
+// End Play Button

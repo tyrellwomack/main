@@ -22,6 +22,20 @@
 
 
     <style>
+
+
+      input::placeholder {
+          color: black !important; /* Change 'red' to your desired color */
+          text-transform: uppercase;
+      }
+
+      .button-clicked {
+        background-color: black !important;
+        color: white !important;
+        border-color: black !important;
+      }
+
+
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -93,6 +107,14 @@
 
       }
 
+      .backtotop{
+        padding-bottom: 4rem !important;
+        color: red;
+      }
+
+      .backtotoptext{
+        color: white;
+      }
 
 
     </style>
@@ -151,32 +173,24 @@
 
 
 
-<!--
+
 <header>
 
 
   <div style="background-color: white;!important;" class="navbar-fixed navbar-dark">
     <div class="search-container">
 
-      <search>
-        <form action="/search_results">
-          <input type="text" placeholder="Search" id="search" name="query" placeholder="Search" />
+        <form id="searchMusic">
+          <div>
+          <input  style="text-transform: uppercase;" type="text" type="search" placeholder="Search..." name="q" id="searchInput"/>
           <button class="button" type="submit">Search</button>
+        </div>
         </form>
-      </search>
+
 
     </div>
   </div>
 </header>
--->
-
-
-
-
-
-
-
-
 
 
 <main>
@@ -198,13 +212,12 @@
   
 
   <div class="album py-5 bg-light">
-    <div class="container" id="container results">
+    <div class="container" id="container content">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
 
 <!--- Begin Cards --->
-
 
 
         <div class="col">
@@ -217,15 +230,15 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button type="button" onclick="document.getElementById('myAudio13').play()" class="btn btn-sm btn-outline-secondary">Play</button>
+                  <button style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio13').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
-                  <button type="button" onclick="document.getElementById('myAudio13').pause(); document.getElementById('myAudio13').currentTime = 0;" class="btn btn-sm btn-outline-secondary">Stop</button>
+                  <button id="stopButton" onclick="stopMusic()" style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
                                 <audio id="myAudio13">
                                     <source src="../music/musicfiles/cometasteit.mp3" type="audio/mpeg">
                                 </audio>
 
-                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary">
                       <a href="../music/musicfiles/cometasteit.mp3" download="Tyrell Womack - Come Taste It">Download</a>
                     </button>
                   
@@ -246,15 +259,15 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button type="button" onclick="document.getElementById('myAudio12').play()" class="btn btn-sm btn-outline-secondary">Play</button>
+                  <button  style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio12').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
-                  <button type="button" onclick="document.getElementById('myAudio12').pause(); document.getElementById('myAudio12').currentTime = 0;" class="btn btn-sm btn-outline-secondary">Stop</button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
                                 <audio id="myAudio12">
                                     <source src="../music/musicfiles/whatitmeans.mp3" type="audio/mpeg">
                                 </audio>
 
-                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary">
                       <a href="../music/musicfiles/whatitmeans.mp3" download="Tyrell Womack - What It Means">Download</a>
                     </button>
                   
@@ -276,15 +289,15 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button type="button" onclick="document.getElementById('myAudio11').play()" class="btn btn-sm btn-outline-secondary">Play</button>
+                  <button style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio11').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
-                  <button type="button" onclick="document.getElementById('myAudio11').pause(); document.getElementById('myAudio11').currentTime = 0;" class="btn btn-sm btn-outline-secondary">Stop</button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
                                 <audio id="myAudio11">
                                     <source src="../music/musicfiles/won'tgetthrough.mp3" type="audio/mpeg">
                                 </audio>
 
-                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary">
                       <a href="../music/musicfiles/won'tgetthrough.mp3" download="Tyrell Womack - Won't Get Through">Download</a>
                     </button>
                   
@@ -305,15 +318,15 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button type="button" onclick="document.getElementById('myAudio10').play()" class="btn btn-sm btn-outline-secondary">Play</button>
+                  <button id="playButton" style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio10').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
-                  <button type="button" onclick="document.getElementById('myAudio10').pause(); document.getElementById('myAudio10').currentTime = 0;" class="btn btn-sm btn-outline-secondary">Stop</button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
                                 <audio id="myAudio10">
                                     <source src="../music/musicfiles/whydon'tyou.mp3" type="audio/mpeg">
                                 </audio>
 
-                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary">
                       <a href="../music/musicfiles/whydon'tyou.mp3" download="Tyrell Womack - Why Don't You">Download</a>
                     </button>
                   
@@ -333,15 +346,15 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button type="button" onclick="document.getElementById('myAudio9').play()" class="btn btn-sm btn-outline-secondary">Play</button>
+                  <button id="playButton" style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio9').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
-                  <button type="button" onclick="document.getElementById('myAudio9').pause(); document.getElementById('myAudio9').currentTime = 0;" class="btn btn-sm btn-outline-secondary">Stop</button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
                                 <audio id="myAudio9">
                                     <source src="../music/musicfiles/thingsyousay.mp3" type="audio/mpeg">
                                 </audio>
 
-                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary">
                       <a href="../music/musicfiles/thingsyousay.mp3" download="Tyrell Womack - Things You Say (ft. B-Rain)">Download</a>
                     </button>
                   
@@ -361,15 +374,15 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button type="button" onclick="document.getElementById('myAudio8').play()" class="btn btn-sm btn-outline-secondary">Play</button>
+                  <button style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio8').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
-                  <button type="button" onclick="document.getElementById('myAudio8').pause(); document.getElementById('myAudio8').currentTime = 0;" class="btn btn-sm btn-outline-secondary">Stop</button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
                                 <audio id="myAudio8">
                                     <source src="../music/musicfiles/toofine.mp3" type="audio/mpeg">
                                 </audio>
 
-                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary">
                       <a href="../music/musicfiles/toofine.mp3" download="Tyrell Womack - Too Fine">Download</a>
                     </button>
                   
@@ -390,15 +403,15 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button type="button" onclick="document.getElementById('myAudio7').play()" class="btn btn-sm btn-outline-secondary">Play</button>
+                  <button style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio7').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
-                  <button type="button" onclick="document.getElementById('myAudio7').pause(); document.getElementById('myAudio7').currentTime = 0;" class="btn btn-sm btn-outline-secondary">Stop</button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
                                 <audio id="myAudio7">
                                     <source src="../music/musicfiles/sayhowyoufeel.mp3" type="audio/mpeg">
                                 </audio>
 
-                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary">
                       <a href="../music/musicfiles/sayhowyoufeel.mp3" download="Tyrell Womack - Say How You Feel (ft. Le'Andre Campbell)">Download</a>
                     </button>
                   
@@ -420,15 +433,15 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button type="button" onclick="document.getElementById('myAudio6').play()" class="btn btn-sm btn-outline-secondary">Play</button>
+                  <button style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio6').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
-                  <button type="button" onclick="document.getElementById('myAudio6').pause(); document.getElementById('myAudio6').currentTime = 0;" class="btn btn-sm btn-outline-secondary">Stop</button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
                                 <audio id="myAudio6">
                                     <source src="../music/musicfiles/youtookeverything.mp3" type="audio/mpeg">
                                 </audio>
 
-                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary">
                       <a href="../music/musicfiles/youtookeverything.mp3" download="Tyrell Womack - You Took Everything">Download</a>
                     </button>
                   
@@ -450,15 +463,15 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button type="button" onclick="document.getElementById('myAudio5').play()" class="btn btn-sm btn-outline-secondary">Play</button>
+                  <button id="playButton" style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio5').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
-                  <button type="button" onclick="document.getElementById('myAudio5').pause(); document.getElementById('myAudio5').currentTime = 0;" class="btn btn-sm btn-outline-secondary">Stop</button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
                                 <audio id="myAudio5">
                                     <source src="../music/musicfiles/justknowthat.mp3" type="audio/mpeg">
                                 </audio>
 
-                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary">
                       <a href="../music/musicfiles/justknowthat.mp3" download="Tyrell Womack - Just Know That">Download</a>
                     </button>
                   
@@ -480,15 +493,15 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button type="button" onclick="document.getElementById('myAudio4').play()" class="btn btn-sm btn-outline-secondary">Play</button>
+                  <button id="playButton" style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio4').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
-                  <button type="button" onclick="document.getElementById('myAudio4').pause(); document.getElementById('myAudio4').currentTime = 0;" class="btn btn-sm btn-outline-secondary">Stop</button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
                                 <audio id="myAudio4">
                                     <source src="../music/musicfiles/thesedays.mp3" type="audio/mpeg">
                                 </audio>
 
-                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary">
                       <a href="../music/musicfiles/thesedays.mp3" download="Tyrell Womack - These Days">Download</a>
                     </button>
                   
@@ -510,15 +523,15 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button type="button" onclick="document.getElementById('myAudio3').play()" class="btn btn-sm btn-outline-secondary">Play</button>
+                  <button id="playButton" style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio3').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
-                  <button type="button" onclick="document.getElementById('myAudio3').pause(); document.getElementById('myAudio3').currentTime = 0;" class="btn btn-sm btn-outline-secondary">Stop</button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
                                 <audio id="myAudio3">
                                     <source src="../music/musicfiles/ready.mp3" type="audio/mpeg">
                                 </audio>
 
-                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary">
                       <a href="../music/musicfiles/ready.mp3" download="Tyrell Womack - Ready">Download</a>
                     </button>
                   
@@ -539,15 +552,15 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button type="button" onclick="document.getElementById('myAudio2').play()" class="btn btn-sm btn-outline-secondary">Play</button>
+                  <button id="playButton" style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio2').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
-                  <button type="button" onclick="document.getElementById('myAudio2').pause(); document.getElementById('myAudio2').currentTime = 0;" class="btn btn-sm btn-outline-secondary">Stop</button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
                                 <audio id="myAudio2">
                                     <source src="../music/musicfiles/crime.mp3" type="audio/mpeg">
                                 </audio>
 
-                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary">
                       <a href="../music/musicfiles/crime.mp3" download="Tyrell Womack - Crime">Download</a>
                     </button>
                   
@@ -568,9 +581,9 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button type="button" onclick="document.getElementById('myAudio1').play()" class="btn btn-sm btn-outline-secondary">Play</button>
+                  <button id="playButton" style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio1').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
-                  <button type="button" onclick="document.getElementById('myAudio1').pause(); document.getElementById('myAudio1').currentTime = 0;" class="btn btn-sm btn-outline-secondary">Stop</button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
                                 <audio id="myAudio1">
                                     <source src="../music/musicfiles/letmeknow.mp3" type="audio/mpeg">
@@ -578,7 +591,7 @@
 
 
 
-                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary">
                       <a href="../music/musicfiles/letmeknow.mp3" download="Tyrell Womack - Let Me Know">Download</a>
                     </button>
                   
@@ -595,19 +608,131 @@
 
 
 <footer class="text-muted py-5">
-  <div class="container" style="padding-bottom: 4rem !important;">
-    <center>
-    <p class="float-end mb-1">
-      <a href="#">Back to top</a>
-    </p>
-  </center>
-    <!--<p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>-->
-  </div>
-</footer>
+  <a href="#">
+      <div class="" class="backtotop">
+        <center>
+        <p class="backtotoptext float-end mb-1">
+          Back to top
+        </p>
 
+        <!--<p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+        <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>-->
+      </div>
+  </a>
+</footer>
+</center>
+
+
+<script>
+  
+// Play Button
+
+document.querySelectorAll('.playButton').forEach(el => {
+  el.addEventListener('click', function() {
+    this.classList.add('button-clicked');
+  });
+});
+
+
+
+   
+
+// End Play Button
+
+
+// Stop Button
+
+let enabled = true;
+
+document.querySelectorAll('.playButton').forEach(el => {
+  el.addEventListener('click', function() {
+    if (!enabled) return;
+    this.classList.add('button-clicked');
+  });
+});
+
+document.querySelector('#stopButton').addEventListener('click', () => {
+  enabled = false;
+  // optionally remove the class from all
+  document.querySelectorAll('.playButton').forEach(el => el.classList.remove('button-clicked'));
+});
+
+
+
+
+  // Site-wide stop function: pauses & resets all audio and clears play-button state
+  function stopMusic() {
+    enabled = false; // optional: prevents further plays until re-enabled
+    document.querySelectorAll('audio').forEach(a => {
+      a.pause();
+      a.currentTime = 0;
+    });
+    document.querySelectorAll('.playButton').forEach(el => el.classList.remove('button-clicked'));
+  }
+
+
+// End Stop Button
+
+
+// Search Bar
+
+function myFunction() {
+  document.getElementById("searchInput").placeholder = "Search";
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('searchMusic');
+  const input = document.getElementById('searchInput');
+  const cards = Array.from(document.querySelectorAll('.col')); // card containers
+  const titleSelector = '.song-title';
+
+  function normalize(s) {
+    return s.trim().toLowerCase();
+  }
+
+  function clearHighlights(el) {
+    // restore plain text (remove <mark>)
+    el.innerHTML = el.textContent;
+  }
+
+  function highlightMatch(el, query) {
+    clearHighlights(el);
+    if (!query) return;
+    const text = el.textContent;
+    const regex = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
+    el.innerHTML = text.replace(regex, '<mark>$1</mark>');
+  }
+
+  function doSearch(q) {
+    const qn = normalize(q);
+    cards.forEach(card => {
+      const titleEl = card.querySelector(titleSelector);
+      if (!titleEl) return;
+      const titleText = normalize(titleEl.textContent);
+      const matched = qn === '' || titleText.includes(qn);
+      card.style.display = matched ? '' : 'none';
+      highlightMatch(titleEl, qn);
+    });
+  }
+
+  // Submit handler (prevents page reload)
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    doSearch(input.value);
+  });
+
+  // Optional: live search while typing
+  input.addEventListener('input', function () {
+    doSearch(this.value);
+  });
+});
+
+
+
+</script>
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
 
       
   </body>
