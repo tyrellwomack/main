@@ -102,9 +102,10 @@
           background-color: white; /* Button color */
           color: black; /* Text color */
           /*padding: 10px;*/ /* Add padding */
-          border:  1px solid #ccc !important; /* Rounded corners on the right */
+          border-bottom:  1px solid #ccc !important;/* Rounded corners on the right */
           cursor: pointer; /* Pointer cursor on hover */
-
+          margin-right: 1.5rem;
+          font-size: 17px;
       }
 
       .backtotop{
@@ -183,7 +184,7 @@
         <form id="searchMusic">
           <div>
           <input  style="text-transform: uppercase;" type="text" type="search" placeholder="Search..." name="q" id="searchInput"/>
-          <button class="button" type="submit">Search</button>
+          <button class="button fas fa-times" id="clearButton" type="submit"></button>
         </div>
         </form>
 
@@ -727,6 +728,11 @@ document.addEventListener('DOMContentLoaded', function () {
   input.addEventListener('input', function () {
     doSearch(this.value);
   });
+});
+
+
+document.getElementById('clearButton').addEventListener('click', function() {
+    document.getElementById('searchInput').value = '';
 });
 
 
