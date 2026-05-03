@@ -23,6 +23,17 @@
 
     <style>
 
+      .playButton.disabled {
+        background-color: black !important;
+        color: white !important;
+        border-color: black !important;
+        cursor: not-allowed;
+      }
+
+.playButton.playing { background-color: black; color: white; border-color: black; }
+.playButton { background-color: transparent; color: black; border-color: black; }
+
+
       .homebutton{
           margin-right: .5rem;
           font-size: 16px;
@@ -35,9 +46,15 @@
           text-transform: uppercase;
       }
 
-      .button-clicked {
+      /*.button-clicked {
         background-color: black !important;
         color: white !important;
+        border-color: black !important;
+      }*/
+
+      .button-stopped {
+        background-color: transparent !important;
+        color: black !important;
         border-color: black !important;
       }
 
@@ -71,7 +88,7 @@
       }
 
       a:hover {
-          color: black !important; /* Change to your desired color */
+          color: white !important; /* Change to your desired color */
       }
 
       .navbar-fixed{
@@ -239,7 +256,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio14').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
+                  <button style="box-shadow: none;" type="button" onclick="handlePlay(this,'myAudio14')" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
                   <button id="stopButton" onclick="stopMusic()" style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary">Stop</button>
 
@@ -268,7 +285,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio13').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
+                  <button style="box-shadow: none;" type="button" onclick="handlePlay(this,'myAudio13')" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
                   <button id="stopButton" onclick="stopMusic()" style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary">Stop</button>
 
@@ -297,7 +314,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button  style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio12').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
+                  <button  style="box-shadow: none;" type="button" onclick="handlePlay(this,'myAudio12')" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
@@ -327,7 +344,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio11').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
+                  <button style="box-shadow: none;" type="button" onclick="handlePlay(this,'myAudio11')" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
@@ -356,7 +373,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button id="playButton" style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio10').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
+                  <button id="playButton" style="box-shadow: none;" type="button" onclick="handlePlay(this,'myAudio10')" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
@@ -384,7 +401,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button id="playButton" style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio9').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
+                  <button id="playButton" style="box-shadow: none;" type="button" onclick="handlePlay(this,'myAudio9')" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
@@ -412,7 +429,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio8').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
+                  <button style="box-shadow: none;" type="button" onclick="handlePlay(this,'myAudio8')" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
@@ -441,7 +458,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio7').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
+                  <button style="box-shadow: none;" type="button" onclick="handlePlay(this,'myAudio7')" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
@@ -471,7 +488,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio6').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
+                  <button style="box-shadow: none;" type="button" onclick="handlePlay(this,'myAudio6')" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
@@ -501,7 +518,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button id="playButton" style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio5').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
+                  <button id="playButton" style="box-shadow: none;" type="button" onclick="handlePlay(this,'myAudio5')" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
@@ -531,7 +548,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button id="playButton" style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio4').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
+                  <button id="playButton" style="box-shadow: none;" type="button" onclick="handlePlay(this,'myAudio4')" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
@@ -561,7 +578,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button id="playButton" style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio3').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
+                  <button id="playButton" style="box-shadow: none;" type="button" onclick="handlePlay(this,'myAudio3')" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
@@ -590,7 +607,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button id="playButton" style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio2').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
+                  <button id="playButton" style="box-shadow: none;" type="button" onclick="handlePlay(this,'myAudio2')" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
@@ -619,7 +636,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button id="playButton" style="box-shadow: none;" type="button" onclick="document.getElementById('myAudio1').play()" class="playButton btn btn-sm btn-outline-secondary">Play</button>
+                  <button id="playButton" style="box-shadow: none;" type="button" onclick="handlePlay(this,'myAudio1')" class="playButton btn btn-sm btn-outline-secondary">Play</button>
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
@@ -672,6 +689,12 @@ document.querySelectorAll('.playButton').forEach(el => {
 });
 
 
+// Re-Enable Play Button
+
+
+// End of Re-Enable Play Button
+
+
 // End Play Button
 
 
@@ -679,12 +702,6 @@ document.querySelectorAll('.playButton').forEach(el => {
 
 let enabled = true;
 
-document.querySelectorAll('.playButton').forEach(el => {
-  el.addEventListener('click', function() {
-    if (!enabled) return;
-    this.classList.add('button-clicked');
-  });
-});
 
 document.querySelector('#stopButton').addEventListener('click', () => {
   enabled = false;
@@ -809,6 +826,42 @@ document.querySelectorAll('.playButton').forEach(btn => {
     audio.addEventListener('ended', () => btn.classList.remove('button-clicked'), { once: true });
   });
 });
+
+// Handle play Button
+
+function handlePlay(clickedBtn, audioId) {
+
+  // disable only clicked button
+  clickedBtn.disabled = true;
+  clickedBtn.classList.add('clicked');
+
+  // play the requested audio
+  var a = document.getElementById(audioId);
+  if (a) {
+    a.currentTime = 0;
+    a.play().catch(() => {});
+  }
+}
+
+
+function stopMusic() {
+  // find all audio elements and pause + reset to start
+  document.querySelectorAll('audio').forEach(a => {
+    a.pause();
+    a.currentTime = 0;
+  });
+
+  // re-enable play buttons (if you had disabled them)
+  document.querySelectorAll('.playButton').forEach(btn => {
+    btn.disabled = false;               // remove disabled state
+    btn.classList.remove('disabled');   // remove styling if used
+    // ensure click handler present: re-add if you removed it previously
+    const audioId = btn.dataset.audio;
+    if (audioId && !btn.onclick) {
+      btn.onclick = () => document.getElementById(audioId).play();
+    }
+  });
+}
 
 
 
