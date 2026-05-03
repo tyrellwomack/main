@@ -196,9 +196,9 @@ a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-d
  .btn-check:checked+.btn-outline-secondary,
  .btn-outline-secondary.active,.btn-outline-secondary.dropdown-toggle.show,
  .btn-outline-secondary:active{
- 	color:#fff;
- 	background-color:#6c757d;
- 	border-color:#6c757d
+ 	color:white;
+ 	background-color:black;
+ 	border-color:black;
  }
 
  .btn-check:active+.btn-outline-secondary:focus,
@@ -210,7 +210,7 @@ a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-d
 }
 
 .btn-outline-secondary.disabled,.btn-outline-secondary:disabled{
-	color:white;
+	color:white !important;
 	background-color:black;
 }
 
