@@ -672,9 +672,6 @@ document.querySelectorAll('.playButton').forEach(el => {
 });
 
 
-
-   
-
 // End Play Button
 
 
@@ -783,6 +780,38 @@ function playAudio(audioElement) {
     currentAudio = audioElement;
     audioElement.play();
 }
+
+// Play Button Active
+
+document.querySelectorAll('.playButton').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const audioId = btn.dataset.audio;
+    const audio = document.getElementById(audioId);
+
+    // pause/reset all other audios and remove clicked style from other buttons
+    document.querySelectorAll('audio').forEach(a => {
+      if (a !== audio) { a.pause(); a.currentTime = 0; }
+    });
+    document.querySelectorAll('.playButton').forEach(b => {
+      if (b !== btn) b.classList.remove('button-clicked');
+    });
+
+    // toggle play/pause for clicked audio and toggle class
+    if (audio.paused) {
+      audio.play();
+      btn.classList.add('button-clicked');
+    } else {
+      audio.pause();
+      btn.classList.remove('button-clicked');
+    }
+
+    // when audio ends, remove the style
+    audio.addEventListener('ended', () => btn.classList.remove('button-clicked'), { once: true });
+  });
+});
+
+
+
 
 
 </script>
