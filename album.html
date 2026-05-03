@@ -243,7 +243,7 @@
 
                   <button id="stopButton" onclick="stopMusic()" style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
-                                <audio id="myAudio14">
+                                <audio id="myAudio14" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/aria'soutro.wav" type="audio/wav">
                                 </audio>
 
@@ -272,7 +272,7 @@
 
                   <button id="stopButton" onclick="stopMusic()" style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
-                                <audio id="myAudio13">
+                                <audio id="myAudio13" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/cometasteit.wav" type="audio/wav">
                                 </audio>
 
@@ -301,7 +301,7 @@
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
-                                <audio id="myAudio12">
+                                <audio id="myAudio12" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/whatitmeans.wav" type="audio/wav">
                                 </audio>
 
@@ -331,7 +331,7 @@
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
-                                <audio id="myAudio11">
+                                <audio id="myAudio11" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/won'tgetthrough.wav" type="audio/wav">
                                 </audio>
 
@@ -360,7 +360,7 @@
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
-                                <audio id="myAudio10">
+                                <audio id="myAudio10" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/whydon'tyou.wav" type="audio/wav">
                                 </audio>
 
@@ -388,7 +388,7 @@
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
-                                <audio id="myAudio9">
+                                <audio id="myAudio9" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/thingsyousay.wav" type="audio/wav">
                                 </audio>
 
@@ -416,7 +416,7 @@
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
-                                <audio id="myAudio8">
+                                <audio id="myAudio8" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/toofine.wav" type="audio/wav">
                                 </audio>
 
@@ -445,7 +445,7 @@
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
-                                <audio id="myAudio7">
+                                <audio id="myAudio7" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/sayhowyoufeel.wav" type="audio/wav">
                                 </audio>
 
@@ -475,7 +475,7 @@
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
-                                <audio id="myAudio6">
+                                <audio id="myAudio6" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/youtookeverything.wav" type="audio/wav">
                                 </audio>
 
@@ -505,7 +505,7 @@
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
-                                <audio id="myAudio5">
+                                <audio id="myAudio5" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/justknowthat.wav" type="audio/wav">
                                 </audio>
 
@@ -535,7 +535,7 @@
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
-                                <audio id="myAudio4">
+                                <audio id="myAudio4" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/thesedays.wav" type="audio/wav">
                                 </audio>
 
@@ -565,7 +565,7 @@
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
-                                <audio id="myAudio3">
+                                <audio id="myAudio3" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/ready.wav" type="audio/wav">
                                 </audio>
 
@@ -594,7 +594,7 @@
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
-                                <audio id="myAudio2">
+                                <audio id="myAudio2" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/crime.wav" type="audio/wav">
                                 </audio>
 
@@ -623,7 +623,7 @@
 
                   <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary">Stop</button>
 
-                                <audio id="myAudio1">
+                                <audio id="myAudio1" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/letmeknow.wav" type="audio/wav">
                                 </audio>
 
@@ -770,6 +770,19 @@ document.getElementById('clearButton').addEventListener('click', function() {
     document.getElementById('searchInput').value = '';
 });
 
+// play one song at a time
+
+
+var currentAudio = null;
+
+function playAudio(audioElement) {
+    if (currentAudio && currentAudio !== audioElement) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0; // Reset to start
+    }
+    currentAudio = audioElement;
+    audioElement.play();
+}
 
 
 </script>
