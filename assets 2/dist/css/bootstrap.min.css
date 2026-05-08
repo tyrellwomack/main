@@ -332,7 +332,18 @@ a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-d
  * .navbar-dark .navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='1' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")}
  * .navbar-dark .navbar-text{color:rgba(255,255,255,.55)}.navbar-dark .navbar-text a,.navbar-dark .navbar-text a:focus,.navbar-dark .navbar-text a:hover{color:#fff}
  * 
- * .card{position:relative;display:flex;flex-direction:column;min-width:0;word-wrap:break-word;background-color:white;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:.25rem}
+ * .card{
+ 	position:relative;
+ 	display:flex;
+ 	flex-direction:column;
+ 	min-width:0;
+ 	word-wrap:break-word;
+ 	background-color:white;
+ 	background-clip:border-box;
+ 	border:1px solid rgba(0,0,0,.125);
+ 	border-radius:.25rem
+ }
+
  * 
  * .card>hr{margin-right:0;margin-left:0}
  * .card>.list-group{border-top:inherit;border-bottom:inherit}
