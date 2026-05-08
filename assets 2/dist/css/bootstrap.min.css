@@ -27,7 +27,7 @@ a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-d
 		max-width:100%}}
 
 @media (min-width:992px){.container,.container-lg,.container-md,.container-sm{
-	max-width:960px}}
+	max-width:100%}}
 
 @media (min-width:1200px){
 	.container,.container-lg,
