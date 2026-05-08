@@ -880,6 +880,42 @@ function stopMusic() {
 }
 
 
+// Re-enable other play buttons when separate play button is pressed
+
+function handlePlay(button, audioId) {
+  // Re-enable all other play buttons
+  document.querySelectorAll('.playButton').forEach(b => {
+    if (b !== button) b.disabled = false;
+  });
+
+  // Disable the clicked button
+  button.disabled = true;
+
+  // Play the requested audio (example)
+  const a = document.getElementById(audioId);
+  if (a) {
+    // pause any other audio elements if needed
+    document.querySelectorAll('audio').forEach(audio => {
+      if (audio !== a) { audio.pause(); audio.currentTime = 0; }
+    });
+    a.play().catch(() => { /* handle autoplay blocked */ });
+  }
+}
+
+function stopMusic() {
+  // stop all audio
+  document.querySelectorAll('audio').forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+  // re-enable all play buttons
+  document.querySelectorAll('.playButton').forEach(b => b.disabled = false);
+}
+
+
+
+
+
 
 
 
