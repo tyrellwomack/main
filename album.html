@@ -686,6 +686,75 @@
 
 
 <script>
+
+
+
+// Search Bar
+
+function myFunction() {
+  document.getElementById("searchInput").placeholder = "Search";
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('searchMusic');
+  const input = document.getElementById('searchInput');
+  const cards = Array.from(document.querySelectorAll('.col')); // card containers
+  const titleSelector = '.song-title';
+
+  function normalize(s) {
+    return s.trim().toLowerCase();
+  }
+
+  function clearHighlights(el) {
+    // restore plain text (remove <mark>)
+    el.innerHTML = el.textContent;
+  }
+
+  function highlightMatch(el, query) {
+    clearHighlights(el);
+    if (!query) return;
+    const text = el.textContent;
+    const regex = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
+    el.innerHTML = text.replace(regex, '<mark>$1</mark>');
+  }
+
+  function doSearch(q) {
+    const qn = normalize(q);
+    cards.forEach(card => {
+      const titleEl = card.querySelector(titleSelector);
+      if (!titleEl) return;
+      const titleText = normalize(titleEl.textContent);
+      const matched = qn === '' || titleText.includes(qn);
+      card.style.display = matched ? '' : 'none';
+      highlightMatch(titleEl, qn);
+    });
+  }
+
+// Prevent Search Input From Submiting When "Enter" Is Pressed on Keyboard
+
+document.getElementById('searchInput').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+    }
+});
+
+
+  // Submit handler (prevents page reload)
+  // form.addEventListener('submit', function (e) {
+  // e.preventDefault();
+  //  doSearch(input.value);
+ // });
+
+  // Optional: live search while typing
+  input.addEventListener('input', function () {
+    doSearch(this.value);
+  });
+});
+
+
+document.getElementById('clearButton').addEventListener('click', function() {
+    document.getElementById('searchInput').value = '';
+});
   
 // Play Button
 
@@ -766,73 +835,6 @@ document.querySelector('#stopButton').addEventListener('click', () => {
 
 // End Stop Button
 
-
-// Search Bar
-
-function myFunction() {
-  document.getElementById("searchInput").placeholder = "Search";
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  const form = document.getElementById('searchMusic');
-  const input = document.getElementById('searchInput');
-  const cards = Array.from(document.querySelectorAll('.col')); // card containers
-  const titleSelector = '.song-title';
-
-  function normalize(s) {
-    return s.trim().toLowerCase();
-  }
-
-  function clearHighlights(el) {
-    // restore plain text (remove <mark>)
-    el.innerHTML = el.textContent;
-  }
-
-  function highlightMatch(el, query) {
-    clearHighlights(el);
-    if (!query) return;
-    const text = el.textContent;
-    const regex = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
-    el.innerHTML = text.replace(regex, '<mark>$1</mark>');
-  }
-
-  function doSearch(q) {
-    const qn = normalize(q);
-    cards.forEach(card => {
-      const titleEl = card.querySelector(titleSelector);
-      if (!titleEl) return;
-      const titleText = normalize(titleEl.textContent);
-      const matched = qn === '' || titleText.includes(qn);
-      card.style.display = matched ? '' : 'none';
-      highlightMatch(titleEl, qn);
-    });
-  }
-
-// Prevent Search Input From Submiting When "Enter" Is Pressed on Keyboard
-
-document.getElementById('searchInput').addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-    }
-});
-
-
-  // Submit handler (prevents page reload)
-  // form.addEventListener('submit', function (e) {
-  // e.preventDefault();
-  //  doSearch(input.value);
- // });
-
-  // Optional: live search while typing
-  input.addEventListener('input', function () {
-    doSearch(this.value);
-  });
-});
-
-
-document.getElementById('clearButton').addEventListener('click', function() {
-    document.getElementById('searchInput').value = '';
-});
 
 // play one song at a time
 
