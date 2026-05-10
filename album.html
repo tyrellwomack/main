@@ -686,7 +686,183 @@
 
 
 <script>
-  
+
+
+// Search Bar
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  const form = document.getElementById('searchMusic');
+  const input = document.getElementById('searchInput');
+  const clearBtn = document.getElementById('clearButton');
+  const cards = Array.from(document.querySelectorAll('.col'));
+
+  const titleSelector = '.song-title';
+
+  let rafId = null;
+
+  // -----------------------------
+  // Helpers
+  // -----------------------------
+
+  function normalize(s) {
+    return (s || '')
+      .trim()
+      .toLowerCase()
+      .replace(/[’‘´`]/g, "'"); // normalize apostrophes
+  }
+
+  function escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function highlight(text, query) {
+    if (!query) return text;
+
+    const safeQuery = escapeRegex(query);
+    const regex = new RegExp(safeQuery, 'gi');
+
+    return text.replace(regex, match => `<mark>${match}</mark>`);
+  }
+
+  // -----------------------------
+  // Core Search
+  // -----------------------------
+
+  function render(query) {
+
+    const q = normalize(query);
+
+    // RESET STATE
+    if (!q) {
+      for (const card of cards) {
+        const titleEl = card.querySelector(titleSelector);
+        if (!titleEl) continue;
+
+        card.style.display = '';
+        titleEl.textContent = titleEl.dataset.original;
+      }
+      return;
+    }
+
+    for (const card of cards) {
+
+      const titleEl = card.querySelector(titleSelector);
+      if (!titleEl) continue;
+
+      const original = titleEl.dataset.original;
+      const originalNorm = normalize(original);
+
+      const match = originalNorm.includes(q);
+
+      card.style.display = match ? '' : 'none';
+
+      if (match) {
+        titleEl.innerHTML = highlight(original, query);
+      }
+    }
+  }
+
+  // -----------------------------
+  // Store original text once
+  // -----------------------------
+
+  for (const card of cards) {
+    const titleEl = card.querySelector(titleSelector);
+    if (titleEl) {
+      titleEl.dataset.original = titleEl.textContent;
+    }
+  }
+
+  // -----------------------------
+  // URL sync (?q= support)
+  // -----------------------------
+
+  function syncURL(query) {
+    const url = new URL(window.location);
+
+    if (query) {
+      url.searchParams.set('q', query);
+    } else {
+      url.searchParams.delete('q');
+    }
+
+    window.history.replaceState({}, '', url);
+  }
+
+  function getQueryFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('q') || '';
+  }
+
+  // -----------------------------
+  // Initial load from URL
+  // -----------------------------
+
+  const initial = getQueryFromURL();
+  if (initial) {
+    input.value = initial;
+    render(initial);
+  }
+
+  // -----------------------------
+  // Input (RAF optimized)
+  // -----------------------------
+
+  input.addEventListener('input', e => {
+
+    if (rafId) cancelAnimationFrame(rafId);
+
+    const value = e.target.value;
+
+    syncURL(value);
+
+    rafId = requestAnimationFrame(() => {
+      render(value);
+    });
+
+  });
+
+  // Prevent Enter refresh
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') e.preventDefault();
+  });
+
+  // -----------------------------
+  // Clear button
+  // -----------------------------
+
+  clearBtn.addEventListener('click', e => {
+
+    e.preventDefault();
+
+    input.value = '';
+
+    if (rafId) cancelAnimationFrame(rafId);
+
+    syncURL('');
+
+    render('');
+
+    input.focus();
+  });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Play Button
 
 document.querySelectorAll('.playButton').forEach(el => {
@@ -765,188 +941,6 @@ document.querySelector('#stopButton').addEventListener('click', () => {
 
 
 // End Stop Button
-
-
-// Search Bar
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-
-  const form = document.getElementById('searchMusic');
-  const input = document.getElementById('searchInput');
-  const clearBtn = document.getElementById('clearButton');
-  const cards = Array.from(document.querySelectorAll('.col'));
-
-  const titleSelector = '.song-title';
-
-  let rafId = null;
-
-  // -----------------------------
-  // Helpers
-  // -----------------------------
-
-  function normalize(s) {
-    return (s || '').trim().toLowerCase();
-  }
-
-  function highlight(text, query) {
-    if (!query) return text;
-
-    const lower = text.toLowerCase();
-    const i = lower.indexOf(query);
-
-    if (i === -1) return text;
-
-    return (
-      text.slice(0, i) +
-      "<mark>" +
-      text.slice(i, i + query.length) +
-      "</mark>" +
-      text.slice(i + query.length)
-    );
-  }
-
-  // -----------------------------
-  // Core Search
-  // -----------------------------
-
-  function render(query) {
-
-    const q = normalize(query);
-
-    // RESET STATE (fast path)
-    if (!q) {
-
-      for (const card of cards) {
-        const titleEl = card.querySelector(titleSelector);
-        if (!titleEl) continue;
-
-        card.style.display = '';
-        titleEl.textContent = titleEl.dataset.original;
-      }
-
-      return;
-    }
-
-    for (const card of cards) {
-
-      const titleEl = card.querySelector(titleSelector);
-      if (!titleEl) continue;
-
-      const original = titleEl.dataset.original;
-      const match = original.toLowerCase().includes(q);
-
-      card.style.display = match ? '' : 'none';
-
-      if (match) {
-        const highlighted = highlight(original, q);
-
-        if (titleEl.innerHTML !== highlighted) {
-          titleEl.innerHTML = highlighted;
-        }
-      }
-
-    }
-  }
-
-  // -----------------------------
-  // Store original text once
-  // -----------------------------
-
-  for (const card of cards) {
-    const titleEl = card.querySelector(titleSelector);
-    if (titleEl) {
-      titleEl.dataset.original = titleEl.textContent;
-    }
-  }
-
-  // -----------------------------
-  // URL sync (?q= support)
-  // -----------------------------
-
-  function syncURL(query) {
-    const url = new URL(window.location);
-
-    if (query) {
-      url.searchParams.set('q', query);
-    } else {
-      url.searchParams.delete('q');
-    }
-
-    window.history.replaceState({}, '', url);
-  }
-
-  function getQueryFromURL() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get('q') || '';
-  }
-
-  // -----------------------------
-  // Initial load from URL
-  // -----------------------------
-
-  const initial = getQueryFromURL();
-  if (initial) {
-    input.value = initial;
-    render(initial);
-  }
-
-  // -----------------------------
-  // Input (smooth RAF rendering)
-  // -----------------------------
-
-  input.addEventListener('input', e => {
-
-    if (rafId) cancelAnimationFrame(rafId);
-
-    const value = e.target.value;
-
-    syncURL(value);
-
-    rafId = requestAnimationFrame(() => {
-      render(value);
-    });
-
-  });
-
-  // Prevent Enter refresh
-  input.addEventListener('keydown', e => {
-    if (e.key === 'Enter') e.preventDefault();
-  });
-
-  // -----------------------------
-  // Clear button (no lag fix)
-  // -----------------------------
-
-  clearBtn.addEventListener('click', e => {
-
-    e.preventDefault();
-
-    input.value = '';
-
-    if (rafId) cancelAnimationFrame(rafId);
-
-    syncURL('');
-
-    render('');
-
-    input.focus();
-  });
-
-});
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
