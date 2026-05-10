@@ -215,7 +215,7 @@
         <form id="searchMusic">
           <div>
           <input  style="text-transform: uppercase;" type="text" type="search" placeholder="Search..." name="q" id="searchInput"/>
-          <button class="button fas fa-times" id="clearButton" type="button"></button>
+          <button class="button fas fa-times" id="clearButton" type="submit"></button>
         </div>
         </form>
 
@@ -686,203 +686,7 @@
 
 
 <script>
-
-
-
-// Search Bar
-
-function myFunction() {
-  document.getElementById("searchInput").placeholder = "Search";
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  const form = document.getElementById('searchMusic');
-  const input = document.getElementById('searchInput');
-  const cards = Array.from(document.querySelectorAll('.col')); // card containers
-  const titleSelector = '.song-title';
-
-  function normalize(s) {
-    return s.trim().toLowerCase();
-  }
-
-  function clearHighlights(el) {
-    // restore plain text (remove <mark>)
-    el.innerHTML = el.textContent;
-  }
-
-  function highlightMatch(el, query) {
-    clearHighlights(el);
-    if (!query) return;
-    const text = el.textContent;
-    const regex = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\'']/g, '\\$&') + ')', 'ig');
-    el.innerHTML = text.replace(regex, '<mark>$1</mark>');
-  }
-
-  function doSearch(q) {
-    const qn = normalize(q);
-    cards.forEach(card => {
-      const titleEl = card.querySelector(titleSelector);
-      if (!titleEl) return;
-      const titleText = normalize(titleEl.textContent);
-      const matched = qn === '' || titleText.includes(qn);
-      card.style.display = matched ? '' : 'none';
-      highlightMatch(titleEl, qn);
-    });
-  }
-
-// Prevent Search Input From Submiting When "Enter" Is Pressed on Keyboard
-
-document.getElementById('searchInput').addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-    }
-});
-
-
-  // Submit handler (prevents page reload)
-  // form.addEventListener('submit', function (e) {
-  // e.preventDefault();
-  //  doSearch(input.value);
- // });
-
-  // Optional: live search while typing
-  input.addEventListener('input', function () {
-    doSearch(this.value);
-  });
-});
-
-
-document.getElementById('clearButton').addEventListener('click', function() {
-    document.getElementById('searchInput').value = '';
-});
   
-
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const input = document.getElementById('searchInput');
-  const cards = Array.from(document.querySelectorAll('.col'));
-  const titleSelector = '.song-title';
-
-  // store original text once
-  cards.forEach(card => {
-    const t = card.querySelector(titleSelector);
-    if (t && !t.dataset.orig) t.dataset.orig = t.textContent;
-    // ensure no CSS transition interferes for test
-    if (t) t.style.transition = 'none';
-  });
-
-  const escapeRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-
-  // Fast filter only
-  function filterOnly(q) {
-    const qn = q.trim().toLowerCase();
-    cards.forEach(card => {
-      const titleEl = card.querySelector(titleSelector);
-      if (!titleEl) return;
-      const titleText = (titleEl.dataset.orig || titleEl.textContent).toLowerCase();
-      card.style.display = (qn === '' || titleText.includes(qn)) ? '' : 'none';
-    });
-  }
-
-  // Visual highlight using overlay spans to avoid replacing innerHTML
-  function applyHighlights(query) {
-    const qTrim = query.trim();
-    if (!qTrim) {
-      cards.forEach(card => {
-        const titleEl = card.querySelector(titleSelector);
-        if (!titleEl) return;
-        // remove helper overlay if exists
-        const overlay = titleEl.querySelector('.ddg-highlight-overlay');
-        if (overlay) overlay.remove();
-        titleEl.textContent = titleEl.dataset.orig || titleEl.textContent;
-      });
-      return;
-    }
-    const regex = new RegExp('(' + escapeRe(qTrim) + ')', 'ig');
-    cards.forEach(card => {
-      const titleEl = card.querySelector(titleSelector);
-      if (!titleEl) return;
-      const orig = titleEl.dataset.orig || titleEl.textContent;
-      // build HTML safely in a detached element
-      const frag = document.createDocumentFragment();
-      let lastIndex = 0;
-      let match;
-      while ((match = regex.exec(orig)) !== null) {
-        const before = orig.slice(lastIndex, match.index);
-        if (before) frag.appendChild(document.createTextNode(before));
-        const mark = document.createElement('mark');
-        mark.textContent = match[0];
-        frag.appendChild(mark);
-        lastIndex = match.index + match[0].length;
-      }
-      if (lastIndex < orig.length) frag.appendChild(document.createTextNode(orig.slice(lastIndex)));
-      // remove existing overlay and replace content atomically
-      // Use a wrapper span so we don't mutate original text node directly
-      const wrapper = document.createElement('span');
-      wrapper.className = 'ddg-highlight-overlay';
-      wrapper.appendChild(frag);
-      // perform a single replaceChild to minimize layout churn
-      const existing = titleEl.querySelector('.ddg-highlight-overlay');
-      if (existing) titleEl.replaceChild(wrapper, existing);
-      else {
-        // remove all children and append wrapper
-        while (titleEl.firstChild) titleEl.removeChild(titleEl.firstChild);
-        titleEl.appendChild(wrapper);
-      }
-    });
-  }
-
-  // Debounce highlights slightly so input rendering isn't blocked
-  let hlTimer = null;
-  function scheduleHighlights(q) {
-    if (hlTimer) clearTimeout(hlTimer);
-    hlTimer = setTimeout(() => { hlTimer = null; applyHighlights(q); }, 25);
-  }
-
-  input.addEventListener('input', function () {
-    const start = this.selectionStart, end = this.selectionEnd;
-    filterOnly(this.value);          // instant
-    scheduleHighlights(this.value);  // deferred light work
-    try { this.setSelectionRange(start, end); } catch (e) {}
-  });
-
-  input.addEventListener('keypress', e => { if (e.key === 'Enter') e.preventDefault(); });
-
-  document.getElementById('clearButton').addEventListener('click', function() {
-    input.value = '';
-    filterOnly('');
-    if (hlTimer) { clearTimeout(hlTimer); hlTimer = null; }
-    applyHighlights('');
-    input.focus();
-    try { input.setSelectionRange(0,0); } catch(e) {}
-  });
-});
-
-
-// submit prevention 
-
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('searchMusic');
-  if (form) form.addEventListener('submit', e => e.preventDefault());
-  // ...rest of your code...
-});
-
-// handler updates
-
-document.getElementById('clearButton').addEventListener('click', function(e) {
-  e.preventDefault();                // stop any default that might submit/navigate
-  const input = document.getElementById('searchInput');
-  input.value = '';
-  doSearch('');                       // or filterOnly('') + applyHighlights('')
-  input.focus();
-  try { input.setSelectionRange(0,0); } catch (err) {}
-});
-
-
 // Play Button
 
 document.querySelectorAll('.playButton').forEach(el => {
@@ -961,6 +765,189 @@ document.querySelector('#stopButton').addEventListener('click', () => {
 
 
 // End Stop Button
+
+
+// Search Bar
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  const form = document.getElementById('searchMusic');
+  const input = document.getElementById('searchInput');
+  const clearBtn = document.getElementById('clearButton');
+  const cards = Array.from(document.querySelectorAll('.col'));
+
+  const titleSelector = '.song-title';
+
+  let rafId = null;
+
+  // -----------------------------
+  // Helpers
+  // -----------------------------
+
+  function normalize(s) {
+    return (s || '').trim().toLowerCase();
+  }
+
+  function highlight(text, query) {
+    if (!query) return text;
+
+    const lower = text.toLowerCase();
+    const i = lower.indexOf(query);
+
+    if (i === -1) return text;
+
+    return (
+      text.slice(0, i) +
+      "<mark>" +
+      text.slice(i, i + query.length) +
+      "</mark>" +
+      text.slice(i + query.length)
+    );
+  }
+
+  // -----------------------------
+  // Core Search
+  // -----------------------------
+
+  function render(query) {
+
+    const q = normalize(query);
+
+    // RESET STATE (fast path)
+    if (!q) {
+
+      for (const card of cards) {
+        const titleEl = card.querySelector(titleSelector);
+        if (!titleEl) continue;
+
+        card.style.display = '';
+        titleEl.textContent = titleEl.dataset.original;
+      }
+
+      return;
+    }
+
+    for (const card of cards) {
+
+      const titleEl = card.querySelector(titleSelector);
+      if (!titleEl) continue;
+
+      const original = titleEl.dataset.original;
+      const match = original.toLowerCase().includes(q);
+
+      card.style.display = match ? '' : 'none';
+
+      if (match) {
+        const highlighted = highlight(original, q);
+
+        if (titleEl.innerHTML !== highlighted) {
+          titleEl.innerHTML = highlighted;
+        }
+      }
+
+    }
+  }
+
+  // -----------------------------
+  // Store original text once
+  // -----------------------------
+
+  for (const card of cards) {
+    const titleEl = card.querySelector(titleSelector);
+    if (titleEl) {
+      titleEl.dataset.original = titleEl.textContent;
+    }
+  }
+
+  // -----------------------------
+  // URL sync (?q= support)
+  // -----------------------------
+
+  function syncURL(query) {
+    const url = new URL(window.location);
+
+    if (query) {
+      url.searchParams.set('q', query);
+    } else {
+      url.searchParams.delete('q');
+    }
+
+    window.history.replaceState({}, '', url);
+  }
+
+  function getQueryFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('q') || '';
+  }
+
+  // -----------------------------
+  // Initial load from URL
+  // -----------------------------
+
+  const initial = getQueryFromURL();
+  if (initial) {
+    input.value = initial;
+    render(initial);
+  }
+
+  // -----------------------------
+  // Input (smooth RAF rendering)
+  // -----------------------------
+
+  input.addEventListener('input', e => {
+
+    if (rafId) cancelAnimationFrame(rafId);
+
+    const value = e.target.value;
+
+    syncURL(value);
+
+    rafId = requestAnimationFrame(() => {
+      render(value);
+    });
+
+  });
+
+  // Prevent Enter refresh
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') e.preventDefault();
+  });
+
+  // -----------------------------
+  // Clear button (no lag fix)
+  // -----------------------------
+
+  clearBtn.addEventListener('click', e => {
+
+    e.preventDefault();
+
+    input.value = '';
+
+    if (rafId) cancelAnimationFrame(rafId);
+
+    syncURL('');
+
+    render('');
+
+    input.focus();
+  });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // play one song at a time
