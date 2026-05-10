@@ -808,26 +808,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-// Search bar deleting text
-
-  const input = document.getElementById('search');
-
-// Use 'input' event (fires for typing/backspace/IME)
-input.addEventListener('input', (e) => {
-  // immediate update — don't read-and-set value repeatedly unless needed
-  const value = e.target.value;
-  // If you need to modify value, set it once here:
-  // e.target.value = value.replace(/[^a-z0-9 ]/gi, ''); // example
-});
-
-// If you were using key events, ensure backspace isn't blocked:
-input.addEventListener('keydown', (e) => {
-  if (e.key === 'Backspace') {
-    // Don't call e.preventDefault() unless intentionally overriding deletion
-  }
-});
-
-
 // Prevent Search Input From Submiting When "Enter" Is Pressed on Keyboard
 
 document.getElementById('searchInput').addEventListener('keypress', function(event) {
