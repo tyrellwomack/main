@@ -913,10 +913,21 @@ function stopMusic() {
 }
 
 
+// Re-Enable Play Button after audio ends
 
 
+function enableAllPlayButtons() {
+  document.querySelectorAll('.playButton').forEach(b => b.disabled = false);
+}
 
-
+// attach ended listeners to every audio on page load
+document.querySelectorAll('audio').forEach(a => {
+  a.addEventListener('ended', enableAllPlayButtons);
+  // also re-enable if audio is paused/stopped unexpectedly
+  a.addEventListener('pause', () => {
+    if (a.ended) enableAllPlayButtons();
+  });
+});
 
 
 </script>
