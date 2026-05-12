@@ -193,15 +193,15 @@ a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-d
   }
 }
 
-/*
+
 
  @media (hover: hover) and (pointer: fine) {
   a:hover {
-          color: white !important;
+          color: black !important;
       }
 }
 
-*/
+
 
 /* end of button hover */
 
