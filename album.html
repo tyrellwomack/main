@@ -25,7 +25,7 @@
 
       @media (hover: none) and (pointer: coarse) {
         .btn:hover, .btn:active, .btn:focus {
-          background: white;
+          background: initial;
           /* or the normal background color */
         }
       }
@@ -1137,6 +1137,14 @@ document.querySelectorAll('audio').forEach(a => {
   });
 });
 
+
+// unfocus button after pressed
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('.btn');
+  if (!b) return;
+  b.blur?.();
+}, {passive:true});
 
 
 
