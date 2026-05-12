@@ -191,14 +191,14 @@ a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-d
  	border-color:black;
  }
 
- @media (hover: none) and (pointer: coarse) {
-  /*.btn-outline-secondary:hover,*/
-  .btn-outline-secondary:active,
-  .btn-outline-secondary:focus {
-    color: initial !important;
-    background-color: initial !important;
-    border-color: initial !important;
-  }
+
+/* overlay via pseudo-element */
+.btn-outline-secondary::after {
+  content: "";
+  background-color: white;
+  color: black;
+  pointer-events: none;
+  opacity: 0;
 }
 
 /* end of button hover */
