@@ -185,17 +185,12 @@ a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-d
 
  /* button hover */
 
- * .btn-outline-secondary:hover{
- 	color:white !important;
- 	background-color:black !important;
- 	border-color:black;
- }
-
-.btn-outline-secondary.clicked,
-.btn-outline-secondary.clicked:hover {
-  color: initial !important;
-  background-color: initial !important;
-  border-color: initial !important;
+ * @media (hover: hover) and (pointer: fine) {
+  .btn-outline-secondary:hover {
+    color: white !important;
+    background-color: black !important;
+    border-color: black;
+  }
 }
 
 /* end of button hover */
