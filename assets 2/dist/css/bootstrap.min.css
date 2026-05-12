@@ -193,6 +193,13 @@ a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-d
   }
 }
 
+ @media (hover: hover) and (pointer: fine) {
+  a:hover {
+          color: white !important;
+      }
+}
+
+
 /* end of button hover */
 
  .btn-check:focus+.btn-outline-secondary,.btn-outline-secondary:focus{
