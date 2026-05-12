@@ -191,14 +191,11 @@ a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-d
  	border-color:black;
  }
 
-
-/* overlay via pseudo-element */
-.btn-outline-secondary::after {
-  content: "";
-  background-color: white;
-  color: black;
-  pointer-events: none;
-  opacity: 0;
+.btn-outline-secondary.clicked,
+.btn-outline-secondary.clicked:hover {
+  color: initial !important;
+  background-color: initial !important;
+  border-color: initial !important;
 }
 
 /* end of button hover */

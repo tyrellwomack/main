@@ -1135,10 +1135,9 @@ document.querySelectorAll('audio').forEach(a => {
 
 // unfocus button after pressed
 
-document.addEventListener('click', e => {
-  const b = e.target.closest('.btn-outline-secondary');
-  if (b) b.blur?.();
-}, {passive:true});
+const btn = document.querySelector('.btn-outline-secondary');
+btn.addEventListener('click', () => btn.classList.add('clicked'));
+
 
 
 
