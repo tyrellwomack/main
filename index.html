@@ -833,6 +833,15 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 
+// removes empty hash 
+
+function handleHash() {
+  const h = (location.hash || '').replace(/^#/, ''); // removes leading '#'
+  // debug: console.log('hash:', JSON.stringify(location.hash), 'normalized:', h);
+  if (h === 'pics') playSafe();
+  else stop();
+}
+
 
 
 
