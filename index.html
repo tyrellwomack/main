@@ -191,6 +191,19 @@ p {
 							</article>
 
 
+
+
+
+<!-- Song on Loop -->
+
+<audio id="bgMusic" autoplay loop>
+  <source src="../music/musicfiles/aria'soutro.wav" type="audio/wav" preload="auto">
+</audio>
+
+
+
+
+
 						<!-- Pics -->
 							<article id="pics">
 								<!--<h2 class="major">Music</h2>-->
@@ -765,6 +778,47 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>-->
 
       });
 
+
+// Background Music
+
+  const audio = document.getElementById('bgMusic');
+
+  // Try to play when the window gains focus
+  function startAudio() {
+    // browsers often require a user gesture; focus/click is usually fine
+    audio.play().catch(() => {
+      // fallback: do nothing if autoplay blocked
+    });
+  }
+
+  // Pause when the window loses focus
+  function stopAudio() {
+    audio.pause();
+    audio.currentTime = 0; // optional: reset to start
+  }
+
+  // Start on first user click anywhere (ensures gesture for autoplay)
+  function onFirstInteraction() {
+    startAudio();
+    window.removeEventListener('click', onFirstInteraction);
+    window.removeEventListener('keydown', onFirstInteraction);
+  }
+  window.addEventListener('click', onFirstInteraction, { once: true });
+  window.addEventListener('keydown', onFirstInteraction, { once: true });
+
+  window.addEventListener('focus', startAudio);
+  window.addEventListener('blur', stopAudio);
+
+  // If you want to stop when the user navigates away from the #pics section specifically:
+  const picsSection = document.querySelector('#pics');
+  if (picsSection) {
+    // pause when leaving the element (mouse out or focus out)
+    picsSection.addEventListener('mouseleave', stopAudio);
+    picsSection.addEventListener('focusout', stopAudio);
+    // play when entering/clicking the element
+    picsSection.addEventListener('mouseenter', startAudio);
+    picsSection.addEventListener('focusin', startAudio);
+  }
 
 
 
