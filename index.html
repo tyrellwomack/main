@@ -798,19 +798,41 @@ function stop() {
 }
 
 function handleHash() {
-  if (location.hash === '#pics') playSafe(); else stop();
+  // debug
+  // console.log('handleHash', location.hash);
+  if (location.hash === '#pics' || location.hash.startsWith('#pics')) {
+    playSafe();
+  } else {
+    stop();
+  }
 }
 
-// Start/stop on hash changes
+// Start/stop on hash changes and initial load
 window.addEventListener('hashchange', handleHash);
-// Handle back/forward and initial load
 window.addEventListener('load', handleHash);
-handleHash();
 
-// Ensure mobile/autoplay policies: unlock on first gesture
-function unlock() { playSafe(); window.removeEventListener('click', unlock); window.removeEventListener('keydown', unlock); }
+// Unlock on first gesture (only once)
+function unlock() {
+  // don't auto-play unless we are actually on #pics
+  if (location.hash === '#pics' || location.hash.startsWith('#pics')) {
+    playSafe();
+  }
+  window.removeEventListener('click', unlock);
+  window.removeEventListener('keydown', unlock);
+}
 window.addEventListener('click', unlock, { once: true });
 window.addEventListener('keydown', unlock, { once: true });
+
+// Optional: pause audio if page becomes hidden
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    stop();
+  } else {
+    // resume only if on #pics
+    if (location.hash === '#pics' || location.hash.startsWith('#pics')) playSafe();
+  }
+});
+
 
 
 
