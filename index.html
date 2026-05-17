@@ -833,14 +833,25 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 
-// removes empty hash 
+// normalizing hash in address bar
+
+function getHashName() {
+  // returns fragment without leading '#' ('' if none or just '#')
+  return (location.hash || '').replace(/^#/, '');
+}
 
 function handleHash() {
-  const h = (location.hash || '').replace(/^#/, ''); // removes leading '#'
-  // debug: console.log('hash:', JSON.stringify(location.hash), 'normalized:', h);
-  if (h === 'pics') playSafe();
+  // console.log('raw hash:', location.hash, 'normalized:', getHashName());
+  if (getHashName() === 'pics') playSafe();
   else stop();
 }
+
+function unlock() {
+  if (getHashName() === 'pics') playSafe();
+  window.removeEventListener('click', unlock);
+  window.removeEventListener('keydown', unlock);
+}
+
 
 
 
