@@ -835,24 +835,24 @@ document.addEventListener('visibilitychange', () => {
 
 // normalizing hash in address bar
 
-function getHashName() {
-  // returns fragment without leading '#' ('' if none or just '#')
-  return (location.hash || '').replace(/^#/, '');
+const audio = document.getElementById('bgMusic');
+
+function playSafe(){ audio.play().catch(e=>console.warn('play blocked:', e)); }
+function stop(){ audio.pause(); audio.currentTime = 0; }
+
+function fragment(){
+  // returns '' for "" or "#" and e.g. "pics" for "#pics" or "#pics/123"
+  return (location.hash || '').replace(/^#/, '').split('/')[0];
 }
 
-function handleHash() {
-  // console.log('raw hash:', location.hash, 'normalized:', getHashName());
-  if (getHashName() === 'pics') playSafe();
+function handleHash(){
+  console.log('handleHash', location.hash, '->', fragment());
+  if (fragment() === 'pics') playSafe();
   else stop();
 }
 
-function unlock() {
-  if (getHashName() === 'pics') playSafe();
-  window.removeEventListener('click', unlock);
-  window.removeEventListener('keydown', unlock);
-}
-
-
+window.addEventListener('hashchange', handleHash);
+window.addEventListener('load', handleHash);
 
 
 
