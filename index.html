@@ -840,20 +840,39 @@ const audio = document.getElementById('bgMusic');
 function playSafe(){ audio.play().catch(e=>console.warn('play blocked:', e)); }
 function stop(){ audio.pause(); audio.currentTime = 0; }
 
-function fragment(){
-  // returns '' for "" or "#" and e.g. "pics" for "#pics" or "#pics/123"
+function getFragment() {
+  // returns '' for "" or "#" and 'pics' for "#pics" or "#pics/anything"
   return (location.hash || '').replace(/^#/, '').split('/')[0];
 }
 
-function handleHash(){
-  console.log('handleHash', location.hash, '->', fragment());
-  if (fragment() === 'pics') playSafe();
+function handleHash() {
+  if (getFragment() === 'pics') playSafe();
   else stop();
 }
 
 window.addEventListener('hashchange', handleHash);
 window.addEventListener('load', handleHash);
 
+// If you change the hash via history API, call handleHash() after pushState/replaceState:
+const pushState = history.pushState;
+history.pushState = function(...args){
+  pushState.apply(this, args);
+  handleHash();
+};
+const replaceState = history.replaceState;
+history.replaceState = function(...args){
+  replaceState.apply(this, args);
+  handleHash();
+}
+
+// Optional: unlock on first user gesture so autoplay policy won't block when fragment is already #pics
+function unlock() {
+  if (getFragment() === 'pics') playSafe();
+  window.removeEventListener('click', unlock);
+  window.removeEventListener('keydown', unlock);
+}
+window.addEventListener('click', unlock, { once: true });
+window.addEventListener('keydown', unlock, { once: true });
 
 
 
