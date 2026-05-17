@@ -211,6 +211,11 @@ p {
 
 <!-- Picture Files -->
 
+
+              	<span class="image main" data-gallery="portfolio-gallery-app"  class="glightbox preview-link"><i class="bi bi-zoom-in"></i>
+              		<img src="images/pics/gif/tyrellwomack3.gif" class="img-fluid" alt="">
+              	</span>
+
               	<span class="image main" data-gallery="portfolio-gallery-app"  class="glightbox preview-link"><i class="bi bi-zoom-in"></i>
               		<img src="images/pics/jpg/tyrellwomack18.jpg" class="img-fluid" alt="">
               	</span>
@@ -781,44 +786,32 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>-->
 
 // Background Music
 
-  const audio = document.getElementById('bgMusic');
 
-  // Try to play when the window gains focus
-  function startAudio() {
-    // browsers often require a user gesture; focus/click is usually fine
-    audio.play().catch(() => {
-      // fallback: do nothing if autoplay blocked
-    });
-  }
+const audio = document.getElementById('bgMusic');
 
-  // Pause when the window loses focus
-  function stopAudio() {
-    audio.pause();
-    audio.currentTime = 0; // optional: reset to start
-  }
+function playSafe() {
+  audio.play().catch(e => console.warn('play blocked:', e));
+}
+function stop() {
+  audio.pause();
+  audio.currentTime = 0;
+}
 
-  // Start on first user click anywhere (ensures gesture for autoplay)
-  function onFirstInteraction() {
-    startAudio();
-    window.removeEventListener('click', onFirstInteraction);
-    window.removeEventListener('keydown', onFirstInteraction);
-  }
-  window.addEventListener('click', onFirstInteraction, { once: true });
-  window.addEventListener('keydown', onFirstInteraction, { once: true });
+function handleHash() {
+  if (location.hash === '#pics') playSafe(); else stop();
+}
 
-  window.addEventListener('focus', startAudio);
-  window.addEventListener('blur', stopAudio);
+// Start/stop on hash changes
+window.addEventListener('hashchange', handleHash);
+// Handle back/forward and initial load
+window.addEventListener('load', handleHash);
+handleHash();
 
-  // If you want to stop when the user navigates away from the #pics section specifically:
-  const picsSection = document.querySelector('#pics');
-  if (picsSection) {
-    // pause when leaving the element (mouse out or focus out)
-    picsSection.addEventListener('mouseleave', stopAudio);
-    picsSection.addEventListener('focusout', stopAudio);
-    // play when entering/clicking the element
-    picsSection.addEventListener('mouseenter', startAudio);
-    picsSection.addEventListener('focusin', startAudio);
-  }
+// Ensure mobile/autoplay policies: unlock on first gesture
+function unlock() { playSafe(); window.removeEventListener('click', unlock); window.removeEventListener('keydown', unlock); }
+window.addEventListener('click', unlock, { once: true });
+window.addEventListener('keydown', unlock, { once: true });
+
 
 
 
