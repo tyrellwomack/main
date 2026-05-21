@@ -867,6 +867,30 @@ window.addEventListener('hashchange', updateAudioForHash);
 // if your site uses pushState navigation, also handle popstate
 window.addEventListener('popstate', updateAudioForHash);
 
+// Stop bg music when page is closed
+
+const bg = document.getElementById('bgsong');
+
+function handleHashChange() {
+  if (location.hash === '#pics') {
+    // attempt to play (may require user gesture)
+    bg.play().catch(() => {
+      console.log('Autoplay blocked; user gesture required.');
+    });
+  } else {
+    bg.pause();
+    bg.currentTime = 0;
+  }
+}
+
+// run on load in case page opened with #pics
+handleHashChange();
+
+// handle hash navigation and history navigation
+window.addEventListener('hashchange', handleHashChange);
+window.addEventListener('popstate', handleHashChange);
+
+// If you use pushState for navigation, call handleHashChange() after you update the URL.
 
     </script>
 
