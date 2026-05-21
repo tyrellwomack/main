@@ -843,9 +843,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>-->
 
 // Music playing in background on repeat
 const bg = document.getElementById('bgsong');
+const pics = document.getElementById('pics');
 
 function updateAudio() {
-  if (location.hash === '#pics') {
+  if (location.hash === '#pics' || isPicsVisible()) {
     bg.play().catch(() => console.log('Autoplay blocked; user gesture required.'));
   } else {
     bg.pause();
@@ -853,39 +854,35 @@ function updateAudio() {
   }
 }
 
-// run on initial load
-updateAudio();
+function isPicsVisible() {
+  if (!pics) return false;
+  // visible if not display:none and has size
+  const style = getComputedStyle(pics);
+  if (style.display === 'none' || style.visibility === 'hidden') return false;
+  const rect = pics.getBoundingClientRect();
+  return rect.width > 0 && rect.height > 0;
+}
 
-// hash changes (back/forward and in-page links)
+updateAudio();
 window.addEventListener('hashchange', updateAudio);
 window.addEventListener('popstate', updateAudio);
 
-// if your site code uses history.pushState/replaceState, patch them so updateAudio() runs after any call
+// patch pushState/replaceState
 (function() {
   const origPush = history.pushState;
   const origReplace = history.replaceState;
-
-  history.pushState = function(...args) {
-    const res = origPush.apply(this, args);
-    updateAudio();
-    return res;
-  };
-
-  history.replaceState = function(...args) {
-    const res = origReplace.apply(this, args);
-    updateAudio();
-    return res;
-  };
+  history.pushState = function(...args){ const r = origPush.apply(this,args); updateAudio(); return r; };
+  history.replaceState = function(...args){ const r = origReplace.apply(this,args); updateAudio(); return r; };
 })();
 
-// optional: detect clicks on links/buttons that change view without changing URL hash
-document.addEventListener('click', (e) => {
-  // adjust selector to match your site's article-close links/buttons
-  const el = e.target.closest('a, button');
-  if (!el) return;
-  // small delay to allow other handlers to update URL/state first
-  setTimeout(updateAudio, 50);
-});
+// observe attribute/style changes on the #pics element
+if (pics) {
+  const mo = new MutationObserver(() => updateAudio());
+  mo.observe(pics, { attributes: true, attributeFilter: ['style', 'class'] });
+}
+
+// fallback: detect clicks that may change view
+document.addEventListener('click', () => setTimeout(updateAudio, 50));
 
     </script>
 
