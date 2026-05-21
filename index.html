@@ -215,7 +215,10 @@ p {
 							</article>
 
 
-
+<audio id="bgsong" controls loop>
+  <source src="../music/musicfiles/aria'soutro.wav" type="audio/wav">
+  Your browser does not support the audio element.
+</audio>
 
 						<!-- Pics -->
 							<article id="pics">
@@ -838,6 +841,31 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>-->
 
       });
 
+// Music playing in background on repeat
+
+const audio = document.getElementById('bgsong');
+
+function updateAudioForHash() {
+  if (location.hash === '#pics') {
+    // attempt to play; handle browsers that block autoplay
+    audio.play().catch(() => {
+      // optionally unmute or show a UI to let user start playback
+      audio.muted = false;
+    });
+  } else {
+    audio.pause();
+    audio.currentTime = 0;
+  }
+}
+
+// run on load in case page opened directly with #pics
+updateAudioForHash();
+
+// listen for hash changes (back/forward and in-page links)
+window.addEventListener('hashchange', updateAudioForHash);
+
+// if your site uses pushState navigation, also handle popstate
+window.addEventListener('popstate', updateAudioForHash);
 
 
     </script>
