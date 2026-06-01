@@ -155,53 +155,49 @@
 
 /* Youtube Video Style */
 
-  .video-wrap{
-    position:relative;
-    width:100%;
-    max-width:100%;
-    aspect-ratio:16/9; /* fallback-friendly */
-    /*margin:40px auto;*/
-    background:#000;
-    overflow:hidden;
-  }
-  /* The overlay with only a centered play button */
-  .overlay{
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:rgba(0,0,0,0.35);
-    z-index:3;
-  }
-  .play-btn{
-    width:60px;
-    height:60px;
-    border:none;
-    color:black;
-    font-size:40px;
-    background-color: white;
-    padding: 0 1.0rem 0 1.35rem;
-    line-height:1;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    box-shadow:0 8px 20px rgba(0,0,0,0.45);
-  }
-  .play-btn:active{transform:scale(.98)}
-  /* iframe fills container */
-  .player, .player iframe{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    border:0;
-    z-index:2;
-    background:#000;
-  }
-  /* hide default youtube controls visually if you use controls=0 */
-  .hidden{display:none}
+.video-wrap{ 
+  position:relative;
+  width:100%; 
+  max-width:100%; 
+  aspect-ratio:16/9; 
+  background:#000; 
+  overflow:hidden; } 
+
+.overlay{ 
+  position:absolute; 
+  inset:0; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  background:rgba(0,0,0,0.35); 
+  z-index:3; } 
+
+.play-btn{ 
+  width:60px; 
+  height:60px; 
+  border:none; 
+  color:black; 
+  font-size:40px; 
+  background-color: white; 
+  padding: 0 1.0rem 0 1.35rem; 
+  line-height:1; 
+  display:flex; 
+  align-items:center;
+  justify-content:center; 
+  cursor:pointer; 
+  box-shadow:0 8px 20px rgba(0,0,0,0.45); } 
+
+.play-btn:active{transform:scale(.98)} 
+.player, .player iframe{ 
+  position:absolute; 
+  inset:0; 
+  width:100%; 
+  height:100%; 
+  border:0; 
+  z-index:2; 
+  background:#000; } 
+
+.hidden{display:none} 
 
 /* End Youtube Video Style */
 
