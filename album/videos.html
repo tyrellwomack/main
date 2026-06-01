@@ -155,47 +155,6 @@
 
 /* Youtube Video Style */
 
-.video-wrap{ 
-  position:relative; 
-  width:100%; 
-  max-width:100%; 
-  aspect-ratio:16/9; 
-  background:#000; 
-  overflow:hidden; } 
-
-.overlay{ 
-  position:absolute; 
-  inset:0; 
-  display:flex; 
-  align-items:center; 
-  justify-content:center; 
-  background:rgba(0,0,0,0.35); 
-  z-index:3; } 
-
-.play-btn{ 
-  width:60px; 
-  height:60px; 
-  border:none; 
-  color:black; 
-  font-size:40px; 
-  background-color: white; 
-  padding: 0 1.0rem 0 1.35rem; 
-  line-height:1; 
-  display:flex; 
-  align-items:center; 
-  justify-content:center; 
-  cursor:pointer; 
-  box-shadow:0 8px 20px rgba(0,0,0,0.45); } 
-
-.play-btn:active{transform:scale(.98)} 
-.player, .player iframe{ 
-  position:absolute; 
-  inset:0; 
-  width:100%; 
-  height:100%; 
-  border:0; 
-  z-index:2; 
-  background:#000; } 
 
 /* End Youtube Video Style */
 
@@ -310,21 +269,13 @@
             
 
 
-<div class="video-wrap" id="videoWrap">
-  <div id="player" class="player hidden"></div>
+<!-- Youtube Video -->
 
-
-  <!-- Youtube Video -->
-
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/T1eu3twooPM?si=mYjVbr2TS2D2L-BT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/T1eu3twooPM?si=mYjVbr2TS2D2L-BT&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <!-- End Youtube Video -->
 
 
-  <div class="overlay" id="overlay">
-    <button id="playBtn" class="play-btn" aria-label="Play video">►</button>
-  </div>
-</div>
             <div class="card-body">
               <p class="card-text song-title">Aria's Outro (Lyrics)</p>
               <div class="d-flex justify-content-between align-items-center">
@@ -766,95 +717,8 @@ btn.addEventListener('click', () => btn.classList.add('clicked'));
 
 
 // youtube video function 
-(function(){
-  const VIDEO_ID = 'T1eu3twooPM'; // replace if needed
-  const wrap = document.getElementById('videoWrap');
-  const playBtn = document.getElementById('playBtn');
-  const poster = document.getElementById('poster');
 
-  // insert YouTube API script
-  const tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  document.head.appendChild(tag);
-
-  // helper: fullscreen
-  function enterFullscreen(el){
-    if (el.requestFullscreen) return el.requestFullscreen();
-    if (el.webkitRequestFullscreen) return el.webkitRequestFullscreen();
-    if (el.msRequestFullscreen) return el.msRequestFullscreen();
-    return Promise.reject();
-  }
-
-  // choose best quality from available levels
-  function bestQuality(levels){
-    const pref = ['highres','hd2160','hd1440','hd1080','hd720','large','medium','small'];
-    for (const q of pref) if (levels.includes(q)) return q;
-    return levels[0] || '';
-  }
-
-  let player;
-  window.onYouTubeIframeAPIReady = function(){
-    player = new YT.Player('player', {
-      width: '100%',
-      height: '100%',
-      videoId: VIDEO_ID,
-      playerVars: { controls: 1, rel: 0, modestbranding: 1, playsinline: 0 },
-      events: {
-        onReady: () => {},
-        onStateChange: (e) => {
-          if (e.data === YT.PlayerState.PLAYING) {
-            // hide poster once playing
-            poster.style.display = 'none';
-            // request highest available quality
-            try {
-              const levels = player.getAvailableQualityLevels() || [];
-              const q = bestQuality(levels);
-              if (q) player.setPlaybackQuality(q);
-            } catch(e){}
-          }
-          if (e.data === YT.PlayerState.ENDED) {
-            poster.style.display = 'flex';
-            player.seekTo(0);
-          }
-        }
-      }
-    });
-  };
-
-  playBtn.addEventListener('click', async () => {
-    // user gesture: enter fullscreen then play
-    try { await enterFullscreen(wrap); } catch(e){ /* ignore if blocked */ }
-
-    // if player ready, play and set quality after PLAYING event
-    if (player && player.playVideo) {
-      player.playVideo();
-    } else {
-      // API not ready yet — create player with autoplay=1 by setting player when API loads (onYouTubeIframeAPIReady creates it)
-      // If API still loading, set a small interval to autoplay when ready
-      const check = setInterval(() => {
-        if (window.YT && window.YT.Player && !player) {
-          clearInterval(check);
-          player = new YT.Player('player', {
-            width:'100%', height:'100%', videoId: VIDEO_ID,
-            playerVars: { autoplay:1, controls:1, rel:0, modestbranding:1, playsinline:0 },
-            events: { onStateChange: (e)=> {
-              if (e.data === YT.PlayerState.PLAYING) {
-                poster.style.display = 'none';
-                try {
-                  const levels = player.getAvailableQualityLevels() || [];
-                  const q = bestQuality(levels);
-                  if (q) player.setPlaybackQuality(q);
-                } catch(e){}
-              }
-            } }
-          });
-        }
-      }, 150);
-      // fail-safe: if API loads normally, onYouTubeIframeAPIReady will create player
-    }
-  });
-})();
-  // end of youtube video functions
+// end of youtube video functions
 
 
 
