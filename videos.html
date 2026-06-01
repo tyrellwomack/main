@@ -155,7 +155,20 @@
 
 /* Youtube Video Style */
 
+.yt-embed-holder{
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  pointer-events: none;
+}
 
+
+.yt-embed-holderiframe{
+  width: 100%;
+  height: 100%;
+  margin-left: -100%;
+
+}
 /* End Youtube Video Style */
 
     </style>
@@ -268,13 +281,13 @@
           <div class="card shadow-sm">
             
 
-
+<div class="yt-embed-holder">
 <!-- Youtube Video -->
 
-        <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/T1eu3twooPM?si=VHFRKzMSzPa99cYd&showinfo=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/T1eu3twooPM?si=VHFRKzMSzPa99cYd&autoplay=1&mute=1&loop=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=1&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <!-- End Youtube Video -->
-
+</div>
 
             <div class="card-body">
               <p class="card-text song-title">Aria's Outro (Lyrics)</p>
