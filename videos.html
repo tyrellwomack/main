@@ -321,7 +321,6 @@
 
 <script>
 
-
 // Search Bar
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -364,6 +363,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // -----------------------------
 
   function render(query) {
+
+    // scroll to top when rendering search results
+    window.scrollTo({ top: 0, behavior: 'instant' }); // or 'smooth'
 
     const q = normalize(query);
 
@@ -437,6 +439,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (initial) {
     input.value = initial;
     render(initial);
+    // ensure page is at top on initial search load as well
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }
 
   // -----------------------------
@@ -483,16 +487,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// top of screen while searching 
 
-document.getElementById('searchMusic').addEventListener('submit', function (e) {
-  // Scroll to top smoothly; use instant behavior if you prefer 'auto'
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // If your search is AJAX-based, prevent default and trigger the request after scrolling:
-  // e.preventDefault();
-  // setTimeout(() => { performAjaxSearch(); }, 300); // wait for scroll
-});
 
 // Play Button
 
