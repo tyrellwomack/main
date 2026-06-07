@@ -87,6 +87,7 @@ input, select, textarea {
 
 	*, *:before, *:after {
 		box-sizing: inherit;
+		padding-top: 4rem;
 	}
 
 	body {
