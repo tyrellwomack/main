@@ -483,19 +483,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+// top of screen while searching 
 
+document.getElementById('searchMusic').addEventListener('submit', function (e) {
+  // Scroll to top smoothly; use instant behavior if you prefer 'auto'
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 
-
-
-
-
-
-
-
-
-
-
-
+  // If your search is AJAX-based, prevent default and trigger the request after scrolling:
+  // e.preventDefault();
+  // setTimeout(() => { performAjaxSearch(); }, 300); // wait for scroll
+});
 
 // Play Button
 
