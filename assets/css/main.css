@@ -297,6 +297,13 @@ input, select, textarea {
 		text-align: right;
 	}
 
+
+
+	.belowsearch{
+		padding-top:4rem;
+	}
+
+
 /* Form */
 
 	form {
