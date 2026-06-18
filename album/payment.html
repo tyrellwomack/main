@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <meta charset="utf-8" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+    <meta name="description" content="Download music by Tyrell Womack. Formally known as Angelo Liebe">
+    <meta name="generator" content="Hugo 0.84.0">
+
+    <title>Tyrell Womack Related | Donate</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+
+
+    <!-- Core CSS -->
+    <link href="../assets 2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/main.css" rel="stylesheet">
+    <link href="../assets/css/fontawesome-all.min.css" rel="stylesheet">
+
+    <!-- Google Auto Ads -->
+    
+
+
+    <style>
+      input {
+        border-radius: 0 !important;
+      }
+      ul {
+        padding-left: 0 !important;
+      }
+      .paymentheader{
+        color: black;
+        float: left;
+        margin-top: 1rem;
+      }
+
+      .belowsearch{
+        padding-top:6rem;
+      }
+
+
+      .imageload{
+        background-color: #D1CFCF;
+        display: block;
+        position: relative;
+        aspect-ratio: 1/1;
+      }
+
+      .playButton.disabled {
+        /*background-color: black !important;
+        color: white !important;
+        border-color: black !important;
+        cursor: not-allowed;*/
+      }
+
+.playButton.playing { background-color: black; color: white; border-color: black; }
+.playButton { background-color: transparent; color: black; border-color: black; }
+
+
+      .homebutton{
+          margin-right: .5rem;
+          font-size: 16px;
+
+      }
+
+
+      input::placeholder {
+          color: black !important; /* Change 'red' to your desired color */
+          text-transform: uppercase;
+      }
+
+      /*.button-clicked {
+        background-color: black !important;
+        color: white !important;
+        border-color: black !important;
+      }*/
+
+      .button-stopped {
+        background-color: transparent !important;
+        color: black !important;
+        border-color: black !important;
+      }
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      p{
+        margin: 0 0 0rem 0 !important;
+      }
+
+      .song-title{
+        margin: 0 0 .5rem 0 !important;
+      }
+
+      input{
+        width: 100%;
+        border:  1px solid #ccc !important;
+        background-color: white;
+      }
+
+      a:active {
+              color: white !important;
+          }
+
+      .navbar-fixed{
+        position: fixed; 
+        top: 3.38rem !important;
+        width: 100%; 
+        z-index: 1;
+      }
+
+      .navbar.fixed-top {
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
+
+      .search-container {
+          position: relative;
+          width: 100%; /* Set the desired width */
+      }
+
+      .search-container input {
+          width: 100%;
+          padding: 10px; /* Add padding for better appearance */
+          border: 1px solid #ccc; /* Add a border */
+          border-radius: 0px; /* Rounded corners */
+      }
+
+      .search-container button {
+          position: absolute;
+          right: 0; /* Align to the right */
+          top: 0; /* Align to the top */
+          bottom: 0; /* Align to the bottom */
+          border: none; /* Remove border */
+          background-color: white; /* Button color */
+          color: black; /* Text color */
+          /*padding: 10px;*/ /* Add padding */
+          border-top:  1px solid #ccc !important;/* Rounded corners on the right */
+          border-bottom:  1px solid #ccc !important;/* Rounded corners on the right */
+          cursor: pointer; /* Pointer cursor on hover */
+          margin-right: .23rem;
+          font-size: 17px;
+      }
+
+      .backtotop{
+        padding-bottom: 4rem !important;
+        color: red;
+      }
+
+      .backtotoptext{
+        color: white;
+      }
+
+    </style>
+
+    
+  </head>
+  <body>
+    
+<header>
+
+<!--
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">About</h4>
+          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">Contact</h4>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white">Follow on Twitter</a></li>
+            <li><a href="#" class="text-white">Like on Facebook</a></li>
+            <li><a href="#" class="text-white">Email me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+-->
+
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <!--<a href="#" class="navbar-brand d-flex align-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>-->
+        <h3 style="vertical-align: middle;">Tyrell Womack Related</h3>
+
+      </a>
+
+<!--
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <h3>Home</h3>
+-->
+
+<ul style="display: inline-flex; margin: 0;">
+
+     <li> <a href="../index.html">
+        <h3 class="fas fa-home homebutton" style="color: white;" ></h3>
+      </a></li>
+
+     <li> <a href="../videos.html">
+        <h3 class="fas fa-video homebutton" style="color: white;" ></h3>
+      </a></li>
+
+</ul>
+
+      </button>
+    </div>
+  </div>
+</header>
+
+
+
+
+
+<header>
+
+
+  <div style="background-color: white;!important;" class="navbar-fixed navbar-dark">
+    <div class="search-container">
+
+        <form id="searchMusic">
+          <div>
+          <input  style="text-transform: uppercase;" type="text" type="search" placeholder="Search & Download Music ..." name="q" id="searchInput"/>
+          <button class="button fas fa-times" id="clearButton" type="submit"></button>
+        </div>
+        </form>
+
+
+    </div>
+  </div>
+</header>
+
+
+<main class="belowsearch">
+
+<ul>
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div style="width: 40% !important;" class="col-lg-6 col-md-8 mx-auto">
+        <form id="submit-to-google-sheet">
+          <div class="form-group">
+
+          </div>
+          <div class="form-group" style="margin: 0 0 2rem 0;">
+            <label class="paymentheader" for="email" style="font-weight: bold !important; ">Foundation Donation</label>
+            <input
+              style="color: black !important; text-transform: uppercase;"
+              class="form-control"
+              type="email"
+              name="email"
+              id="email"
+              inputmode="decimal" 
+              placeholder="$0.00" 
+              aria-invalid="false" 
+              aria-describedby="" 
+              data-1p-ignore="false" 
+              data-lp-ignore="false" 
+              value="$0.00"
+              required
+            />
+          </div>
+
+<article style="border: 1px solid black; padding: 1rem;">
+          <div class="form-group" style="  margin: 0 0 2rem 0;">
+            <label class="paymentheader" for="email">Name on card</label>
+            <input
+              style="color: black !important; text-transform: uppercase;"
+              class="form-control"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="First & Last"
+              required
+            />
+          </div>
+
+
+          <div class="form-group">
+            <label class="paymentheader" for="email">Email</label>
+            <input
+              style="color: black !important; text-transform: uppercase;"
+              class="form-control"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="name@email.com"
+              required
+            />
+          </div>
+
+          <div class="form-group" style=" margin: 0 0 2rem 0;">
+            <label class="paymentheader" for="email">Card Information</label>
+
+            <input
+              style="color: black !important; text-transform: uppercase;"
+              class="form-control"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="1234 1234 1234 1234"
+              required
+            />
+            
+         <ul class="icons" style="display: -webkit-flex;">
+            <input
+              style="color: black !important; width: 50%; text-transform: uppercase;"
+              class="form-control"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="MM / YYYY"
+              required
+            />
+
+            <input 
+              style="color: black !important; width: 50%; text-transform: uppercase;" 
+              class="form-control"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="CVC"
+              required
+            />
+          </ul>
+              <ul class="icons" style="display: -webkit-flex; font-size: 18px;">
+              <li><i class="fas fa-lock"></i></li>
+              <h3 style="font-weight: bold;  align-items: center;justify-content: center;  display: flex; color: black !important; font-size: 12px;">Secure Payment</h3><br>
+              </ul>
+           </div>
+
+          <div class="form-group">
+            <label class="paymentheader" for="email">Billing Information</label>
+            <input
+              style="color: black !important; text-transform: uppercase;"
+              class="form-control"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="1111 HOME STREET"
+              required
+            />
+            <input
+              style="color: black !important; text-transform: uppercase;"
+              class="form-control"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="ZIP"
+              required
+            />
+
+          <div class="form-group">
+
+          </div>
+
+          <div class="form-group">
+
+
+
+          </div>
+          <div class="form-group form-check">
+
+          </div>
+         
+            <button type="submit" style="margin-bottom: 1rem; font-weight: 300; width: 100%; background-color: black !important; color: white !important; box-shadow: inset 0 0 0 0px black !important; height: 3.5rem; " class="btn primary">
+              Donate
+            </button>
+        
+      </div>
+    </div>
+  </article>
+</section>
+
+
+</main>
+
+
+<footer class="text-muted py-5">
+<!--
+  <a href="#">
+      <div class="" class="backtotop">
+        <center>
+            <p class="backtotoptext float-end mb-1">
+              Back to top
+            </p>
+        </center>
+      </div>
+  </a>
+-->
+</footer>
+
+
+<script>
+
+// Search Bar
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  const form = document.getElementById('searchMusic');
+  const input = document.getElementById('searchInput');
+  const clearBtn = document.getElementById('clearButton');
+  const cards = Array.from(document.querySelectorAll('.col'));
+
+  const titleSelector = '.song-title';
+
+  let rafId = null;
+
+  // -----------------------------
+  // Helpers
+  // -----------------------------
+
+  function normalize(s) {
+    return (s || '')
+      .trim()
+      .toLowerCase()
+      .replace(/[’‘´`]/g, "'"); // normalize apostrophes
+  }
+
+  function escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function highlight(text, query) {
+    if (!query) return text;
+
+    const safeQuery = escapeRegex(query);
+    const regex = new RegExp(safeQuery, 'gi');
+
+    return text.replace(regex, match => `<mark>${match}</mark>`);
+  }
+
+  // -----------------------------
+  // Core Search
+  // -----------------------------
+
+  function render(query) {
+
+    // scroll to top when rendering search results
+    window.scrollTo({ top: 0, behavior: 'instant' }); // or 'smooth'
+
+    const q = normalize(query);
+
+    // RESET STATE
+    if (!q) {
+      for (const card of cards) {
+        const titleEl = card.querySelector(titleSelector);
+        if (!titleEl) continue;
+
+        card.style.display = '';
+        titleEl.textContent = titleEl.dataset.original;
+      }
+      return;
+    }
+
+    for (const card of cards) {
+
+      const titleEl = card.querySelector(titleSelector);
+      if (!titleEl) continue;
+
+      const original = titleEl.dataset.original;
+      const originalNorm = normalize(original);
+
+      const match = originalNorm.includes(q);
+
+      card.style.display = match ? '' : 'none';
+
+      if (match) {
+        titleEl.innerHTML = highlight(original, query);
+      }
+    }
+  }
+
+  // -----------------------------
+  // Store original text once
+  // -----------------------------
+
+  for (const card of cards) {
+    const titleEl = card.querySelector(titleSelector);
+    if (titleEl) {
+      titleEl.dataset.original = titleEl.textContent;
+    }
+  }
+
+  // -----------------------------
+  // URL sync (?q= support)
+  // -----------------------------
+
+  function syncURL(query) {
+    const url = new URL(window.location);
+
+    if (query) {
+      url.searchParams.set('q', query);
+    } else {
+      url.searchParams.delete('q');
+    }
+
+    window.history.replaceState({}, '', url);
+  }
+
+  function getQueryFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('q') || '';
+  }
+
+  // -----------------------------
+  // Initial load from URL
+  // -----------------------------
+
+  const initial = getQueryFromURL();
+  if (initial) {
+    input.value = initial;
+    render(initial);
+    // ensure page is at top on initial search load as well
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  // -----------------------------
+  // Input (RAF optimized)
+  // -----------------------------
+
+  input.addEventListener('input', e => {
+
+    if (rafId) cancelAnimationFrame(rafId);
+
+    const value = e.target.value;
+
+    syncURL(value);
+
+    rafId = requestAnimationFrame(() => {
+      render(value);
+    });
+
+  });
+
+  // Prevent Enter refresh
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') e.preventDefault();
+  });
+
+  // -----------------------------
+  // Clear button
+  // -----------------------------
+
+  clearBtn.addEventListener('click', e => {
+
+    e.preventDefault();
+
+    input.value = '';
+
+    if (rafId) cancelAnimationFrame(rafId);
+
+    syncURL('');
+
+    render('');
+
+    input.focus();
+  });
+
+});
+
+
+
+
+
+// Play Button
+
+document.querySelectorAll('.playButton').forEach(el => {
+  el.addEventListener('click', function() {
+    this.classList.add('button-clicked');
+  });
+});
+
+// Play Button Text Change
+document.addEventListener('DOMContentLoaded', () => {
+  // helper to get audio id from button (data-for or onclick string)
+  const getAudioId = btn => btn.dataset.for || (btn.getAttribute('onclick') || '').match(/['"]([^'"]+)['"]/)?.[1];
+
+  document.querySelectorAll('button.playButton').forEach(btn => {
+    const audioId = getAudioId(btn);
+    if (!audioId) return;
+    const audio = document.getElementById(audioId);
+    if (!audio) return;
+
+    // toggle play/pause when button clicked (if you still use handlePlay, keep calling it)
+    btn.addEventListener('click', e => {
+      // optional: call existing handler if present
+      if (typeof handlePlay === 'function') {
+        try { handlePlay(btn, audioId); } catch {}
+      }
+
+      // toggle playback (ensures play event fires so listeners update text)
+      if (audio.paused) {
+        audio.play().catch(() => {}); // ignore autoplay rejection
+      } else {
+        audio.pause();
+      }
+    });
+
+    // update only this button when playback state changes
+    const setPlaying = isPlaying => {
+      btn.textContent = isPlaying ? 'Playing' : 'Play';
+      btn.classList.toggle('btn-secondary', isPlaying);
+      btn.classList.toggle('btn-outline-secondary', !isPlaying);
+    };
+
+    audio.addEventListener('play', () => setPlaying(true));
+    audio.addEventListener('playing', () => setPlaying(true));
+    audio.addEventListener('pause', () => setPlaying(false));
+    audio.addEventListener('ended', () => setPlaying(false));
+  });
+});
+
+
+// End Play Button
+
+
+// Stop Button
+
+let enabled = true;
+
+
+document.querySelector('#stopButton').addEventListener('click', () => {
+  enabled = false;
+  // optionally remove the class from all
+  document.querySelectorAll('.playButton').forEach(el => el.classList.remove('button-clicked'));
+});
+
+
+
+
+  // Site-wide stop function: pauses & resets all audio and clears play-button state
+  function stopMusic() {
+    enabled = false; // optional: prevents further plays until re-enabled
+    document.querySelectorAll('audio').forEach(a => {
+      a.pause();
+      a.currentTime = 0;
+    });
+    document.querySelectorAll('.playButton').forEach(el => el.classList.remove('button-clicked'));
+  }
+
+
+// End Stop Button
+
+
+
+// play one song at a time
+
+
+var currentAudio = null;
+
+function playAudio(audioElement) {
+    if (currentAudio && currentAudio !== audioElement) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0; // Reset to start
+    }
+    currentAudio = audioElement;
+    audioElement.play();
+}
+
+// Play Button Style Active
+
+document.querySelectorAll('.playButton').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const audioId = btn.dataset.audio;
+    const audio = document.getElementById(audioId);
+
+    // pause/reset all other audios and remove clicked style from other buttons
+    document.querySelectorAll('audio').forEach(a => {
+      if (a !== audio) { a.pause(); a.currentTime = 0; }
+    });
+    document.querySelectorAll('.playButton').forEach(b => {
+      if (b !== btn) b.classList.remove('button-clicked');
+    });
+
+    // toggle play/pause for clicked audio and toggle class
+    if (audio.paused) {
+      audio.play();
+      btn.classList.add('button-clicked');
+    } else {
+      audio.pause();
+      btn.classList.remove('button-clicked');
+    }
+
+    // when audio ends, remove the style
+    audio.addEventListener('ended', () => btn.classList.remove('button-clicked'), { once: true });
+  });
+});
+
+// Handle play Button
+
+function handlePlay(clickedBtn, audioId) {
+
+  // disable only clicked button
+  clickedBtn.disabled = true;
+  clickedBtn.classList.add('clicked');
+
+  // play the requested audio
+  var a = document.getElementById(audioId);
+  if (a) {
+    a.currentTime = 0;
+    a.play().catch(() => {});
+  }
+}
+
+
+function stopMusic() {
+  // find all audio elements and pause + reset to start
+  document.querySelectorAll('audio').forEach(a => {
+    a.pause();
+    a.currentTime = 0;
+  });
+
+  // re-enable play buttons (if you had disabled them)
+  document.querySelectorAll('.playButton').forEach(btn => {
+    btn.disabled = false;               // remove disabled state
+    btn.classList.remove('disabled');   // remove styling if used
+    // ensure click handler present: re-add if you removed it previously
+    const audioId = btn.dataset.audio;
+    if (audioId && !btn.onclick) {
+      btn.onclick = () => document.getElementById(audioId).play();
+    }
+  });
+}
+
+
+// Re-enable other play buttons when separate play button is pressed
+
+function handlePlay(button, audioId) {
+  // Re-enable all other play buttons
+  document.querySelectorAll('.playButton').forEach(b => {
+    if (b !== button) b.disabled = false;
+  });
+
+  // Disable the clicked button
+  button.disabled = true;
+
+  // Play the requested audio (example)
+  const a = document.getElementById(audioId);
+  if (a) {
+    // pause any other audio elements if needed
+    document.querySelectorAll('audio').forEach(audio => {
+      if (audio !== a) { audio.pause(); audio.currentTime = 0; }
+    });
+    a.play().catch(() => { /* handle autoplay blocked */ });
+  }
+}
+
+function stopMusic() {
+  // stop all audio
+  document.querySelectorAll('audio').forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+  // re-enable all play buttons
+  document.querySelectorAll('.playButton').forEach(b => b.disabled = false);
+}
+
+
+// Re-Enable Play Button after audio ends
+
+
+function enableAllPlayButtons() {
+  document.querySelectorAll('.playButton').forEach(b => b.disabled = false);
+}
+
+// attach ended listeners to every audio on page load
+document.querySelectorAll('audio').forEach(a => {
+  a.addEventListener('ended', enableAllPlayButtons);
+  // also re-enable if audio is paused/stopped unexpectedly
+  a.addEventListener('pause', () => {
+    if (a.ended) enableAllPlayButtons();
+  });
+});
+
+
+// unfocus button after pressed
+
+const btn = document.querySelector('.btn-outline-secondary');
+btn.addEventListener('click', () => btn.classList.add('clicked'));
+
+
+</script>
+
+
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+
+      
+  </body>
+</html>
