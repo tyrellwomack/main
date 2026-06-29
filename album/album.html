@@ -933,29 +933,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Play Button
 
+document.querySelectorAll('.playButton').forEach(el => {
+  el.addEventListener('click', function() {
+    this.classList.add('button-clicked');
+  });
+});
+
+// Play Button Text Change
 document.addEventListener('DOMContentLoaded', () => {
+  // helper to get audio id from button (data-for or onclick string)
+  const getAudioId = btn => btn.dataset.for || (btn.getAttribute('onclick') || '').match(/['"]([^'"]+)['"]/)?.[1];
+
   document.querySelectorAll('button.playButton').forEach(btn => {
-    const audioId = btn.dataset.for;
+    const audioId = getAudioId(btn);
+    if (!audioId) return;
     const audio = document.getElementById(audioId);
     if (!audio) return;
 
+    // toggle play/pause when button clicked (if you still use handlePlay, keep calling it)
+    btn.addEventListener('click', e => {
+      // optional: call existing handler if present
+      if (typeof handlePlay === 'function') {
+        try { handlePlay(btn, audioId); } catch {}
+      }
+
+      // toggle playback (ensures play event fires so listeners update text)
+      if (audio.paused) {
+        audio.play().catch(() => {}); // ignore autoplay rejection
+      } else {
+        audio.pause();
+      }
+    });
+
+    // update only this button when playback state changes
     const setPlaying = isPlaying => {
       btn.textContent = isPlaying ? 'Playing' : 'Play';
       btn.classList.toggle('btn-secondary', isPlaying);
       btn.classList.toggle('btn-outline-secondary', !isPlaying);
     };
-
-    btn.addEventListener('click', async () => {
-      if (audio.paused) {
-        try {
-          await audio.play(); // user gesture
-        } catch (e) {
-          console.log('Audio play failed:', e);
-        }
-      } else {
-        audio.pause();
-      }
-    });
 
     audio.addEventListener('play', () => setPlaying(true));
     audio.addEventListener('playing', () => setPlaying(true));
@@ -964,6 +979,28 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+
+// End Play Button
+
+
+// Play only when there is a gesture
+
+  document.querySelectorAll('button.playButton').forEach(btn => {
+  const audioId = btn.dataset.for;
+  const audio = document.getElementById(audioId);
+
+  btn.addEventListener('click', async () => {
+    try {
+      if (audio.paused) {
+        await audio.play(); // user gesture => should be allowed
+      } else {
+        audio.pause();
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+});
 
 
 
