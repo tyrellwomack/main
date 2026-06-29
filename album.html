@@ -1011,6 +1011,25 @@ document.querySelector('#stopButton').addEventListener('click', () => {
 // End Stop Button
 
 
+// Play only when there is a gesture
+
+  document.querySelectorAll('button.playButton').forEach(btn => {
+  const audioId = btn.dataset.for;
+  const audio = document.getElementById(audioId);
+
+  btn.addEventListener('click', async () => {
+    try {
+      if (audio.paused) {
+        await audio.play(); // user gesture => should be allowed
+      } else {
+        audio.pause();
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+});
+
 
 // play one song at a time
 
