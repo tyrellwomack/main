@@ -379,7 +379,14 @@ a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-d
  * .card>.list-group{border-top:inherit;border-bottom:inherit}
  * .card>.list-group:first-child{border-top-width:0;border-top-left-radius:calc(.25rem - 1px);border-top-right-radius:calc(.25rem - 1px)}
  * .card>.list-group:last-child{border-bottom-width:0;border-bottom-right-radius:calc(.25rem - 1px);border-bottom-left-radius:calc(.25rem - 1px)}
- * .card>.card-header+.list-group,.card>.list-group+.card-footer{border-top:0}.card-body{flex:1 1 auto;padding:1rem 1rem}.card-title{margin-bottom:.5rem}.card-subtitle{margin-top:-.25rem;margin-bottom:0}.card-text:last-child{margin-bottom:0}
+ * .card>.card-header+.list-group,.card>.list-group+.card-footer{border-top:0}
+
+ .card-body{
+ 	flex:1 1 auto;
+ 	padding:1rem 1rem
+ }
+
+ .card-title{margin-bottom:.5rem}.card-subtitle{margin-top:-.25rem;margin-bottom:0}.card-text:last-child{margin-bottom:0}
 
  .card-link:hover{text-decoration:none}
 
