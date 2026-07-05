@@ -26,13 +26,17 @@
 
     <style>
       .card-body{
-        padding-top:2rem !important;
+        padding-top:1rem !important;
       }
 
       .boldname{
         font-weight: bold;
         padding: 0 !important;
         line-height: 0;
+      }
+
+      .nobold{
+        font-weight:normal !important;
       }
 
       .belowsearch{
@@ -101,12 +105,9 @@
       }
 
       .song-title{
-        margin: 0 0 0rem 0 !important;
-      }
-
-      .song-title-margin{
         margin: 0 0 .5rem 0 !important;
       }
+
 
       input{
         width: 100%;
@@ -299,8 +300,10 @@
 </div>
 
             <div class="card-body">
-              <p class="card-text song-title boldname">Iamsu!</p>
-              <p class="card-text song-title-margin">Iamsu! not IamSu</p>
+            <p class="card-text song-title song-title-margin scroll-left">Iamsu! - Iamsu! not IamSu</p>
+
+
+              <p class="card-text song-title song-title-margin"></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
@@ -337,8 +340,7 @@
 </div>
 
             <div class="card-body">
-              <p class="card-text song-title boldname">Tyrell Womack</p>
-              <p class="card-text song-title-margin">Aria's Outro (Lyrics)</p>
+              <p class="card-text song-title song-title-margin scroll-left">Tyrell Womack - Aria's Outro (Lyrics)</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
@@ -382,7 +384,7 @@
 
 <script>
 
-// Search Bar
+// Search Bar 
 
 document.addEventListener('DOMContentLoaded', () => {
 

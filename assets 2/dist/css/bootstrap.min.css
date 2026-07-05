@@ -374,6 +374,17 @@ a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-d
  	border-radius:.25rem
  }
 
+
+.scroll-left{
+  white-space: nowrap;       /* keep in one line */
+  overflow-x: auto;          /* enable horizontal scroll */
+  overflow-y: hidden;
+  text-overflow: clip;       /* don’t add ellipsis */
+  scroll-behavior: smooth;
+}
+
+
+
  * 
  * .card>hr{margin-right:0;margin-left:0}
  * .card>.list-group{border-top:inherit;border-bottom:inherit}
@@ -386,7 +397,11 @@ a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-d
  	padding:1rem 1rem
  }
 
- .card-title{margin-bottom:.5rem}.card-subtitle{margin-top:-.25rem;margin-bottom:0}.card-text:last-child{margin-bottom:0}
+ .card-title{margin-bottom:.5rem}
+ .card-title{margin-bottom:.5rem}
+
+
+ .card-subtitle{margin-top:-.25rem;margin-bottom:0}.card-text:last-child{margin-bottom:0}
 
  .card-link:hover{text-decoration:none}
 
