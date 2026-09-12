@@ -1,4 +1,6 @@
+/*
 User-agent: *
 Disallow: /img/
 Disallow: /images/
 Disallow: /photos/
+*/
