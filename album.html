@@ -983,7 +983,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // update only this button when playback state changes
     const setPlaying = isPlaying => {
-      btn.textContent = isPlaying ? '🔊' : 'Play';
+      btn.textContent = isPlaying ? ' 🔊 ' : 'Play';
       btn.classList.toggle('btn-secondary', isPlaying);
       btn.classList.toggle('btn-outline-secondary', !isPlaying);
     };
