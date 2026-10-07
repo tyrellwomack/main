@@ -95,7 +95,7 @@ a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-d
  	background-color:transparent;
  	border:1px solid black;
  	padding:.375rem .75rem;
- 	font-size:1rem;
+ 	font-size:1.03rem;
  	border-radius:.25rem;
  	/*transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out*/
  	}
