@@ -1107,10 +1107,10 @@ input, select, textarea {
 /* BG */
 
 	#bg {
-		-moz-transform: scale(1.0);
-		-webkit-transform: scale(1.0);
-		-ms-transform: scale(1.0);
-		transform: scale(1.0);
+		-moz-transform: scale(1.0) !important;
+		-webkit-transform: scale(1.0) !important;
+		-ms-transform: scale(1.0) !important;
+		transform: scale(1.0) !important;
 		-webkit-backface-visibility: hidden;
 		position: fixed;
 		top: 0;
@@ -1131,10 +1131,10 @@ input, select, textarea {
 		}
 
 		#bg:before {
-			-moz-transition: background-color 2.5s ease-in-out;
-			-webkit-transition: background-color 2.5s ease-in-out;
-			-ms-transition: background-color 2.5s ease-in-out;
-			transition: background-color 2.5s ease-in-out;
+			-moz-transition: background-color 2.5s ease-in-out !important;
+			-webkit-transition: background-color 2.5s ease-in-out !important;
+			-ms-transition: background-color 2.5s ease-in-out !important;
+			transition: background-color 2.5s ease-in-out !important;
 			-moz-transition-delay: 0.75s;
 			-webkit-transition-delay: 0.75s;
 			-ms-transition-delay: 0.75s;
@@ -1250,10 +1250,10 @@ input, select, textarea {
 		-webkit-align-items: center;
 		-ms-align-items: center;
 		align-items: center;
-		-moz-transition: -moz-transform 0.325s ease-in-out, -moz-filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
-		-webkit-transition: -webkit-transform 0.325s ease-in-out, -webkit-filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
-		-ms-transition: -ms-transform 0.325s ease-in-out, -ms-filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
-		transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
+		-moz-transition: -moz-transform 0.325s ease-in-out, -moz-filter 0.325s ease-in-out, opacity 0.325s ease-in-out !important;
+		-webkit-transition: -webkit-transform 0.325s ease-in-out, -webkit-filter 0.325s ease-in-out, opacity 0.325s ease-in-out !important;
+		-ms-transition: -ms-transform 0.325s ease-in-out, -ms-filter 0.325s ease-in-out, opacity 0.325s ease-in-out !important;
+		transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out, opacity 0.325s ease-in-out !important;
 		/*background-image: -moz-radial-gradient(rgba(0, 0, 0, 0.25) 25%, rgba(0, 0, 0, 0) 55%);
 		background-image: -webkit-radial-gradient(rgba(0, 0, 0, 0.25) 25%, rgba(0, 0, 0, 0) 55%);
 		background-image: -ms-radial-gradient(rgba(0, 0, 0, 0.25) 25%, rgba(0, 0, 0, 0) 55%);
@@ -1263,10 +1263,10 @@ input, select, textarea {
 	}
 
 		#header > * {
-			-moz-transition: opacity 0.325s ease-in-out;
-			-webkit-transition: opacity 0.325s ease-in-out;
-			-ms-transition: opacity 0.325s ease-in-out;
-			transition: opacity 0.325s ease-in-out;
+			-moz-transition: opacity 0.325s ease-in-out !important;
+			-webkit-transition: opacity 0.325s ease-in-out !important;
+			-ms-transition: opacity 0.325s ease-in-out !important;
+			transition: opacity 0.325s ease-in-out !important;
 			position: relative;
 			/*margin-top: 3.5rem;*/
 		}
