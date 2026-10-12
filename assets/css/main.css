@@ -1183,10 +1183,10 @@ input, select, textarea {
 /* Wrapper */
 
 	#wrapper {
-		display: -moz-flex !important;
-		display: -webkit-flex !important;
-		display: -ms-flex !important;
-		display: flex !important;
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
 		-moz-flex-direction: column;
 		-webkit-flex-direction: column;
 		-ms-flex-direction: column;
