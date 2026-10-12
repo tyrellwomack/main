@@ -822,37 +822,34 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>-->
 <!-- Email List -->
 		
     <script>
-      const scriptURL =                       
-      "https://script.google.com/macros/s/AKfycbw6n1t9gVsjplDxjE-cjMdq926_vOk4FyEQBa81QGLIxDcScjhlXx4zpDgyK6janzY/exec";
-      const form = document.forms["submit-to-google-sheet"];
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        var formData = new FormData(form);
-        /*var ex = document.getElementById("ex").checked;
-        var age = document.getElementById("age").checked;
+				const scriptURL = "https://script.google.com/macros/s/AKfycbw6n1t9gVsjplDxjE-cjMdq926_vOk4FyEQBa81QGLIxDcScjhlXx4zpDgyK6janzY/exec";
+				const form = document.forms["submit-to-google-sheet"];
 
-       if (age) {
-          formData.append("age", "Yes");
-        } else {
-          formData.append("age", "No");
-        }
-        if (ex) {
-          formData.append("ex", "Yes");
-        } else {
-          formData.append("ex", "No");
-        }*/
+				form.addEventListener("submit", (e) => {
+				  e.preventDefault();
+				  var formData = new FormData(form);
 
+				  // Optional: Handle checkboxes explicitly so unchecked ones send "No"
+				  var exCheckbox = document.getElementById("ex");
+				  var ageCheckbox = document.getElementById("age");
 
+				  if (ageCheckbox) {
+				    formData.set("age", ageCheckbox.checked ? "Yes" : "No");
+				  }
+				  if (exCheckbox) {
+				    formData.set("ex", exCheckbox.checked ? "Yes" : "No");
+				  }
 
-        fetch(scriptURL, { method: "POST", body: formData })
-          .then((response) => {
-            swal("Thank You");
-          })
-          .catch((error) => {
-            swal("Error", "Something went wrong. please try again!", "error");
-          });
-
-      });
+				  fetch(scriptURL, { method: "POST", body: formData })
+				    .then((response) => {
+				      swal("Thank You");
+				      form.reset(); // Optional: clears the form after success
+				    })
+				    .catch((error) => {
+				      console.error("Error!", error.message);
+				      swal("Error", "Something went wrong. Please try again!", "error");
+				    });
+				});
 
 // Music playing in background on repeat
       
@@ -885,11 +882,11 @@ window.addEventListener('popstate', updateAudio);
     return res;
   };
 
- */ history.replaceState = function(...args) {
+  history.replaceState = function(...args) {
     const res = origReplace.apply(this, args);
     updateAudio();
     return res;
-  };*/
+  };
 })();
 
 // optional: detect clicks on links/buttons that change view without changing URL hash
@@ -898,7 +895,7 @@ document.addEventListener('click', (e) => {
   const el = e.target.closest('a, button');
   if (!el) return;
   // small delay to allow other handlers to update URL/state first
-  setTimeout(updateAudio, 50); 
+  setTimeout(updateAudio, 50);
 });
 
     </script>
