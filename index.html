@@ -885,11 +885,11 @@ window.addEventListener('popstate', updateAudio);
     return res;
   };
 
-  history.replaceState = function(...args) {
+ */ history.replaceState = function(...args) {
     const res = origReplace.apply(this, args);
     updateAudio();
     return res;
-  };
+  };*/
 })();
 
 // optional: detect clicks on links/buttons that change view without changing URL hash
@@ -898,7 +898,7 @@ document.addEventListener('click', (e) => {
   const el = e.target.closest('a, button');
   if (!el) return;
   // small delay to allow other handlers to update URL/state first
-  setTimeout(updateAudio, 50);
+  setTimeout(updateAudio, 50); 
 });
 
     </script>
