@@ -54,6 +54,7 @@
 <style>
 	.cookies{
 		margin-top:3.5rem;
+		width: 50%;
 	}
 	.hero {
 	  position: relative;
@@ -147,6 +148,33 @@ p {
 	padding-top: 0.1rem !important;
 }
 
+/* Scrolling Text */
+
+  .scroll-left {
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+    background: yellow;
+    color: orange;
+    border: 1px solid orange;
+  }
+
+  .scroll-left p {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    transform: translateX(100%);
+    animation: scroll-left 10s linear infinite;
+  }
+
+  @keyframes scroll-left {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+
 </style>
 
 
@@ -177,7 +205,9 @@ p {
 						    <li><a href="#follow">follow</a></li>
 							</ul>
 						</nav>
-						<h4 class="cookies">Collecting Cookies...</h4>
+						<marquee behavior="scroll" direction="left" style="width: 25%;">
+							<h4 class="cookies">Collecting Cookies...</h4>
+						</marquee>
 					</header>
 
 				<!-- Main -->
