@@ -177,6 +177,38 @@ p {
 
 }
 
+.record-container{
+			width: 96%;
+			transform: translateX(-40px);
+			transform: translateY(-80px); 
+			position: absolute; 
+			z-index: 9999;
+
+
+}
+
+.record-text{
+	color: red; 
+	font-size: 40px; 
+	float: right;
+	vertical-align: 0px; 
+	margin: 2rem 2rem 0 2rem;
+	animation: blinker 1.5s linear infinite;
+}
+
+.record{
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+	vertical-align: 6px; 
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
 </style>
 
 
@@ -184,7 +216,11 @@ p {
 
 		<!-- Wrapper -->
 			<div id="wrapper">
-
+						<div class="record-container">
+						    <div class="record-text">
+						        • <span class="record">REC</span>
+						    </div>
+						</div>
 				<!-- Header -->
 					<header id="header">
 						<!--<div class="logo">
