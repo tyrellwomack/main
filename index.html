@@ -214,6 +214,22 @@ p {
   }
 }
 
+/* Animated Form Submit button */
+
+#submit-button.is-submitting::after {
+  content: "⏳";
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  transform-origin: 43% 50%;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
 </style>
 
 
@@ -546,7 +562,7 @@ p {
 
           </div>
          <ul class="icons" style="display: -webkit-flex;">
-	          <button type="submit" style="font-size: 1.25rem !important; margin-top: 1rem; margin-bottom: 1rem; font-weight: 300;" class="btn primary">
+	          <button type="submit" id="submit-button" style="font-size: 1.25rem !important; margin-top: 1rem; margin-bottom: 1rem; font-weight: 300;" class="btn primary">
 	            ➕
 	          </button>
 
@@ -814,34 +830,7 @@ p {
 <!-- Email List -->
 		
     <script>
-				const scriptURL = "https://script.google.com/macros/s/AKfycbw6n1t9gVsjplDxjE-cjMdq926_vOk4FyEQBa81QGLIxDcScjhlXx4zpDgyK6janzY/exec";
-				const form = document.forms["submit-to-google-sheet"];
-
-				form.addEventListener("submit", (e) => {
-				  e.preventDefault();
-				  var formData = new FormData(form);
-
-				  // Optional: Handle checkboxes explicitly so unchecked ones send "No"
-				  var exCheckbox = document.getElementById("ex");
-				  var ageCheckbox = document.getElementById("age");
-
-				  if (ageCheckbox) {
-				    formData.set("age", ageCheckbox.checked ? "Yes" : "No");
-				  }
-				  if (exCheckbox) {
-				    formData.set("ex", exCheckbox.checked ? "Yes" : "No");
-				  }
-
-				  fetch(scriptURL, { method: "POST", body: formData })
-				    .then((response) => {
-				      swal("");
-				      form.reset(); // Optional: clears the form after success
-				    })
-				    .catch((error) => {
-				      console.error("Error!", error.message);
-				      swal("Error", "Something went wrong. Please try again!", "error");
-				    });
-				});
+	
 
 // Music playing in background on repeat
       
@@ -890,6 +879,50 @@ document.addEventListener('click', (e) => {
   setTimeout(updateAudio, 50);
 });
 
+
+ const scriptURL =
+  "https://script.google.com/macros/s/AKfycbw6n1t9gVsjplDxjE-cjMdq926_vOk4FyEQBa81QGLIxDcScjhlXx4zpDgyK6janzY/exec";
+
+const form = document.forms["submit-to-google-sheet"];
+const submitButton = document.getElementById("submit-button");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const originalButtonText = submitButton.textContent;
+  submitButton.disabled = false;
+  submitButton.textContent = "";
+  submitButton.classList.add("is-submitting");
+
+  const formData = new FormData(form);
+
+  const exCheckbox = document.getElementById("ex");
+  const ageCheckbox = document.getElementById("age");
+
+  if (ageCheckbox) {
+    formData.set("age", ageCheckbox.checked ? "Yes" : "No");
+  }
+  if (exCheckbox) {
+    formData.set("ex", exCheckbox.checked ? "Yes" : "No");
+  }
+
+  fetch(scriptURL, { method: "POST", body: formData })
+    .then((response) => {
+      if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+      submitButton.textContent = "✓";
+      swal("");
+      form.reset();
+    })
+    .catch((error) => {
+      console.error("Error!", error);
+      swal("Error", "Something went wrong. Please try again!", "error");
+    })
+    .finally(() => {
+      submitButton.disabled = false;
+      submitButton.classList.remove("is-submitting");
+      submitButton.textContent = originalButtonText;
+    });
+});
 
     </script>
 
