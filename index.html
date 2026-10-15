@@ -56,6 +56,14 @@
 		margin-top:3.5rem;
 		width: 50%;
 	}
+
+
+	.cookies2{
+		margin-top:1.7rem;
+		margin-left:1rem;
+		width: 20% !important;
+	}
+
 	.hero {
 	  position: relative;
 	  display: inline-block; /* or block / width:100% as needed */
@@ -167,13 +175,22 @@ p {
   will-change: transform;
 }
 
+.ticker__track2 {
+  display: flex;
+  width: 140%;
+  animation: ticker-scroll2 6s linear infinite;
+  will-change: transform;
+}
+
+
+
 .ticker__group {
   flex: 0 0 auto;
 }
 
 @keyframes ticker-scroll {
 	from {
-    transform: translatex(110%);
+    transform: translatex(115%);
   }
 
   to {
@@ -181,6 +198,18 @@ p {
   }
 
 }
+
+@keyframes ticker-scroll2 {
+	from {
+    transform: translatex(75%);
+  }
+
+  to {
+    transform: translateX(-150%);
+  }
+
+}
+
 
 .record-container{
 			width: 98%;
@@ -563,10 +592,18 @@ p {
 
           </div>
          <ul class="icons" style="display: -webkit-flex;">
-	          <button type="submit" id="submit-button" style="font-size: 1.25rem !important; margin-top: 1rem; margin-bottom: 1rem; font-weight: 300;" class="btn primary">
+	          <button type="submit" id="submit-button" style="font-size: 1.25rem !important; margin-top: 1rem; margin-bottom: 1rem; margin-right: 1rem; font-weight: 300;" class="btn primary">
 	            ➕
 	          </button>
-
+					<li>
+						<div class="ticker" behavior="scroll" direction="left" style="width: 50%;">
+							<div class="ticker__track2">
+									<div class="ticker__group">
+											<h4 class="cookies2">Collecting Data...</h4>
+									</div>
+							</div>
+						</div>
+					</li>
 								
 									<!--<li><a href="https://x.com/tyrellwomack_" class="icon brands fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>-->
 
@@ -586,6 +623,7 @@ p {
 									<li><a href="https://www.instagram.com/tyrellwomack/" class="icon brands fa-instagram" style="margin-top:1.2rem; margin-left: 1.2rem;" target="_blank"><span class="label">Email</span></a></li>
 									-->
         	</ul>
+
         </form>
       </div>
     </div>
