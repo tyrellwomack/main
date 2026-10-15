@@ -948,13 +948,13 @@ form.addEventListener("submit", (e) => {
   fetch(scriptURL, { method: "POST", body: formData })
     .then((response) => {
       if (!response.ok) throw new Error(`Request failed: ${response.status}`);
-      submitButton.textContent = "✓";
+      submitButton.textContent = "";
       swal("");
       form.reset();
     })
     .catch((error) => {
       console.error("Error!", error);
-      swal("Error", "Something went wrong. Please try again!", "error");
+      swal("Error", "SOMETHING WENT WRONG. PLEASE TRY AGAIN!", "error");
     })
     .finally(() => {
       submitButton.disabled = false;
