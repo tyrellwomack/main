@@ -1593,7 +1593,7 @@ input, select, textarea {
 				z-index: 9999;
 			}
 
-				#main article .close:before {
+				/*#main article .close:before {
 					-moz-transition: background-color 0.2s ease-in-out;
 					-webkit-transition: background-color 0.2s ease-in-out;
 					-ms-transition: background-color 0.2s ease-in-out;
@@ -1618,7 +1618,7 @@ input, select, textarea {
 
 				#main article .close:active:before {
 					background-color: rgba(255, 255, 255, 0.175);
-				}
+				} */
 
 		@media screen and (max-width: 736px) {
 
