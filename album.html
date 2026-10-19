@@ -185,8 +185,11 @@
             transform: translateX(0px);
             transform: translateY(-19px); 
             position: absolute; 
-            height: 129px;
+            max-height: 8rem;
+      }
 
+      @media (max-width: 760px) .record-container {
+        max-height: 6.9rem;
       }
 
       .record-text{
