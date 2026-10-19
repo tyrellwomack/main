@@ -195,26 +195,35 @@
 
       .record-text{
         color: red; 
-        font-size: 39.1px; 
+        font-size: 30px;
+        line-height: 2.2rem;
         float: right;
+        bottom: anchor(center);
         vertical-align: 0px; 
-        margin: 2.1rem 4rem 0 0;
+        /*margin: 2.1rem 4rem 0 0 !important;*/
         animation: blinker 1.5s linear infinite;
       }
 
+      /*
+
       @media (max-width: 750px){
         .record-text{
+            font-size: 30px;
             margin: 2.2rem 5rem 0 0;
-           /* display: inline-block;*/
+            display: inline-block;
 
         }
       }
+      */
 
       .record{
         color: white;
         font-weight: bold;
+        width: 13px;
         font-size: 15px;
-        vertical-align: 5.5px; 
+        margin-right: 1rem;
+        vertical-align: 3.2px;
+        bottom: anchor(center);
       }
 
       @keyframes blinker {
@@ -265,15 +274,18 @@
         <h3>Home</h3>
 -->
 
-            <div class="record-container">
-                <div class="record-text">
-                    • <span class="record">REC</span>
-                </div>
-            </div>
+
 
 
 <ul style="display: inline-flex; margin: 0; z-index: 9999;">
 
+  <li>
+
+                <div class="record-text">
+                    • <span class="record">REC</span>
+                </div>
+
+  </li>
 
      <li> <a href="../index.html">
         <h3 class="fas fa-home homebutton" style="color: white;" ></h3>
