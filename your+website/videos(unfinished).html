@@ -7,10 +7,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-    <meta name="description" content="Download music by Tyrell Womack. Formally known as Angelo Liebe">
+    <meta name="description" content="">
     <meta name="generator" content="Hugo 0.84.0">
 
-    <title>Tyrell Womack Related | Donate</title>
+    <title>Your Video Page</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
 
@@ -19,43 +19,28 @@
     <link href="../assets 2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/main.css" rel="stylesheet">
     <link href="../assets/css/fontawesome-all.min.css" rel="stylesheet">
+
+    <!-- Google Auto Ads -->
     
 
 
     <style>
-      .banktransfer{
-        margin-right: 20%;
-        margin-left: 30%;
-        width: 40%;
+      .card-body{
+        padding-top:1rem !important;
       }
 
-      @media (max-width: 760px) {
-        .banktransfer{
-          width: 60%;
-          margin-left:21.2%;
-        }
+      .boldname{
+        font-weight: bold;
+        padding: 0 !important;
+        line-height: 0;
       }
 
-      .copy-link-button{
-        /*padding-top:.43rem !important;
-        padding-bottom:.39rem important;*/
-      }
-
-      input {
-        border-radius: 0 !important;
-      }
-      ul {
-        padding-left: 0 !important;
-      }
-      .paymentheader{
-        color: black;
-        float: left;
-        margin-top: 1rem;
+      .nobold{
+        font-weight:normal !important;
       }
 
       .belowsearch{
-       /* padding-top:2rem;*/
-        transform: translateY(35%);
+        padding-top: 4rem;
       }
 
 
@@ -63,7 +48,7 @@
         background-color: #D1CFCF;
         display: block;
         position: relative;
-        aspect-ratio: 1/1;
+        aspect-ratio: 16/9;
       }
 
       .playButton.disabled {
@@ -73,37 +58,16 @@
         cursor: not-allowed;*/
       }
 
-      .playButton.playing { 
-        background-color: black; 
-        color: white; 
-        border-color: black; 
-      }
-
-      .playButton { 
-        background-color: transparent; 
-        color: black; 
-        border-color: black; 
-      }
+.playButton.playing { background-color: black; color: white; border-color: black; }
+.playButton { background-color: transparent; color: black; border-color: black; }
 
 
       .homebutton{
-          margin-right: .5rem;
+          margin-right: .56rem;
           font-size: 16px;
 
       }
 
-/*
-@media (max-width 760px) {
-  .row {
-        margin-right: 0% !important;
-        margin-left: 0% !important;
-  }
-}*/
-/*
-      .row {
-        margin-right: 5%;
-        margin-left: 5%;
-      }*/
 
       input::placeholder {
           color: black !important; /* Change 'red' to your desired color */
@@ -143,6 +107,7 @@
       .song-title{
         margin: 0 0 .5rem 0 !important;
       }
+
 
       input{
         width: 100%;
@@ -204,10 +169,11 @@
         color: white;
       }
 
-      .copy-item{
-        justify-content: center;
-        display: flex;
-      }
+
+/* Youtube Video Style */
+
+/* End Youtube Video Style */
+
     </style>
 
     
@@ -216,32 +182,12 @@
     
 <header>
 
-<!--
-  <div class="collapse bg-dark" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">About</h4>
-          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
-        </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-white">Contact</h4>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Follow on Twitter</a></li>
-            <li><a href="#" class="text-white">Like on Facebook</a></li>
-            <li><a href="#" class="text-white">Email me</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
--->
 
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container">
       <!--<a href="#" class="navbar-brand d-flex align-items-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>-->
-        <h3 style="vertical-align: middle;">Tyrell Womack Related</h3>
+        <h3 style="vertical-align: middle;">Your Video Page</h3>
 
       </a>
 
@@ -250,17 +196,14 @@
         <h3>Home</h3>
 -->
 
-<ul style="display: inline-flex; margin: 0;">
-
-     <li> <a href="../index.html">
+<ul style="display: inline-flex; margin: 0; list-style: none;">
+      <li><a href="../index.html">
         <h3 class="fas fa-home homebutton" style="color: white;" ></h3>
       </a></li>
-<!--
-     <li> <a href="../videos.html">
-        <h3 class="fas fa-video homebutton" style="color: white;" ></h3>
-      </a>
-     </li>
--->
+
+      <li><a href="../album.html">
+        <h3 class="fas fa-music homebutton" style="color: white;" ></h3>
+      </a></li>
 
 </ul>
 
@@ -278,14 +221,13 @@
 
   <div style="background-color: white;!important;" class="navbar-fixed navbar-dark">
     <div class="search-container">
-  <!--
+
         <form id="searchMusic">
           <div>
-        <input  style="text-transform: uppercase;" type="text" type="search" placeholder="Search & Download Music ..." name="q" id="searchInput"/>
+          <input  style="text-transform: uppercase;" type="text" type="search" placeholder="Search Videos ..." name="q" id="searchInput"/>
           <button class="button fas fa-times" id="clearButton" type="submit"></button>
         </div>
         </form>
-  -->
 
 
     </div>
@@ -295,113 +237,80 @@
 
 <main class="belowsearch">
 
-<ul>
-
-  <section class="py-5 text-center container banktransfer">
+<!--
+  <section class="py-5 text-center container">
     <div class="row py-lg-5">
-      <div style="" class="col-md-8" style="margin-bottom: 1rem;">
-          <div class="form-group">
-          </div>
-          <div class="form-group" style="margin: 0 0 1rem 0;">
-            <h4 class="" for="" style="color: black; text-align: left; font-weight: bold; padding-bottom: 0px !important; width: max-content; margin-bottom:.5rem;"> Bank Transfer:</h4>
-            <h4 class="" for="" style="color: black; text-align: left;">Specify Donation amount in your banking app/website.</h4>
+      <div class="col-lg-6 col-md-8 mx-auto">
 
-          </div>
 
+        <h3 class="text-muted">Download Music Using Safari</h3>
+
+      </div>
     </div>
+  </section>
 
-<article style="border: 1px solid black; padding: .5rem;">
+  -->
 
 
-          <div class="form-group" style=" margin: 0 0 .5rem 0; display:inline-grid; font-size: 18px; float: left;">
+  <div class="album py-5 bg-light">
+    <div class="container" id="container content">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+<!--- Begin Card --->
+
+        <div class="col">
+          <div class="card shadow-sm">
             
-               <ul class="icons">
 
-                </ul>
-                  <li>            
-                    <label class="paymentheader">Account Name:</label>
-                  </li>
+<div class="yt-embed-holder">
 
-          <div class="copy-item">
-            <ul class="icons" style=" font-size: 18px; /*margin-left: 16%;*;">
-              <li>
-                <button type="button" class="btn copy-link-button" style="box-shadow: none; padding: .2rem .5rem;">
-                  <span aria-hidden="true" class="fas fa-copy"></span>
-                  <span aria-live="polite" class="copyStatus"></span>
-                </button>
-              </li>
-              <li>
-                <h4 style="font-weight: bold; color: black !important; font-size: 12px;">
-                  Tyrell Womack
-                </h4>
-              </li>
-            </ul>
+
+
+
+<!-- Youtube Video -->
+
+        <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/jC4GO7ynDX4?si=PDjxqD3Hix-6MeaW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<!-- End Youtube Video -->
+</div>
+
+            <div class="card-body">
+              <p class="card-text song-title song-title-margin scroll-left">Aria's Outro (Lyrics)</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+
+
+                    <button style="box-shadow: none; background-color: black;" type="button" class="btn btn-sm btn-outline-secondary">
+                      <a style="color: white;" href="" target="_blank">Donate</a>
+                    </button>
+                  
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+<!-- End Of Card -->
 
-          <div class="form-group" style=" margin: 0 0 .5rem 0; display:inline-grid; font-size: 18px; float: left;">
-            
-               <ul class="icons">
-                </ul>
-                  <li>            
-                    <label class="paymentheader">Routing Number:</label>
-                  </li>
+      </div>
+    </div>
+  </div>
 
 
-          <div class="copy-item">
-            <ul class="icons" style=" font-size: 18px; /*margin-left: 16%;*;">
-              <li>
-                <button type="button" class="btn copy-link-button" style="box-shadow: none; padding: .2rem .5rem;">
-                  <span aria-hidden="true" class="fas fa-copy"></span>
-                  <span aria-live="polite" class="copyStatus"></span>
-                </button>
-              </li>
-              <li>
-                <h4 style="font-weight: bold; color: black !important; font-size: 12px;"></h4>
-              </li>
-            </ul>
-          </div>
-
-          <div class="form-group" style=" margin: 0 0 .5rem 0; display:inline-grid; font-size: 18px; float: left;">
-            
-               <ul class="icons">
-
-                </ul>
-                  <li>            
-                    <label class="paymentheader">Account Number:</label>
-                  </li>
-
-          <div class="copy-item">
-            <ul class="icons" style=" font-size: 18px; /*margin-left: 16%;*;">
-              <li>
-                <button type="button" class="btn copy-link-button" style="box-shadow: none; padding: .2rem .5rem;">
-                  <span aria-hidden="true" class="fas fa-copy"></span>
-                  <span aria-live="polite" class="copyStatus"></span>
-                </button>
-              </li>
-              <li>
-                <h4 style="font-weight: bold; color: black !important; font-size: 12px;"></h4>
-              </li>
-            </ul>
-          </div>
-
-
-          </div>
-
-  </article>
-</section>
 
 
 </main>
-</ul>
+
 
 <footer class="text-muted py-5">
 <!--
   <a href="#">
       <div class="" class="backtotop">
         <center>
-            <p class="backtotoptext float-end mb-1">
-              Back to top
-            </p>
+        <p class="backtotoptext float-end mb-1">
+          Back to top
+        </p>
         </center>
       </div>
   </a>
@@ -409,9 +318,10 @@
 </footer>
 
 
+
 <script>
 
-// Search Bar
+// Search Bar 
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -576,7 +486,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
-
 
 
 
@@ -798,29 +707,13 @@ const btn = document.querySelector('.btn-outline-secondary');
 btn.addEventListener('click', () => btn.classList.add('clicked'));
 
 
-// share button & copy text 
 
 
 
-  document.querySelectorAll(".copy-link-button").forEach((button) => {
-    button.addEventListener("click", async () => {
-      const item = button.closest(".copy-item");
-      const text = item.querySelector("h4").textContent.trim();
-      const status = button.querySelector(".copyStatus");
 
-      try {
-        await navigator.clipboard.writeText(text);
-        status.textContent = " Copied!";
-      } catch (error) {
-        console.error("Copy failed:", error);
-        status.textContent = " Failed";
-      }
+// youtube video function 
 
-      setTimeout(() => {
-        status.textContent = "";
-      }, 1200);
-    });
-  });
+// end of youtube video functions
 
 
 
