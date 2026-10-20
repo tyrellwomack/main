@@ -26,18 +26,18 @@
       .banktransfer{
         /*margin-right: 20%;*/
         /*margin-left: 30%;*/
-        left: calc(50% - 1px);
-        width: 40%;
+        width: 75%;
       }
 
       @media (max-width: 760px) {
         .banktransfer{
-          width: 60%;
-          /*margin-left:8rem;*/
-          left: calc(50% - 1px);
+          width: 100%;
+
         }
       }
-
+      .py-5{
+        padding-top:0 !important;
+      }
       /*.copy-link-button{
         padding-top:.43rem !important;
         padding-bottom:.39rem important;
@@ -72,7 +72,16 @@
 
       .belowsearch{
        /* padding-top:2rem;*/
-        transform: translateY(8rem);
+        /*transform: translateY(8rem);*/
+        top: calc(-3.5rem - 1px);
+        left: calc(50% - 1px);
+      }
+
+      .center-board{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
 
 
@@ -383,7 +392,7 @@
 
 <main class="belowsearch">
 
-<ul>
+<ul class="center-board">
 
   <section class="py-5 text-center container banktransfer">
     <div class="row py-lg-5">
