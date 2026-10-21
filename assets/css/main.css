@@ -415,6 +415,7 @@ input, select, textarea {
 		select:invalid,
 		textarea:invalid {
 			box-shadow: none;
+			border-radius: 0px;
 		}
 
 		input[type="text"]:focus,
@@ -426,6 +427,7 @@ input, select, textarea {
 			background: rgba(255, 255, 255, 0.075);
 			border-color: #ffffff;
 			box-shadow: 0 0 0 1px #ffffff;
+			border-radius: 0px;
 		}
 
 	select {
@@ -456,6 +458,7 @@ input, select, textarea {
 	input[type="email"],
 	select {
 		height: 2.75rem;
+		border-radius: 0px;
 	}
 
 	textarea {
@@ -547,7 +550,7 @@ input, select, textarea {
 	}
 
 	input[type="radio"] + label:before {
-		border-radius: 100%;
+		border-radius: 0px;
 	}
 
 	::-webkit-input-placeholder {
