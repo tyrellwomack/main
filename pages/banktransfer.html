@@ -226,30 +226,23 @@
           font-size: 17px;
       }
 
-
       .record-container{
             width: 100%;
             transform: translateX(0px);
             transform: translateY(-19px); 
             position: absolute; 
             max-height: 8rem;
+            z-index: -9999;
       }
 
       @media (max-width: 760px) .record-container {
         max-height: 6.9rem;
       }
 
-     /* @media (max-width: 750px) {
-        .record {
-          font-size: 13px;
-          vertical-align: 4.3px !important; 
-        }
-      }*/
-
       .record-text{
         color: red; 
         font-size: 30px;
-        line-height: 2.1rem;
+        line-height: 2rem;
         float: right;
         bottom: anchor(center);
         vertical-align: 0px; 
@@ -259,10 +252,10 @@
 
       /*
 
-      @media (max-width: 768px){
+      @media (max-width: 750px){
         .record-text{
             font-size: 30px;
-            margin: 4rem 5rem 0 0;
+            margin: 2.2rem 5rem 0 0;
             display: inline-block;
 
         }
