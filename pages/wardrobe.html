@@ -481,7 +481,8 @@
                             <h4 class="bankDetails">055003612</h4>
                 </ul>
           </div>
-
+                <a href="#" id="myLink">Click me</a>
+                <p>Number: <span id="number">0</span></p>
   </article>
 </section>
 
@@ -525,6 +526,13 @@
         button.textContent = originalText;
       }, 800);
     });
+  });
+
+// orderlink for product
+  
+  document.getElementById("orderlink").addEventListener("click", function (event) {
+    event.preventDefault(); // Stops the link from navigating
+    document.getElementById("number").textContent = 42; // Set the new number
   });
 
 
