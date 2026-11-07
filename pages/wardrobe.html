@@ -1,4 +1,4 @@
-<!doctype html>
+stand the price <!doctype html>
 <html lang="en">
   <head>
     <!-- Favicon-->
@@ -491,21 +491,31 @@
     });
   });
 
+  
 // orderlink for product
   
-  document.getElementById("orderEmail").addEventListener("click", (event) => {
-    event.preventDefault();
+document.getElementById("orderEmail").addEventListener("click", (event) => {
+  event.preventDefault();
 
-    const orderNumber =
-      "ORD-" + Math.random().toString(36).slice(2, 10).toUpperCase();
+  // Increments and saves the counter in this browser
+  const nextNumber =
+    Number(localStorage.getItem("orderNumberCounter") || "0") + 1;
+  localStorage.setItem("orderNumberCounter", String(nextNumber));
 
-    const recipient = "orders@example.com"; // Replace with your email
-    const subject = `New order ${orderNumber}`;
-    const body = `Hello,\n\nMy order number is ${orderNumber}.\n`;
+  const orderNumber = `ORD-${String(nextNumber).padStart(8, "0")}`;
 
-    window.location.href =
-      `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  });
+  const recipient = "tyrell.womack@yahoo.com";
+  const subject = `New order ${orderNumber}`;
+  const body =
+    `Hello, I understand the price is $90. I would like to make a purchase. ` +
+    `What form of payment are you willing to accept?\n\n` +
+    `My order number is ${orderNumber}.\n`;
+
+  window.location.href =
+    `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
+
+
 
 
 
