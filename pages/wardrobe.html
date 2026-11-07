@@ -481,8 +481,7 @@
                             <h4 class="bankDetails">055003612</h4>
                 </ul>
           </div>
-                <a href="#" id="myLink">Click me</a>
-                <p>Number: <span id="number">0</span></p>
+              <a href="#" id="orderEmail">Email my order</a>
   </article>
 </section>
 
@@ -530,9 +529,18 @@
 
 // orderlink for product
   
-  document.getElementById("orderlink").addEventListener("click", function (event) {
-    event.preventDefault(); // Stops the link from navigating
-    document.getElementById("number").textContent = 42; // Set the new number
+  document.getElementById("orderEmail").addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const orderNumber =
+      "ORD-" + Math.random().toString(36).slice(2, 10).toUpperCase();
+
+    const recipient = "orders@example.com"; // Replace with your email
+    const subject = `New order ${orderNumber}`;
+    const body = `Hello,\n\nMy order number is ${orderNumber}.\n`;
+
+    window.location.href =
+      `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 
 
