@@ -523,7 +523,7 @@
       `Hello, I understand the price is $90 for the ${productTitle}. ` +
       `I would like to make a purchase for the quantity of 1. ` +
       `What form of payment are you willing to accept? I understand there are no refunds and all sales are final.\n\n` +
-      `My order number is ${orderNumber}.\n`;
+      `My order number is ${orderNumber}. My shipping address is ( your shipping address goes here ).\n`;
 
     window.location.href =
       `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
