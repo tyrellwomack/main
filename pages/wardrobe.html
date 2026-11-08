@@ -520,10 +520,9 @@
     const subject = `New order ${orderNumber}`;
 
     const body =
-      `Hello, I understand the price is $90 for the ${productTitle}. ` +
+      `Hello! My order number is ${orderNumber}. I understand the price is $90 for the ${productTitle}. ` +
       `I would like to make a purchase for the quantity of 1. My shipping address is ( your shipping address goes here ). ` +
-      `What form of payment are you willing to accept? I understand there are no refunds and all sales are final.\n\n` +
-      `My order number is ${orderNumber}.\n`;
+      `What form of payment are you willing to accept? I understand there are no refunds and all sales are final.\n`;
 
     window.location.href =
       `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
