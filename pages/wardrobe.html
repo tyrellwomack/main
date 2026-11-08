@@ -507,30 +507,33 @@
   
 // orderlink for product
   
-  document.getElementById("orderEmail").addEventListener("click", (event) => {
-    event.preventDefault();
+document.getElementById("orderEmail").addEventListener("click", (event) => {
+  event.preventDefault();
 
-    const productTitle =
-      document.getElementById("productTitle")?.textContent.trim().replace(/:$/, "") ||
-      "the product";
+  const productTitle =
+    document.getElementById("productTitle")?.textContent.trim().replace(/:$/, "") ||
+    "the product";
 
-    const nextNumber =
-      Number(localStorage.getItem("orderNumberCounter") || "0") + 1;
+  const nextNumber =
+    Number(localStorage.getItem("orderNumberCounter") || "0") + 1;
 
-    localStorage.setItem("orderNumberCounter", String(nextNumber));
+  localStorage.setItem("orderNumberCounter", String(nextNumber));
 
-    const orderNumber = `ORD-${String(nextNumber).padStart(8, "0")}`;
-    const recipient = "tyrell.womack@yahoo.com";
-    const subject = `Order ${orderNumber}`;
+  const orderNumber = `ORD-${String(nextNumber).padStart(8, "0")}`;
+  const recipient = "tyrell.womack@yahoo.com";
+  const subject = `Order ${orderNumber}`;
 
-const body =
-  `Hello, my name is: ____________________________.\n` + My order number is ${orderNumber}\n` + I understand the price is $90 for the ${productTitle}.\n` +
-  `I would like to make a purchase for the quantity of:____. My shipping address is: ____________________________\n` +
-  `What form of payment are you willing to accept? I understand there are no refunds and all sales are final.\n`;
+  const body = `Hello, my name is: ____________________________.
+My order number is ${orderNumber}.
+I understand the price is $90 for the ${productTitle}.
+I would like to make a purchase for the quantity of: ____.
+My shipping address is: ____________________________.
+What form of payment do you accept? I understand there are no refunds and all sales are final.`;
 
-    window.location.href =
-      `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  });
+  window.location.href =
+    `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
+
 
 
 </script>
