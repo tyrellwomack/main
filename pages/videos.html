@@ -59,9 +59,11 @@
 
 
       .homebutton{
-          margin-right: .56rem;
+          margin-right: .5rem;
           font-size: 16px;
-
+          z-index: 9999;
+          bottom: anchor(center);
+          line-height: 2.7rem;
       }
 
 
@@ -155,6 +157,62 @@
           margin-right: .23rem;
           font-size: 17px;
       }
+
+       .record-container{
+            width: 100%;
+            transform: translateX(0px);
+            transform: translateY(-19px); 
+            position: absolute; 
+            max-height: 8rem;
+            z-index: -9999;
+      }
+
+      @media (max-width: 760px) .record-container {
+        max-height: 6.9rem;
+      }
+        
+
+
+      .record-text{
+        color: red; 
+        font-size: 30px;
+        line-height: 2.4rem;
+        float: right;
+        bottom: anchor(center);
+        vertical-align: 0px; 
+        margin-right: .5rem !important;
+        /*margin: 2.1rem 4rem 0 0 !important;*/
+        animation: blinker 1.5s linear infinite;
+      }
+
+      /*
+
+      @media (max-width: 750px){
+        .record-text{
+            font-size: 30px;
+            margin: 2.2rem 5rem 0 0;
+            display: inline-block;
+
+        }
+      }
+      */
+
+      .record{
+        color: white;
+        font-weight: bold;
+        width: 13px;
+        font-size: 15px;
+        margin-right: 1rem;
+        vertical-align: 3.2px;
+        bottom: anchor(center);
+      }
+
+      @keyframes blinker {
+        50% {
+          opacity: 0;
+        }
+      }
+
 
       .backtotop{
         padding-bottom: 4rem !important;
