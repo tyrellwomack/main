@@ -1,1 +1,591 @@
 
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <meta charset="utf-8" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+    <meta name="description" content="">
+    <meta name="generator" content="Hugo 0.84.0">
+
+    <title>Wardrobe</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+
+
+    <!-- Core CSS -->
+    <link href="../assets 2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/main.css" rel="stylesheet">
+    <link href="../assets/css/fontawesome-all.min.css" rel="stylesheet">
+    
+
+
+    <style>
+
+      
+      .title{
+         color: black; 
+         text-align: left; 
+         font-weight: bold; 
+         padding-bottom: 0px !important; 
+         width: max-content; 
+         margin-bottom:.5rem;
+        /*margin-right: 20%;*/
+        /*margin-left: 30%;*/
+        width: 50%;
+      }
+
+      @media (max-width: 760px) {
+        .banktransfer{
+          width: 355px;
+
+        }
+      }
+
+      .py-5{
+        padding-top:0 !important;
+      }
+
+      /*.copy-link-button{
+        padding-top:.43rem !important;
+        padding-bottom:.39rem important;
+      }*/
+
+      .form-group {
+        margin: 0 0 1rem 1rem;
+      }
+
+      input {
+        border-radius: 0 !important;
+      }
+      ul {
+        padding-left: 0 !important;
+      }
+
+      ul li{
+        padding-left:0 !important;
+      }
+
+      
+      @media (min-width: 992px) {
+          .py-lg-5
+    /*  Specificity: (0,1,0)*/
+       {
+              width: 55%;
+              transform: translate(30%, 0px);
+       }
+
+        
+      .paymentheader{
+        color: black;
+        float: left;
+        margin-top: 1rem;
+        border-bottom: solid 1px;
+
+      }
+
+      underline {
+        padding-top: 0.5rem;
+      }
+
+      .belowsearch{
+       /* padding-top:2rem;*/
+        /*transform: translateY(8rem);*/
+        top: calc(-3.5rem - 1px);
+        left: calc(50% - 1px);
+      }
+
+      .center-board{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .playButton.disabled {
+        /*background-color: black !important;
+        color: white !important;
+        border-color: black !important;
+        cursor: not-allowed;*/
+      }
+
+      .playButton.playing { 
+        background-color: black; 
+        color: white; 
+        border-color: black; 
+      }
+
+      .playButton { 
+        background-color: transparent; 
+        color: black; 
+        border-color: black; 
+      }
+
+
+      .homebutton{
+          margin-right: .5rem;
+          font-size: 16px;
+          z-index: 9999;
+
+      }
+
+/*
+@media (max-width 760px) {
+  .row {
+        margin-right: 0% !important;
+        margin-left: 0% !important;
+  }
+}*/
+/*
+      .row {
+        margin-right: 5%;
+        margin-left: 5%;
+      }*/
+
+      input::placeholder {
+          color: black !important; /* Change 'red' to your desired color */
+          text-transform: uppercase;
+      }
+
+      /*.button-clicked {
+        background-color: black !important;
+        color: white !important;
+        border-color: black !important;
+      }*/
+
+      .button-stopped {
+        background-color: transparent !important;
+        color: black !important;
+        border-color: black !important;
+      }
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      p{
+        margin: 0 0 0rem 0 !important;
+      }
+
+      .song-title{
+        margin: 0 0 .5rem 0 !important;
+      }
+
+      input{
+        width: 100%;
+        border:  1px solid #ccc !important;
+        background-color: black;
+      }
+      
+      a {
+        width: 100%;
+        height: 2.9rem;
+      }
+
+      a:active {
+              color: white !important;
+              background-color: black !important;
+          }
+
+      .navbar-fixed{
+        position: fixed; 
+        top: 3.38rem !important;
+        width: 100%; 
+        z-index: 1;
+      }
+
+      .navbar.fixed-top {
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
+
+      .search-container {
+          position: relative;
+          width: 100%; /* Set the desired width */
+      }
+
+      .search-container input {
+          width: 100%;
+          padding: 10px; /* Add padding for better appearance */
+          border: 1px solid #ccc; /* Add a border */
+          border-radius: 0px; /* Rounded corners */
+      }
+
+      .search-container button {
+          position: absolute;
+          right: 0; /* Align to the right */
+          top: 0; /* Align to the top */
+          bottom: 0; /* Align to the bottom */
+          border: none; /* Remove border */
+          background-color: white; /* Button color */
+          color: black; /* Text color */
+          /*padding: 10px;*/ /* Add padding */
+          border-top:  1px solid #ccc !important;/* Rounded corners on the right */
+          border-bottom:  1px solid #ccc !important;/* Rounded corners on the right */
+          cursor: pointer; /* Pointer cursor on hover */
+          margin-right: .23rem;
+          font-size: 17px;
+      }
+
+      .record-container{
+            width: 100%;
+            transform: translateX(0px);
+            transform: translateY(-19px); 
+            position: absolute; 
+            max-height: 8rem;
+            z-index: -9999;
+      }
+
+      @media (max-width: 760px) .record-container {
+        max-height: 6.9rem;
+      }
+
+        @media (min-width: 992px) .record-container {
+          max-height: 6.9rem !important;
+        }
+
+        
+        @media (min-width: 992px) .record-text {
+        color: red; 
+        font-size: 30px;
+        line-height: 2.4rem !important;
+        float: right;
+        bottom: anchor(center);
+        vertical-align: 0px; 
+        margin-right: .5rem !important;
+        /*margin: 2.1rem 4rem 0 0 !important;*/
+        animation: blinker 1.5s linear infinite;
+        }
+
+      .record-text{
+        color: red; 
+        font-size: 30px;
+        line-height: 2rem;
+        float: right;
+        bottom: anchor(center);
+        vertical-align: 0px; 
+        margin-right: .5rem !important;
+        /*margin: 2.1rem 4rem 0 0 !important;*/
+        animation: blinker 1.5s linear infinite;
+      }
+
+      /*
+
+      @media (max-width: 750px){
+        .record-text{
+            font-size: 30px;
+            margin: 2.2rem 5rem 0 0;
+            display: inline-block;
+
+        }
+      }
+      */
+
+      .record{
+        color: white;
+        font-weight: bold;
+        width: 13px;
+        font-size: 15px;
+        margin-right: 1rem;
+        vertical-align: 3.2px;
+        bottom: anchor(center);
+      }
+
+      @keyframes blinker {
+        50% {
+          opacity: 0;
+        }
+      }
+
+
+      .backtotop{
+        padding-bottom: 4rem !important;
+        color: red;
+      }
+
+      .backtotoptext{
+        color: white;
+      }
+
+      .buttonExtra{
+        box-shadow: none; 
+        border-radius:0px; 
+        padding: .2rem .5rem;
+      }
+
+      .bankDetails {
+        font-weight: bold;  
+        align-items: center;
+        justify-content: center;  
+        display: flex; 
+        color: black !important; 
+        font-size: 12px; 
+        text-align: right;
+      }
+
+      .buyButton{
+        width: 100%;
+        position: bottom;
+        background-color: black;
+        color: white;
+        transform : translate(0px, 6px);
+        margin-bottom: 3px;
+        letter-spacing: 2px;
+        height: 3.5rem;
+        margin-bottom: .35rem;
+      }
+
+     buyButton:active {
+        background-color: #D1CFCF;
+      }
+        
+     .imageload{
+        background-color: #D1CFCF;
+        display: block;
+        position: relative;
+        aspect-ratio: 1/1;
+        width: 100%;
+        /*margin-bottom: 10px;*/
+      }
+
+    input[type="submit"]:active, input[type="reset"]:active, input[type="button"]:active, button:active, .button:active
+    Specificity: (0,2,1) {
+        #000000 !important;
+     }  
+    
+    .package {
+       vertical-align: middle !important;
+       text-align: center !important;
+       font-size: 28px;
+       transform: translate (0px, 6px) !important;
+      }
+      
+    </style>
+
+    
+  </head>
+  <body>
+    
+<header>
+
+<!--
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">About</h4>
+          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">Contact</h4>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white">Follow on Twitter</a></li>
+            <li><a href="#" class="text-white">Like on Facebook</a></li>
+            <li><a href="#" class="text-white">Email me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+-->
+
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <!--<a href="#" class="navbar-brand d-flex align-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>-->
+        <h3 style="vertical-align: middle;">Tyrell Womack Related</h3>
+
+      </a>
+
+<!--
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <h3>Home</h3>
+-->
+
+          <!--  <div class="record-container">
+                <div class="record-text">
+                    • <span class="record">REC</span>
+                </div>
+            </div>-->
+
+<ul style="display: inline-flex; margin: 0; z-index: 9999;">
+
+  <li>
+
+                <div class="record-text">
+                    • <span class="record">REC</span>
+                </div>
+
+  </li>
+
+     <li> <a href="../index.html">
+        <h3 class="fas fa-home homebutton" style="color: white;" ></h3>
+      </a></li> 
+      
+<!--
+     <li> <a href="../videos.html">
+        <h3 class="fas fa-video homebutton" style="color: white;" ></h3>
+      </a>
+     </li>
+-->
+
+</ul>
+
+      </button>
+    </div>
+  </div>
+</header>
+
+
+
+
+
+<header>
+
+
+  <div style="background-color: white;!important;" class="navbar-fixed navbar-dark">
+    <div class="search-container">
+  <!--
+        <form id="searchMusic">
+          <div>
+        <input  style="text-transform: uppercase;" type="text" type="search" placeholder="Search & Download Music ..." name="q" id="searchInput"/>
+          <button class="button fas fa-times" id="clearButton" type="submit"></button>
+        </div>
+        </form>
+  -->
+
+
+    </div>
+  </div>
+</header>
+
+
+<main class="belowsearch">
+
+<ul class="center-board">
+
+  <section class="py-5 text-center container banktransfer">
+    <div class="row py-lg-5">
+      <div style="" class="" style="margin-bottom: 1rem;">
+          <div class="form-group">
+          </div>
+          <div class="" style="margin-bottom: 1rem;">
+            <h4 id="productTitle" class="title" for="" >Unisex Van Cleef Bracelet</h4>
+            <h4 class="" for="" style="color: black; text-align: left;">Stainless Steel (20cm)</h4>
+          </div>
+
+    </div>
+
+<article style="border: 1px solid black; padding: .5rem;">
+
+
+          <div class="">         
+            <img src="../images/pics/vancleefbracelet.JPEG" class="imageload" loading="lazy">
+          </div>
+  
+                <!--<div>
+                   <button href="#" id="orderEmail" class="buyButton">  📦  </button>   
+                </div>-->
+                <button style="box-shadow: none; background-color: black !important; type="button" id="orderEmail" class="buyButton controls">
+                      <a href="#" class="package">  📦  </a>
+                </button>
+  </article>
+</section>
+
+
+</main>
+</ul>
+
+<footer class="text-muted py-5">
+<!--
+  <a href="#">
+      <div class="" class="backtotop">
+        <center>
+            <p class="backtotoptext float-end mb-1">
+              Back to top
+            </p>
+        </center>
+      </div>
+  </a>
+-->
+</footer>
+
+
+<script>
+
+// share button & copy text 
+
+  document.querySelectorAll(".copy-link-button").forEach((button) => {
+    const originalText = button.textContent;
+
+    button.addEventListener("click", async () => {
+      try {
+        const text = button.dataset.text;
+        await navigator.clipboard.writeText(text);
+        button.textContent = "Copied";
+      } catch (error) {
+        button.textContent = "failed";
+        console.error(error);
+      }
+
+      setTimeout(() => {
+        button.textContent = originalText;
+      }, 800);
+    });
+  });
+
+  
+// orderlink for product
+  
+document.getElementById("orderEmail").addEventListener("click", (event) => {
+  event.preventDefault();
+
+  const productTitle =
+    document.getElementById("productTitle")?.textContent.trim().replace(/:$/, "") ||
+    "the product";
+
+  const orderNumber = `ORD-${crypto.randomUUID()}`;
+  const recipient = "tyrell.womack@yahoo.com";
+  /*const subject = `Order ${orderNumber}`;*/
+  const subject = `I'm Interested`;
+
+  const body = `Hello, my name is: ____________________________.
+My order number is ${orderNumber}.
+I understand the price is $150 for the ${productTitle}.
+I would like to purchase quantity of: ____ for color: ____
+My shipping address is: ____________________________.
+I understand there are no refunds and all sales are final.`;
+
+  window.location.href =
+    `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
+
+
+
+
+</script>
+
+
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+
+      
+  </body>
+</html>
