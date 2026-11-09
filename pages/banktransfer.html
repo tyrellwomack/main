@@ -462,7 +462,7 @@
 
                     <ul class="icons" style="display: flex; font-size: 18px; ">
                         <li>
-                            <button style="" type="button" class="btn copy-link-button buttonExtra" data-text="Tyrell Womack">
+                            <button id="accountname" data-copy="Tyrell Womack" type="button" class="btn copy-link-button buttonExtra" data-text="Tyrell Womack">
 
                               <span id="copyStatus" aria-live="polite" class=""> 📲 </span>
 
@@ -483,7 +483,7 @@
 
                     <ul class="icons" style="display: flex; font-size: 18px;">
                         <li>
-                             <button type="button" class="btn copy-link-button buttonExtra" data-text="026073150">
+                             <button type="button" id="achroutingnumber" data-copy="026073150" class="btn copy-link-button buttonExtra" data-text="026073150">
 
                               <span id="copyStatus" aria-live="polite" class="copy-link-button"> 📲 </span>
 
@@ -502,7 +502,7 @@
 
                     <ul class="icons" style="display: flex; font-size: 18px;">
                         <li>
-                            <button type="button" class="btn copy-link-button buttonExtra" data-text="026073008">
+                            <button type="button" id="fedwireroutingnumber" data-copy="026073008" class="btn copy-link-button buttonExtra" data-text="026073008">
 
                               <span id="copyStatus" aria-live="polite" class="copy-link-button"> 📲 </span>
 
@@ -519,7 +519,7 @@
 
                     <ul class="icons" style="display: flex; font-size: 18px;">
                         <li>
-                            <button type="button" class="btn copy-link-button buttonExtra" data-text="8487397107">
+                            <button type="button" id="accountnumber" data-copy="8487397107" class="btn copy-link-button buttonExtra" data-text="8487397107">
 
                               <span id="copyStatus" aria-live="polite" class="copy-link-button"> 📲 </span>
 
@@ -537,7 +537,7 @@
 
                     <ul class="icons" style="display: flex; font-size: 18px;">
                         <li>
-                            <button type="button" class="btn copy-link-button buttonExtra" data-text="CMFGUS33">
+                            <button type="button" id="swiftcode" data-copy="CMFGUS33" class="btn copy-link-button buttonExtra" data-text="CMFGUS33">
 
                               <span id="copyStatus" aria-live="polite" class="copy-link-button"> 📲 </span>
 
@@ -557,7 +557,7 @@
 
                     <ul class="icons" style="display: flex; font-size: 18px;">
                         <li>
-                            <button type="button"  class="btn copy-link-button buttonExtra" data-text="Community Federal Savings Bank
+                            <button type="button"  id="bankname" data-copy="Community Federal Savings Bank" class="btn copy-link-button buttonExtra" data-text="Community Federal Savings Bank
 
                               <span id="copyStatus" aria-live="polite" class="copy-link-button"> 📲 </span>
 
@@ -570,12 +570,12 @@
                 <!-- Next -->
                 
                   <li>            
-                    <label class="paymentheader"> Type:</label>
+                    <label class="paymentheader"> Account Type:</label>
                   </li>
 
                     <ul class="icons" style="display: flex; font-size: 18px;">
                         <li>
-                            <button type="button" class="btn copy-link-button buttonExtra" data-text="Checking">
+                            <button type="button" id="accounttype" data-copy="Checking" class="btn copy-link-button buttonExtra" data-text="Checking">
 
                               <span id="copyStatus" aria-live="polite" class="copy-link-button"> 📲 </span>
 
@@ -593,7 +593,7 @@
 
                     <ul class="icons" style="display: flex; font-size: 18px;">
                         <li>
-                            <button type="button" class="btn copy-link-button buttonExtra" data-text="United States">
+                            <button type="button" id="accountlocation" data-copy="United States" class="btn copy-link-button buttonExtra" data-text="United States">
 
                               <span id="copyStatus" aria-live="polite" class="copy-link-button"> 📲 </span>
 
@@ -604,7 +604,9 @@
                 </ul> 
 
                  
-                
+                        
+<button type="button" id="copy-all">Copy all</button>
+<span id="status" aria-live="polite"></span>
                 
           </div>
 
@@ -653,6 +655,34 @@
     });
   });
 
+// copy all text 
+
+async function copyText(text) {
+    await navigator.clipboard.writeText(text);
+    document.getElementById("status").textContent = "Copied.";
+  }
+
+  document.querySelectorAll("[data-copy]").forEach(button => {
+    button.addEventListener("click", async () => {
+      const value = document.getElementById(button.dataset.copy).textContent.trim();
+      await copyText(value);
+    });
+  });
+
+  document.getElementById("copy-all").addEventListener("click", async () => {
+    const text = [
+      `Account Name: ${document.getElementById("accountname").textContent.trim()}`,
+      `ACH Routing Number: ${document.getElementById("achroutingnumber").textContent.trim()}`,
+      `Fedwire Routing Number: ${document.getElementById("fedwireroutingnumber").textContent.trim()}`
+      `Account Number: ${document.getElementById("accountnumber").textContent.trim()}`
+      `Fedwire Routing Number: ${document.getElementById("fedwireroutingnumber").textContent.trim()}`
+      `Bank Name: ${document.getElementById("bankname").textContent.trim()}`
+      `Account Type: ${document.getElementById("accounttype").textContent.trim()}`
+      `Account Location: ${document.getElementById("accountlocation").textContent.trim()}`
+    ].join("\n");
+
+    await copyText(text);
+  });
 
 
 </script>
