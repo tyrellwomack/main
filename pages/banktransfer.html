@@ -651,15 +651,32 @@
 
 
 
-// Individual copy buttons
+async function copyText(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  // Individual buttons: update the span inside the clicked button
   document.querySelectorAll("button[data-copy]").forEach(button => {
-    button.addEventListener("click", () => {
-      copyText(button.dataset.copy);
+    button.addEventListener("click", async () => {
+      const success = await copyText(button.dataset.copy);
+      const status = button.querySelector(".copyStatus");
+
+      if (status) {
+        status.textContent = success ? "✅" : "❌";
+        setTimeout(() => {
+          status.textContent = "📲";
+        }, 1500);
+      }
     });
   });
 
-  // Copy all fields as labeled lines
-  document.getElementById("copy-all").addEventListener("click", () => {
+  // Copy all button: update its separate status message
+  document.getElementById("copy-all").addEventListener("click", async () => {
     const fields = [
       ["Account Name", "accountname"],
       ["ACH Routing Number", "achroutingnumber"],
@@ -672,13 +689,12 @@
     ];
 
     const text = fields
-      .map(([label, id]) => {
-        const button = document.getElementById(id);
-        return `${label}: ${button.dataset.copy}`;
-      })
+      .map(([label, id]) => `${label}: ${document.getElementById(id).dataset.copy}`)
       .join("\n");
 
-    copyText(text);
+    const success = await copyText(text);
+    const status = document.getElementById("status");
+    status.textContent = success ? "Copied all." : "Copy failed.";
   });
 
 
