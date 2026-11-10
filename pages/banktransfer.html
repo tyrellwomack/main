@@ -620,7 +620,9 @@
 
                 </div>
                         
-                <button style="box-shadow: none; background-color: black !important; type="button" class="buyButton controls" id="copy-all">Copy all</button>
+                <button style="box-shadow: none; background-color: black !important; type="button" class="buyButton controls" id="copy-all">
+                  <span>Copy all</span>
+                </button>
                 <span id="status" aria-live="polite"></span>
                 
           
@@ -650,61 +652,59 @@
 <script>
 
 
+  async function copyWithFeedback(button, text) {
+    const label = button.querySelector("span");
+    const originalText = label ? label.textContent : button.textContent;
 
-async function copyText(text) {
     try {
       await navigator.clipboard.writeText(text);
-      return true;
+      if (label) label.textContent = "Copied";
+      else button.textContent = "Copied";
     } catch (error) {
-      return false;
+      if (label) label.textContent = "Failed";
+      else button.textContent = "Failed";
+      console.error(error);
     }
+
+    setTimeout(() => {
+      if (label) label.textContent = originalText;
+      else button.textContent = originalText;
+    }, 800);
   }
 
-  // Individual buttons: update the span inside the clicked button
+  // Individual copy buttons
   document.querySelectorAll("button[data-copy]").forEach(button => {
-    button.addEventListener("click", async () => {
-      const success = await copyText(button.dataset.copy);
-      const status = button.querySelector(".copyStatus");
-
-      if (status) {
-        status.textContent = success ? "✅" : "❌";
-        setTimeout(() => {
-          status.textContent = "📲";
-        }, 1500);
-      }
+    button.addEventListener("click", () => {
+      copyWithFeedback(button, button.dataset.copy);
     });
   });
 
-  // Copy all button: update its separate status message
-  document.getElementById("copy-all").addEventListener("click", async () => {
+  // Copy all button
+  document.getElementById("copy-all").addEventListener("click", () => {
     const fields = [
-      ["accountname"],
-      ["achroutingnumber"],
-      ["fedwireroutingnumber"],
-      ["accountnumber"],
-      ["swiftcode"],
-      ["bankname"],
-      ["accounttype"],
-      ["accountlocation"]
+      ["Account Name", "accountname"],
+      ["ACH Routing Number", "achroutingnumber"],
+      ["Fedwire Routing Number", "fedwireroutingnumber"],
+      ["Account Number", "accountnumber"],
+      ["Swift Code", "swiftcode"],
+      ["Bank Name", "bankname"],
+      ["Account Type", "accounttype"],
+      ["Account Location", "accountlocation"]
     ];
 
-    button.addEventListener("click", async () => {
-      try {
-        const text = button.dataset.text;
-        await navigator.clipboard.writeText(text);
-        button.textContent = "Copied";
-      } catch (error) {
-        button.textContent = "failed";
-        console.error(error);
-      }
+    const text = fields
+      .map(([label, id]) =>
+        `${label}: ${document.getElementById(id).dataset.copy}`
+      )
+      .join("\n");
 
-      setTimeout(() => {
-        button.textContent = originalText;
-      }, 800);
-    });
-
-
+    copyWithFeedback(document.getElementById("copy-all"), text);
+  });
+  
+  
+  
 </script>
+
 
 
 
