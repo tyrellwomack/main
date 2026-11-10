@@ -688,14 +688,20 @@ async function copyText(text) {
       ["accountlocation"]
     ];
 
-    const text = fields
-      .map(([label, id]) => `${label}: ${document.getElementById(id).dataset.copy}`)
-      .join("\n");
+    button.addEventListener("click", async () => {
+      try {
+        const text = button.dataset.text;
+        await navigator.clipboard.writeText(text);
+        button.textContent = "Copied";
+      } catch (error) {
+        button.textContent = "failed";
+        console.error(error);
+      }
 
-    const success = await copyText(text);
-    const status = document.getElementById("status");
-    status.textContent = success ? "Copied all." : "Copy failed.";
-  });
+      setTimeout(() => {
+        button.textContent = originalText;
+      }, 800);
+    });
 
 
 </script>
