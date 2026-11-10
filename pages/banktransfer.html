@@ -679,22 +679,21 @@
 
   // Copy all: use the data-copy values from your markup
   document.getElementById("copy-all").addEventListener("click", () => {
-    const fields = [
-      ["Account Name"],
-      ["ACH Routing Number"],
-      ["Fedwire Routing Number"],
-      ["Account Number"],
-      ["Swift Code"],
-      ["Bank Name"],
-      ["Account Type"],
-      ["Account Location"]
-    ];];
+const fieldIds = [
+  "accountname",
+  "achroutingnumber",
+  "fedwireroutingnumber",
+  "accountnumber",
+  "swiftcode",
+  "bankname",
+  "accounttype",
+  "accountlocation"
+];
 
-    const text = fields
-      .map(([name, id]) =>
-        `${name}: ${document.getElementById(id).dataset.copy}`
-      )
-      .join("\n");
+const text = fieldIds
+  .map(id => document.getElementById(id).dataset.copy)
+  .join("\n");
+
 
     const copyAllButton = document.getElementById("copy-all");
     const span = copyAllButton.querySelector("span");
