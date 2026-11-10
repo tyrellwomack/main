@@ -37,14 +37,17 @@
     margin: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     z-index:-9999;
   }
 
   #site-pages {
     position: fixed;
     inset: 0;
+    display: block;
     width: 100% !important;
-    height: 100% !important;
+    height: 100vh !important;
+    height: 100dvh !important;
     border: 0;
     z-index: 9999;
   }
@@ -56,228 +59,6 @@
     top: 10px;
     right: 10px;
   }
-
-
-
-	.data{
-		margin-top:3.5rem;
-		width: 50%;
-	}
-
-
-	.cookies{
-		margin-top:1.7rem;
-		margin-left:1rem;
-		width: 20% !important;
-	}
-
-	.hero {
-	  position: relative;
-	  display: inline-block; /* or block / width:100% as needed */
-	  overflow: hidden;
-	}
-
-	.hero-img {
-	  display: block;
-	  width: 100%;
-	  height: auto; /* or height: 100%; object-fit: cover; to fill container */
-	}
-
-	.hero-text {
-	  position: absolute;
-	  left: 12px;      /* distance from left edge */
-	  bottom: 12px;    /* distance from bottom edge */
-	  margin: 0;
-	  color: white;    /* change as needed */
-	  background: rgba(0,0,0,0.4); /* optional contrast */
-	  padding: 6px 10px;
-	  font-size: 1rem;
-	  line-height: 1;
-	}
-
-
-	.swal2-title {
-		color: #ffffff !important;
-		font-family: "Source Sans Pro", sans-serif !important;
-		font-weight: 300 !important;
-		font-size: 1.5rem !important;
-		line-height: 1.4 !important;
-		letter-spacing: 0.5rem !important;
-		text-transform: uppercase !important;
-	}
-
-	.swal2-popup {
-		background-color: rgba(0, 0, 0, 1) !important;
-		width: 100% !important;
-		height: 100% !important;
-
-	}
-
-	.swal2-popup .swal2-styled .swal2-confirm {
-			background-color: transparent !important;
-			border-left-color: transparent !important; 
-			border-right-color: transparent !important;
-			background: transparent !important;
-	}
-
-	.swal2-popup .swal2-styled.swal2-confirm{
-		background-color: white !important;
-		color: black !important;
-		border-radius: 0px !important;
-	}
-
-	.button {
-		border-left-color: transparent !important; 
-		border-right-color: transparent !important;
-	}
-
-	.swal2-actions {
-	}
-
-.swal2-popup {
-	padding: .0em 1.5em !important;
-}
-
-.swal2-styled {
-	padding: .0em 1.5em !important;
-	border-left-color: transparent !important; 
-	border-right-color: transparent !important;
-	background: transparent !important;
-}
-
-.swal2-show{
-	-webkit-animation: none !important;
-	animation: none !important;
-}
-
-.swal2-show {
-	animation: none !important;
-}
-
-
-a {
-	color: white !important;
-}
-
-p {
-	color:white !important;
-}
-
-.emoji{
-	letter-spacing: 0 !important;
-	font-size: 1.3rem !important; 
-	padding-top: 0.1rem !important;
-}
-
-/* Scrolling Text */
-
-.ticker {
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.ticker__track {
-  display: flex;
-  width: 140%;
-  animation: ticker-scroll 6s linear infinite;
-  will-change: transform;
-}
-
-.ticker__track2 {
-  display: flex;
-  width: 140%;
-  animation: ticker-scroll2 6s linear infinite;
-  will-change: transform;
-}
-
-
-
-.ticker__group {
-  flex: 0 0 auto;
-}
-
-@keyframes ticker-scroll {
-	from {
-    transform: translatex(111%);
-  }
-
-  to {
-    transform: translateX(-150%);
-  }
-
-}
-
-@keyframes ticker-scroll2 {
-	from {
-    transform: translatex(75%);
-  }
-
-  to {
-    transform: translateX(-150%);
-  }
-
-}
-
-
-.record-container{
-			width: 98%;
-			transform: translateX(-40px);
-			transform: translateY(-80px); 
-			position: absolute; 
-			z-index: 9999;
-
-
-}
-
-.record-text{
-	color: red; 
-  	font-size: 30px;
-  	line-height: 6rem;
-	float: right;
-	vertical-align: 0px; 
-	bottom: anchor(center);
-	margin: 4rem 1rem 0 2rem !important;
-	animation: blinker 1.5s linear infinite;
-}
-
-@media (min-width: 750px) {
-	.record-text {
-	bottom: anchor(center);
-	margin: 0rem 1rem 0 2rem !important;
-	}
-}
-
-.record{
-	color: white;
-	font-weight: bold;
-  width: 13px;
-  font-size: 15px;
-  margin-right: 1rem;
-  vertical-align: 3.2px;
-  bottom: anchor(center);
-}
-
-@keyframes blinker {
-  50% {
-    opacity: 0;
-  }
-}
-
-/* Animated Form Submit button */
-
-#submit-button.is-submitting::after {
-  content: "⏳";
-  font-size: 1.15rem !important;
-  display: inline-block;
-  animation: spin 1s linear infinite;
-  transform-origin: 50% 50%;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 
 </style>
@@ -299,6 +80,7 @@ p {
 
 						
 <iframe
+  id="site-pages"
   name="site-pages"
   src="front.html"
   title="Site pages"
