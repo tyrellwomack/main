@@ -572,7 +572,7 @@
 
                     <ul class="icons" style="display: flex; font-size: 18px;">
                         <li>
-                            <button type="button"  id="bankname" data-copy="Community Federal Savings Bank" class="btn copy-link-button buttonExtra" data-text="Community Federal Savings Bank
+                            <button type="button"  id="bankname" data-copy="Community Federal Savings Bank" class="btn copy-link-button buttonExtra" data-text="Community Federal Savings Bank">
 
                               <span id="copyStatus" aria-live="polite" class="copy-link-button"> 📲 </span>
 
@@ -651,35 +651,33 @@
 
 <script>
 
+// copy text
 
-  async function copyWithFeedback(button, text) {
-    const label = button.querySelector("span");
-    const originalText = label ? label.textContent : button.textContent;
+  async function copyAndShowFeedback(button, text) {
+    const span = button.querySelector("span");
+    const originalText = span.textContent.trim();
 
     try {
       await navigator.clipboard.writeText(text);
-      if (label) label.textContent = "Copied";
-      else button.textContent = "Copied";
+      span.textContent = "Copied";
     } catch (error) {
-      if (label) label.textContent = "Failed";
-      else button.textContent = "Failed";
-      console.error(error);
+      console.error("Copy failed:", error);
+      span.textContent = "Failed";
     }
 
     setTimeout(() => {
-      if (label) label.textContent = originalText;
-      else button.textContent = originalText;
-    }, 800);
+      span.textContent = originalText;
+    }, 1000);
   }
 
-  // Individual copy buttons
-  document.querySelectorAll("button[data-copy]").forEach(button => {
+  // Individual buttons: use the data-text values from your markup
+  document.querySelectorAll("button[data-text]").forEach(button => {
     button.addEventListener("click", () => {
-      copyWithFeedback(button, button.dataset.copy);
+      copyAndShowFeedback(button, button.dataset.text);
     });
   });
 
-  // Copy all button
+  // Copy all: use the data-copy values from your markup
   document.getElementById("copy-all").addEventListener("click", () => {
     const fields = [
       ["Account Name", "accountname"],
@@ -693,17 +691,19 @@
     ];
 
     const text = fields
-      .map(([label, id]) =>
-        `${label}: ${document.getElementById(id).dataset.copy}`
+      .map(([name, id]) =>
+        `${name}: ${document.getElementById(id).dataset.copy}`
       )
       .join("\n");
 
-    copyWithFeedback(document.getElementById("copy-all"), text);
+    const copyAllButton = document.getElementById("copy-all");
+    const span = copyAllButton.querySelector("span");
+    const originalText = span.textContent.trim();
+
+    copyAndShowFeedback(copyAllButton, text);
   });
-  
-  
-  
 </script>
+
 
 
 
