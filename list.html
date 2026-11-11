@@ -758,37 +758,37 @@ const form = document.getElementById("submit-to-database");
 const submitButton = document.getElementById("submit-button");
 const wifiDetails = document.getElementById("wifi-details");
 
+console.log({ form, submitButton, wifiDetails });
+
 if (!form || !submitButton || !wifiDetails) {
-  console.error("Missing form, button, or Wi-Fi section:", {
-    form,
-    submitButton,
-    wifiDetails
-  });
+  console.error("An element ID is missing or doesn't match the HTML.");
 } else {
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    console.log("Submit handler ran");
+    console.log("Form submit handler ran");
 
-    const formData = new FormData(form);
-
-    // Reveal the Wi-Fi section immediately after a valid form submission.
-    form.hidden = true;
-    wifiDetails.hidden = false;
-
-    // Send the form data separately.
     submitButton.disabled = true;
+    
 
-    fetch(scriptURL, {
-      method: "POST",
-      mode: "no-cors",
-      body: formData
-    }).catch((error) => {
-      console.error("Form request failed:", error);
-    });
+    try {
+      await fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        body: new FormData(form)
+      });
+
+      form.hidden = true;
+      wifiDetails.hidden = false;
+      console.log("Wi-Fi section revealed");
+    } catch (error) {
+      console.error("Form submission failed:", error);
+      alert("The form could not be submitted. Please try again.");
+      submitButton.disabled = false;
+      submitButton.textContent = "➕";
+    }
   });
 }
 </script>
-
 
 
 
