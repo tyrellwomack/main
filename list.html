@@ -742,6 +742,49 @@ p {
 
   </article>
 </section>
+
+<script>
+const scriptURL =
+  "https://script.google.com/macros/s/AKfycbw6n1t9gVsjplDxjE-cjMdq926_vOk4FyEQBa81QGLIxDcScjhlXx4zpDgyK6janzY/exec";
+
+const form = document.getElementById("submit-to-database");
+const submitButton = document.getElementById("submit-button");
+const wifiDetails = document.getElementById("wifi-details");
+
+console.log({ form, submitButton, wifiDetails });
+
+if (!form || !submitButton || !wifiDetails) {
+  console.error("An element ID is missing or doesn't match the HTML.");
+} else {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    console.log("Form submit handler ran");
+
+    submitButton.disabled = true;
+    
+
+    try {
+      await fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        body: new FormData(form)
+      });
+
+      form.hidden = true;
+      wifiDetails.hidden = false;
+      console.log("Wi-Fi section revealed");
+    } catch (error) {
+      console.error("Form submission failed:", error);
+      alert("The form could not be submitted. Please try again.");
+      submitButton.disabled = false;
+      submitButton.textContent = "➕";
+    }
+  });
+}
+</script>
+
+
+
       </div>
     </div>
   </body>
@@ -990,43 +1033,6 @@ p {
 		
     <script>
 	
-
-
-
-// form and wifi
-const scriptURL =
-  "https://script.google.com/macros/s/AKfycbw6n1t9gVsjplDxjE-cjMdq926_vOk4FyEQBa81QGLIxDcScjhlXx4zpDgyK6janzY/exec";
-
-const form = document.getElementById("submit-to-database");
-const submitButton = document.getElementById("submit-button");
-const wifiDetails = document.getElementById("wifi-details");
-
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  submitButton.disabled = true;
-  submitButton.textContent = "Submitting…";
-
-  const formData = new FormData(form);
-
-  try {
-    await fetch(scriptURL, {
-      method: "POST",
-      mode: "no-cors",
-      body: formData
-    });
-
-    // no-cors doesn't let the browser read Google's response.
-    // This reveals the Wi-Fi section once the request has been sent.
-    form.hidden = true;
-    wifiDetails.hidden = false;
-  } catch (error) {
-    console.error("Form submission failed:", error);
-    alert("The form could not be submitted. Please try again.");
-    submitButton.disabled = false;
-    submitButton.textContent = "➕";
-  }
-});
 
     </script>
 
