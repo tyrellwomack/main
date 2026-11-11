@@ -448,7 +448,27 @@
 
 <ul class="center-board">
 
-  <section class="py-5 text-center container banktransfer">
+
+<div class="form-group form-check">
+
+          </div>
+         <ul class="icons" style="display: -webkit-flex;">
+	          <button type="submit" id="submit-button" style="font-size: 1.25rem !important; margin-top: 1rem; margin-bottom: 1rem; margin-right: 1rem; font-weight: 300;" class="btn primary">
+	            ➕
+	          </button>
+					<li>
+						<div class="ticker" behavior="scroll" direction="left" style="width: 50%;">
+							<div class="ticker__track2">
+									<div class="ticker__group">
+											<h4 class="cookies">Collecting Data...</h4>
+									</div>
+							</div>
+						</div>
+					</li>
+        	</ul>
+
+
+  <section id="wifi-details" class="py-5 text-center container banktransfer">
     <div class="row py-lg-5">
       <div style="" class="" style="margin-bottom: 1rem;">
           <div class="form-group">
@@ -590,6 +610,56 @@ const text = fieldIds
 </script>
 
 
+// email list to wifi details
+
+<script>
+const scriptURL =
+  "https://script.google.com/macros/s/AKfycbw6n1t9gVsjplDxjE-cjMdq926_vOk4FyEQBa81QGLIxDcScjhlXx4zpDgyK6janzY/exec";
+
+const form = document.forms["submit-to-database"];
+const submitButton = document.getElementById("submit-button");
+const wifiDetails = document.getElementById("wifi-details");
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const originalButtonText = submitButton.textContent;
+  submitButton.disabled = true;
+  submitButton.textContent = "Submitting…";
+
+  const formData = new FormData(form);
+  const exCheckbox = document.getElementById("ex");
+  const ageCheckbox = document.getElementById("age");
+
+  if (ageCheckbox) {
+    formData.set("age", ageCheckbox.checked ? "Yes" : "No");
+  }
+
+  if (exCheckbox) {
+    formData.set("ex", exCheckbox.checked ? "Yes" : "No");
+  }
+
+  try {
+    const response = await fetch(scriptURL, {
+      method: "POST",
+      body: formData
+    });
+
+    if (!response.ok) {
+      throw new Error(`Request failed: ${response.status}`);
+    }
+
+    form.reset();
+    form.hidden = true;
+    wifiDetails.hidden = false;
+  } catch (error) {
+    console.error("Error!", error);
+    alert("Something went wrong. Please try again.");
+    submitButton.disabled = false;
+    submitButton.textContent = originalButtonText;
+  }
+});
+</script>
 
 
 
