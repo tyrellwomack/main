@@ -344,6 +344,11 @@
         background-color: #D1CFCF;
       }
       
+      #wifi-details[hidden] {
+  display: none !important;
+}
+
+      
     </style>
 
     
@@ -634,61 +639,39 @@ const text = fieldIds
   });
 
 
-// email list to wifi details
-
 const scriptURL =
   "https://script.google.com/macros/s/AKfycbw6n1t9gVsjplDxjE-cjMdq926_vOk4FyEQBa81QGLIxDcScjhlXx4zpDgyK6janzY/exec";
 
-const form = document.forms["submit-to-database"];
+const form = document.getElementById("submit-to-database");
 const submitButton = document.getElementById("submit-button");
 const wifiDetails = document.getElementById("wifi-details");
 
-if (!form || !submitButton || !wifiDetails) {
-  console.error("Could not find the form, submit button, or Wi-Fi section.", {
-    form,
-    submitButton,
-    wifiDetails
-  });
-} else {
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-    submitButton.disabled = true;
-    submitButton.textContent = "Submitting…";
+  submitButton.disabled = true;
+  submitButton.textContent = "Submitting…";
 
-    const formData = new FormData(form);
+  const formData = new FormData(form);
 
-    const exCheckbox = document.getElementById("ex");
-    const ageCheckbox = document.getElementById("age");
+  try {
+    await fetch(scriptURL, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData
+    });
 
-    if (ageCheckbox) {
-      formData.set("age", ageCheckbox.checked ? "Yes" : "No");
-    }
-
-    if (exCheckbox) {
-      formData.set("ex", exCheckbox.checked ? "Yes" : "No");
-    }
-
-    try {
-      const response = await fetch(scriptURL, {
-        method: "POST",
-        body: formData
-      });
-
-      if (!response.ok) {
-        throw new Error(`Request failed: ${response.status}`);
-      }
-
-      form.hidden = true;
-      wifiDetails.hidden = false;
-    } catch (error) {
-      console.error("Form submission failed:", error);
-      alert("The form could not be submitted. Check the browser console for details.");
-      submitButton.disabled = false;
-      submitButton.textContent = "Submit";
-    }
-  });
-}
+    // no-cors doesn't let the browser read Google's response.
+    // This reveals the Wi-Fi section once the request has been sent.
+    form.hidden = true;
+    wifiDetails.hidden = false;
+  } catch (error) {
+    console.error("Form submission failed:", error);
+    alert("The form could not be submitted. Please try again.");
+    submitButton.disabled = false;
+    submitButton.textContent = "➕";
+  }
+});
 
 </script>
 
