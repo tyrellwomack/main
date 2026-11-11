@@ -499,6 +499,12 @@
                 <button style="box-shadow: none; background-color: black !important; type="button" id="orderEmail" class="buyButton controls">
                       <a href="#" class="package">  📦  </a>
                 </button>
+              
+                <p id="emailFallback" role="status" aria-live="polite" hidden>
+                If your email app didn’t open, email
+                <a href="mailto:tyrell.womack@yahoo.com">tyrell.womack@yahoo.com</a>
+                with your order details.
+                </p>
   </article>
 </section>
 
@@ -547,30 +553,30 @@
   
 // orderlink for product
   
-document.getElementById("orderEmail").addEventListener("click", (event) => {
-  event.preventDefault();
+  document.getElementById("orderEmail").addEventListener("click", () => {
+    const productTitle =
+      document.getElementById("productTitle")?.textContent.trim().replace(/:$/, "") ||
+      "the product";
 
-  const productTitle =
-    document.getElementById("productTitle")?.textContent.trim().replace(/:$/, "") ||
-    "the product";
+    const orderNumber = `ORD-${crypto.randomUUID()}`;
+    const recipient = "tyrell.womack@yahoo.com";
+    const subject = "I'm Interested";
 
-  const orderNumber = `ORD-${crypto.randomUUID()}`;
-  const recipient = "tyrell.womack@yahoo.com";
-  /*const subject = `Order ${orderNumber}`;*/
-  const subject = `I'm Interested`;
-
-  const body = `Hello, my name is: ____________________________.
+    const body = `Hello, my name is: ____________________________.
 My order number is ${orderNumber}.
 I understand the price is $150 for the ${productTitle}.
 I would like to purchase quantity of: ____ for color: ____
 My shipping address is: ____________________________.
 I understand there are no refunds and all sales are final.`;
 
-  window.location.href =
-    `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-});
+    window.location.href =
+      `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-
+    // The browser can't detect whether the email app opened.
+    setTimeout(() => {
+      document.getElementById("emailFallback").hidden = false;
+    }, 1500);
+  });
 
 
 </script>
