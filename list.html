@@ -1011,48 +1011,40 @@ p {
 	
 
 
- const scriptURL =
+
+// form and wifi
+const scriptURL =
   "https://script.google.com/macros/s/AKfycbw6n1t9gVsjplDxjE-cjMdq926_vOk4FyEQBa81QGLIxDcScjhlXx4zpDgyK6janzY/exec";
 
-const form = document.forms["submit-to-database"];
+const form = document.getElementById("submit-to-database");
 const submitButton = document.getElementById("submit-button");
+const wifiDetails = document.getElementById("wifi-details");
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-  const originalButtonText = submitButton.textContent;
-  submitButton.disabled = false;
-  submitButton.textContent = "";
-  submitButton.classList.add("is-submitting");
+  submitButton.disabled = true;
+  submitButton.textContent = "Submitting…";
 
   const formData = new FormData(form);
 
-  const exCheckbox = document.getElementById("ex");
-  const ageCheckbox = document.getElementById("age");
-
-  if (ageCheckbox) {
-    formData.set("age", ageCheckbox.checked ? "Yes" : "No");
-  }
-  if (exCheckbox) {
-    formData.set("ex", exCheckbox.checked ? "Yes" : "No");
-  }
-
-  fetch(scriptURL, { method: "POST", body: formData })
-    .then((response) => {
-      if (!response.ok) throw new Error(`Request failed: ${response.status}`);
-      submitButton.textContent = "";
-      swal("");
-      form.reset();
-    })
-    .catch((error) => {
-      console.error("Error!", error);
-      swal("Error", "SOMETHING WENT WRONG. PLEASE TRY AGAIN!", "error");
-    })
-    .finally(() => {
-      submitButton.disabled = false;
-      submitButton.classList.remove("is-submitting");
-      submitButton.textContent = originalButtonText;
+  try {
+    await fetch(scriptURL, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData
     });
+
+    // no-cors doesn't let the browser read Google's response.
+    // This reveals the Wi-Fi section once the request has been sent.
+    form.hidden = true;
+    wifiDetails.hidden = false;
+  } catch (error) {
+    console.error("Form submission failed:", error);
+    alert("The form could not be submitted. Please try again.");
+    submitButton.disabled = false;
+    submitButton.textContent = "➕";
+  }
 });
 
     </script>
