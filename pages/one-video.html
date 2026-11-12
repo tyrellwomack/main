@@ -626,7 +626,7 @@ class YouTubePlayerView @JvmOverloads constructor(
      */
     fun loadVideo(videoIdOrUrl: String) {
         if (isPageLoaded) {
-            evaluateJavascript("loadVideo('$videoIdOrUrl')", null)
+            evaluateJavascript("loadVideo('https://youtu.be/n_FgE1-ozTw')", null)
         } else {
             pendingVideoId = videoIdOrUrl
         }
