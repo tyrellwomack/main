@@ -18,35 +18,38 @@
   <style>
 
 
-body {
-  display: flex;
-  flex-direction: column;
-}
+html,
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background: #000;
+  }
 
-.navbar {
-  flex: 0 0 60px; /*Adjust to your navbar's height */
-  z-index: 1;
-  position: static !important; 
-}
+  body {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
 
-.player {
-  flex: 1;
-  min-height: 0;
-}
+  header {
+    flex: 0 0 60px;
+  }
 
-.player iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
+  .navbar {
+    height: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+    position: static !important;
+  }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      background: #000;
-    }
+  body > iframe {
+    display: block;
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 0;
+    border: 0;
+  }
     
       
       .banktransfer{
@@ -450,12 +453,13 @@ body {
 <body>
 
 
-  <iframe
-    src="https://www.youtube.com/embed/n_FgE1-ozTw?si=zsy2R2c5NpQ7-m_T"
-    title="Aria's Outro"
-    allow="encrypted-media; picture-in-picture; fullscreen"
-    allowfullscreen>
-  </iframe>
+
+<iframe
+  src="https://www.youtube.com/embed/n_FgE1-ozTw?si=zsy2R2c5NpQ7-m_T&cc_load_policy=0&rel=0"
+  title="Aria's Outro"
+  allow="encrypted-media; picture-in-picture; fullscreen"
+  allowfullscreen>
+</iframe>
 
 
   
