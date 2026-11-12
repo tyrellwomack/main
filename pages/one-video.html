@@ -430,14 +430,14 @@
 </header>
 </head>
 <body>
-  <!--
+  
   <iframe
     src="https://www.youtube.com/embed/n_FgE1-ozTw?si=zsy2R2c5NpQ7-m_T"
     title="Aria's Outro"
     allow="encrypted-media; picture-in-picture; fullscreen"
     allowfullscreen>
   </iframe>
-  -->
+  
 
 
 <script>
@@ -627,7 +627,7 @@ class YouTubePlayerView @JvmOverloads constructor(
      */
     fun loadVideo(videoIdOrUrl: String) {
         if (isPageLoaded) {
-            evaluateJavascript("loadVideo('https://www.youtube.com/embed/n_FgE1-ozTw?si=zsy2R2c5NpQ7-m_T')", null)
+            evaluateJavascript("loadVideo('$videoIdOrURl')", null)
         } else {
             pendingVideoId = videoIdOrUrl
         }
