@@ -430,19 +430,19 @@
 </header>
 </head>
 <body>
-  
+  <!--
   <iframe
     src="https://www.youtube.com/embed/n_FgE1-ozTw?si=zsy2R2c5NpQ7-m_T"
     title="Aria's Outro"
     allow="encrypted-media; picture-in-picture; fullscreen"
     allowfullscreen>
-  </iframe>
+  </iframe>-->
   
 
 
 <script>
   
-  package com.arknox.youtube
+package com.arknox.youtube
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -450,6 +450,7 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.content.pm.ActivityInfo
 import android.graphics.Color
+import android.net.Uri
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
@@ -465,11 +466,6 @@ import android.widget.FrameLayout
 import androidx.webkit.WebViewAssetLoader
 import org.json.JSONObject
 
-/**
- * YouTube player view using WebView with Plyr.js.
- * Uses WebViewAssetLoader to serve assets from https:// URL for YouTube API compatibility.
- * Supports fullscreen video playback.
- */
 @SuppressLint("SetJavaScriptEnabled")
 class YouTubePlayerView @JvmOverloads constructor(
     context: Context,
@@ -477,26 +473,32 @@ class YouTubePlayerView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : WebView(context, attrs, defStyleAttr) {
 
+    companion object {
+        private const val SAMPLE_VIDEO_URL =
+            "https://www.youtube.com/embed/n_FgE1-ozTw?si=e0YUjfMmR_IpYTzsrel=0"
+    }
+
     private val listeners = mutableListOf<YouTubePlayerListener>()
     private var pendingVideoId: String? = null
     private var isPageLoaded = false
 
-    // Fullscreen support
     private var fullscreenView: View? = null
     private var fullscreenCallback: WebChromeClient.CustomViewCallback? = null
-    private var originalOrientation: Int = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+    private var originalOrientation =
+        ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
     private var isFullscreen = false
 
-    // Asset loader to serve files from https:// URL
     private val assetLoader = WebViewAssetLoader.Builder()
-        .addPathHandler("/assets/", WebViewAssetLoader.AssetsPathHandler(context))
+        .addPathHandler(
+            "/assets/",
+            WebViewAssetLoader.AssetsPathHandler(context)
+        )
         .build()
 
     init {
         setupWebView()
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
     private fun setupWebView() {
         settings.apply {
             javaScriptEnabled = true
@@ -504,10 +506,13 @@ class YouTubePlayerView @JvmOverloads constructor(
             mediaPlaybackRequiresUserGesture = false
             allowFileAccess = true
             allowContentAccess = true
+
             @Suppress("DEPRECATION")
             allowFileAccessFromFileURLs = true
+
             @Suppress("DEPRECATION")
             allowUniversalAccessFromFileURLs = true
+
             loadWithOverviewMode = true
             useWideViewPort = true
             cacheMode = WebSettings.LOAD_DEFAULT
@@ -521,87 +526,95 @@ class YouTubePlayerView @JvmOverloads constructor(
                 view: WebView?,
                 request: WebResourceRequest?
             ): WebResourceResponse? {
-                return request?.let { assetLoader.shouldInterceptRequest(it.url) }
-                    ?: super.shouldInterceptRequest(view, request)
+                return request?.let {
+                    assetLoader.shouldInterceptRequest(it.url)
+                } ?: super.shouldInterceptRequest(view, request)
             }
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 isPageLoaded = true
-                pendingVideoId?.let {
-                    evaluateJavascript("loadVideo('$it')", null)
-                    pendingVideoId = null
-                }
+
+                // Load a video requested before player.html was ready.
+                val videoToLoad = pendingVideoId ?: SAMPLE_VIDEO_URL
+                pendingVideoId = null
+                loadVideoIntoPage(extractVideoId(videoToLoad))
             }
         }
 
-        // Custom WebChromeClient with fullscreen support
         webChromeClient = object : WebChromeClient() {
-            override fun onShowCustomView(view: View?, callback: CustomViewCallback?) {
+            override fun onShowCustomView(
+                view: View?,
+                callback: CustomViewCallback?
+            ) {
                 if (fullscreenView != null) {
                     callback?.onCustomViewHidden()
                     return
                 }
 
-                val activity = getActivity() ?: return
+                val activity = getActivity()
+                if (activity == null || view == null) {
+                    callback?.onCustomViewHidden()
+                    return
+                }
 
                 fullscreenView = view
                 fullscreenCallback = callback
                 originalOrientation = activity.requestedOrientation
+                activity.requestedOrientation =
+                    ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
 
-                // Set landscape orientation for fullscreen video
-                activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
-
-                // Hide system UI for immersive fullscreen
                 @Suppress("DEPRECATION")
-                activity.window.decorView.systemUiVisibility = (
+                activity.window.decorView.systemUiVisibility =
                     View.SYSTEM_UI_FLAG_FULLSCREEN or
-                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
-                    View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                )
-                activity.window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
 
-                // Add fullscreen view to window
+                activity.window.addFlags(
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN
+                )
+
                 val decorView = activity.window.decorView as FrameLayout
-                view?.setBackgroundColor(Color.BLACK)
-                decorView.addView(view, FrameLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT
-                ))
+                view.setBackgroundColor(Color.BLACK)
+                decorView.addView(
+                    view,
+                    FrameLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT
+                    )
+                )
 
                 isFullscreen = true
                 listeners.forEach { it.onFullscreenChange(true) }
             }
 
             override fun onHideCustomView() {
-                if (fullscreenView == null) return
-
+                val view = fullscreenView ?: return
                 val activity = getActivity() ?: return
 
-                // Remove fullscreen view
                 val decorView = activity.window.decorView as FrameLayout
-                decorView.removeView(fullscreenView)
+                decorView.removeView(view)
 
-                // Restore orientation
                 activity.requestedOrientation = originalOrientation
 
-                // Restore system UI
                 @Suppress("DEPRECATION")
-                activity.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
-                activity.window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+                activity.window.decorView.systemUiVisibility =
+                    View.SYSTEM_UI_FLAG_VISIBLE
+
+                activity.window.clearFlags(
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN
+                )
 
                 fullscreenCallback?.onCustomViewHidden()
                 fullscreenView = null
                 fullscreenCallback = null
-
                 isFullscreen = false
+
                 listeners.forEach { it.onFullscreenChange(false) }
             }
         }
 
         addJavascriptInterface(PlayerJSInterface(), "Android")
-
-        // Load from https:// URL using asset loader (required for YouTube API)
         loadUrl("https://appassets.androidplatform.net/assets/player.html")
     }
 
@@ -614,6 +627,46 @@ class YouTubePlayerView @JvmOverloads constructor(
         return null
     }
 
+    /**
+     * Accepts a YouTube video ID or a YouTube URL.
+     */
+    fun loadVideo(videoIdOrUrl: String) {
+        val videoId = extractVideoId(videoIdOrUrl)
+
+        if (isPageLoaded) {
+            loadVideoIntoPage(videoId)
+        } else {
+            pendingVideoId = videoId
+        }
+    }
+
+    private fun extractVideoId(input: String): String {
+        val trimmedInput = input.trim()
+        val uri = Uri.parse(trimmedInput)
+        val host = uri.host.orEmpty().removePrefix("www.")
+
+        val idFromUrl = when {
+            host == "youtu.be" ->
+                uri.pathSegments.firstOrNull()
+
+            uri.pathSegments.firstOrNull() == "embed" ||
+                uri.pathSegments.firstOrNull() == "shorts" ->
+                uri.pathSegments.getOrNull(1)
+
+            uri.getQueryParameter("v") != null ->
+                uri.getQueryParameter("v")
+
+            else -> null
+        }
+
+        return idFromUrl ?: trimmedInput
+    }
+
+    private fun loadVideoIntoPage(videoId: String) {
+        val safeVideoId = JSONObject.quote(videoId)
+        evaluateJavascript("loadVideo($safeVideoId)", null)
+    }
+
     fun addListener(listener: YouTubePlayerListener) {
         listeners.add(listener)
     }
@@ -622,42 +675,24 @@ class YouTubePlayerView @JvmOverloads constructor(
         listeners.remove(listener)
     }
 
-    /**
-     * Load a YouTube video by ID or URL.
-     */
-    fun loadVideo(videoIdOrUrl: String) {
-        if (isPageLoaded) {
-            evaluateJavascript("loadVideo('$videoIdOrURl')", null)
-        } else {
-            pendingVideoId = videoIdOrUrl
-        }
-    }
-
     fun play() {
         if (isPageLoaded) {
-            evaluateJavascript("if(player) player.play()", null)
+            evaluateJavascript("if (player) player.play()", null)
         }
     }
 
     fun pause() {
         if (isPageLoaded) {
-            evaluateJavascript("if(player) player.pause()", null)
+            evaluateJavascript("if (player) player.pause()", null)
         }
     }
 
-    /**
-     * Toggle fullscreen mode programmatically.
-     */
     fun toggleFullscreen() {
         if (isPageLoaded) {
-            evaluateJavascript("if(player) player.fullscreen.toggle()", null)
+            evaluateJavascript("if (player) player.fullscreen.toggle()", null)
         }
     }
 
-    /**
-     * Exit fullscreen if currently in fullscreen.
-     * Returns true if was in fullscreen and exited.
-     */
     fun exitFullscreen(): Boolean {
         if (isFullscreen && fullscreenCallback != null) {
             fullscreenCallback?.onCustomViewHidden()
@@ -666,27 +701,19 @@ class YouTubePlayerView @JvmOverloads constructor(
         return false
     }
 
-    /**
-     * Check if currently in fullscreen mode.
-     */
     fun isInFullscreen(): Boolean = isFullscreen
 
-    /**
-     * Release resources. Call this in your Activity's onDestroy().
-     * Note: Don't call this if the view is still attached to the window.
-     */
     fun release() {
         exitFullscreen()
         listeners.clear()
         isPageLoaded = false
         pendingVideoId = null
         stopLoading()
-        // Clear WebView content but don't destroy - let the system handle it
         loadUrl("about:blank")
         clearHistory()
         clearCache(true)
         removeAllViews()
-        // Only call destroy if not attached
+
         if (parent == null) {
             destroy()
         }
@@ -698,7 +725,7 @@ class YouTubePlayerView @JvmOverloads constructor(
             post {
                 val data = try {
                     JSONObject(dataJson)
-                } catch (e: Exception) {
+                } catch (_: Exception) {
                     JSONObject()
                 }
 
@@ -707,20 +734,25 @@ class YouTubePlayerView @JvmOverloads constructor(
                         val videoId = data.optString("videoId", "")
                         listeners.forEach { it.onReady(videoId) }
                     }
+
                     "playing" -> {
                         val videoId = data.optString("videoId", "")
                         listeners.forEach { it.onPlaying(videoId) }
                     }
+
                     "paused" -> {
                         val videoId = data.optString("videoId", "")
                         listeners.forEach { it.onPaused(videoId) }
                     }
+
                     "ended" -> {
                         val videoId = data.optString("videoId", "")
                         listeners.forEach { it.onEnded(videoId) }
                     }
+
                     "error" -> {
-                        val message = data.optString("message", "Unknown error")
+                        val message =
+                            data.optString("message", "Unknown error")
                         listeners.forEach { it.onError(message) }
                     }
                 }
@@ -728,6 +760,7 @@ class YouTubePlayerView @JvmOverloads constructor(
         }
     }
 }
+
 </script>
   
   
