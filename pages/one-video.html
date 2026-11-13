@@ -146,10 +146,16 @@ html,
 
 
       .homebutton{
-          margin-right: .5rem;
+          margin-right: 0rem;
           font-size: 16px;
           z-index: 9999;
           bottom: anchor(center);
+      }
+      
+      @media (min-width: 768px) {
+        .homebutton {
+          margin-right: .1rem;
+        }
       }
 
       .homeplace{
@@ -157,19 +163,13 @@ html,
          margin: 0; 
          list-style: none;
       }
-
-/*
-@media (max-width 760px) {
-  .row {
-        margin-right: 0% !important;
-        margin-left: 0% !important;
-  }
-}*/
-/*
-      .row {
-        margin-right: 5%;
-        margin-left: 5%;
-      }*/
+      
+      .musicbutton{
+          margin-right: .5rem;
+          font-size: 15px;
+          z-index: 9999;
+          bottom: anchor(center);
+      }   
 
       input::placeholder {
           color: black !important; /* Change 'red' to your desired color */
@@ -432,18 +432,13 @@ html,
                 </div>
 
   </li>
-
+      <li><a href="../pages/album.html">
+        <h3 class="fas fa-music musicbutton" style="color: white; line-height: 2.6rem !important;" ></h3>
+      </a></li>
+  
      <li> <a href="/index.html">
         <h3 class="fas fa-home homebutton" style="color: white; line-height: 2.6rem !important;" ></h3>
-      </a></li> 
-      
-<!--
-     <li> <a href="../videos.html">
-        <h3 class="fas fa-video homebutton" style="color: white; line-height: 2.6rem !important;" ></h3>
-      </a>
-     </li>
--->
-
+      </a></li>       
 </ul>
 
       </button>
