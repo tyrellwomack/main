@@ -162,11 +162,12 @@ html,
          display: inline-flex; 
          margin: 0; 
          list-style: none;
+         transform:translate(0px, -1px);
       }
       
       .musicbutton{
           margin-right: 1rem;
-          font-size: 15px;
+          font-size: 14px;
           z-index: 9999;
           bottom: anchor(center);
       }   
@@ -294,19 +295,22 @@ html,
 
       .record-text{
         color: red; 
-        font-size: 30px;
-        line-height: 2.35rem;
+        font-size: 26px;
+        line-height: 2.186rem;
         float: right;
         bottom: anchor(center);
         vertical-align: 0px; 
         margin-right: .5rem !important;
         /*margin: 2.1rem 4rem 0 0 !important;*/
         animation: blinker 1.5s linear infinite;
-        transform: translate (0px, -0.55px)
+        transform: translate (0px, -0.51px);
+        margin-top: .09rem;
       }
 
-      @media (max-width: 760px) .record-container {
+      @media (min-width: 760px) .record-text {
+        line-height: 2.375rem;
         transform: translate (0px, 0px);
+        margin-top: .14rem;
       }
 
       /*
@@ -326,8 +330,8 @@ html,
         font-weight: bold;
         width: 13px;
         font-size: 15px;
-        margin-right: 1rem;
-        vertical-align: 3.2px;
+        margin-right: .4rem;
+        vertical-align: 2px;
         bottom: anchor(center);
       }
 
@@ -382,7 +386,10 @@ html,
 
       .logo {
         vertical-align: middle;
-        line-height: -.4rem !important;
+       /* line-height: -.4rem !important;*/
+        transform: translate(0px, -1.5px);
+        font-size: 15px;
+        margin-top: -.1rem;
       }
       
     </style>
