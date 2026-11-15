@@ -475,6 +475,17 @@ html,
   >
 </iframe>
 
+<script>
+
+// redirect to email page
+
+if (sessionStorage.getItem("emailSubmitted") !== "yes") {
+    window.location.replace(
+      "/index.html?next=" + encodeURIComponent(window.location.pathname)
+    );
+  }
+  
+</script>
 
     <script src="https://fast.wistia.net/player.js" async></script>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
