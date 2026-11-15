@@ -20,6 +20,16 @@
     <link href="../assets/css/main.css" rel="stylesheet">
     <link href="../assets/css/fontawesome-all.min.css" rel="stylesheet">
     
+<script>
+  if (sessionStorage.getItem("emailSubmitted") !== "yes") {
+    const requestedPage =
+      window.location.pathname + window.location.search + window.location.hash;
+
+    window.location.replace(
+      "/index.html?next=" + encodeURIComponent(requestedPage)
+    );
+  }
+</script>
 
 
     <style>
