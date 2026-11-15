@@ -354,60 +354,64 @@ p {
 
 <!-- Email List -->
 		
-    <script>
-	
+<script>
+  const scriptURL =
+    "https://script.google.com/macros/s/AKfycbw6n1t9gVsjplDxjE-cjMdq926_vOk4FyEQBa81QGLIxDcScjhlXx4zpDgyK6janzY/exec";
 
+  const form = document.getElementById("submit-to-database");
+  const submitButton = document.getElementById("submit-button");
 
- const scriptURL =
-  "https://script.google.com/macros/s/AKfycbw6n1t9gVsjplDxjE-cjMdq926_vOk4FyEQBa81QGLIxDcScjhlXx4zpDgyK6janzY/exec";
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-const form = document.forms["submit-to-database"];
-const submitButton = document.getElementById("submit-button");
+    const originalButtonText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = "";
+    submitButton.classList.add("is-submitting");
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+    const formData = new FormData(form);
 
-  const originalButtonText = submitButton.textContent;
-  submitButton.disabled = false;
-  submitButton.textContent = "";
-  submitButton.classList.add("is-submitting");
+    const exCheckbox = document.getElementById("ex");
+    const ageCheckbox = document.getElementById("age");
 
-  const formData = new FormData(form);
+    if (ageCheckbox) {
+      formData.set("age", ageCheckbox.checked ? "Yes" : "No");
+    }
+    if (exCheckbox) {
+      formData.set("ex", exCheckbox.checked ? "Yes" : "No");
+    }
 
-  const exCheckbox = document.getElementById("ex");
-  const ageCheckbox = document.getElementById("age");
+    fetch(scriptURL, { method: "POST", body: formData })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Request failed: ${response.status}`);
+        }
 
-  if (ageCheckbox) {
-    formData.set("age", ageCheckbox.checked ? "Yes" : "No");
-  }
-  if (exCheckbox) {
-    formData.set("ex", exCheckbox.checked ? "Yes" : "No");
-  }
+        sessionStorage.setItem("emailSubmitted", "yes");
+        form.reset();
 
-  fetch(scriptURL, { method: "POST", body: formData })
-    .then((response) => {
-      if (!response.ok) throw new Error(`Request failed: ${response.status}`);
-      submitButton.textContent = "";
-      swal("");
-      form.reset();
-						
-						swal("").then(() => {
-  window.location.href = "../inside.html";
-});
+        const next = new URLSearchParams(window.location.search).get("next");
+        const destination =
+          next && next.startsWith("/") && !next.startsWith("//")
+            ? next
+            : "/inside.html";
 
-    })
-    .catch((error) => {
-      console.error("Error!", error);
-      swal("Error", "SOMETHING WENT WRONG. PLEASE TRY AGAIN!", "error");
-    })
-    .finally(() => {
-      submitButton.disabled = false;
-      submitButton.classList.remove("is-submitting");
-      submitButton.textContent = originalButtonText;
-    });
-});
+        return swal("").then(() => {
+          window.location.href = destination;
+        });
+      })
+      .catch((error) => {
+        console.error("Error!", error);
+        swal("Error", "SOMETHING WENT WRONG. PLEASE TRY AGAIN!", "error");
+      })
+      .finally(() => {
+        submitButton.disabled = false;
+        submitButton.classList.remove("is-submitting");
+        submitButton.textContent = originalButtonText;
+      });
+  });
+</script>
 
-    </script>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
