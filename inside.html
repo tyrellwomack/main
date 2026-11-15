@@ -33,6 +33,19 @@
   <!-- Main CSS File -->
   <link href="assets/css/main2.css" rel="stylesheet">
 
+<script>
+  if (sessionStorage.getItem("emailSubmitted") !== "yes") {
+    const requestedPage =
+      window.location.pathname + window.location.search + window.location.hash;
+
+    window.location.replace(
+      "/index.html?next=" + encodeURIComponent(requestedPage)
+    );
+  }
+</script>
+
+
+
 	</head>
 
 
