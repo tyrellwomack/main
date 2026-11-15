@@ -583,7 +583,13 @@ I understand there are no refunds and all sales are final.`;
     }, 500);
   });
 
+// redirect to email page
 
+if (sessionStorage.getItem("emailSubmitted") !== "yes") {
+    window.location.replace(
+      "/index.html?next=" + encodeURIComponent(window.location.pathname)
+    );
+  }
 </script>
 
 
