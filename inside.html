@@ -961,13 +961,6 @@ form.addEventListener("submit", (e) => {
     });
 });
 
-// redirect to email page
-
-if (sessionStorage.getItem("emailSubmitted") !== "yes") {
-    window.location.replace(
-      "/index.html?next=" + encodeURIComponent(window.location.pathname)
-    );
-  }
 
     </script>
 
