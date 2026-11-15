@@ -365,7 +365,7 @@ p {
     e.preventDefault();
 
     const originalButtonText = submitButton.textContent;
-    submitButton.disabled = false;
+    submitButton.disabled = true;
     submitButton.textContent = "";
     submitButton.classList.add("is-submitting");
 
@@ -405,7 +405,7 @@ p {
         swal("Error", "SOMETHING WENT WRONG. PLEASE TRY AGAIN!", "error");
       })
       .finally(() => {
-        submitButton.disabled = false;
+        submitButton.disabled = true;
         submitButton.classList.remove("is-submitting");
         submitButton.textContent = originalButtonText;
       });
