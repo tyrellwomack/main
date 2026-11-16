@@ -195,7 +195,7 @@ a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-d
 
 .btn-outline-secondary:active {
   color: white !important;
-  /*background-color: black !important;*/
+  background-color: black !important;
   border-color: black;
 }
 
