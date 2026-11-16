@@ -1182,6 +1182,82 @@ input, select, textarea {
 		body.is-preload #bg:before {
 			background-color: #000000;
 		}
+		
+/* BG 2 */
+
+	#bg1 {
+		-moz-transform: scale(1.0) !important;
+		-webkit-transform: scale(1.0) !important;
+		-ms-transform: scale(1.0) !important;
+		transform: scale(1.0) !important;
+		-webkit-backface-visibility: hidden;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100% !important;
+		z-index: 1;
+	}
+
+		#bg1:before, #bg1:after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		#bg1:before {
+			-moz-transition: background-color 2.5s ease-in-out !important;
+			-webkit-transition: background-color 2.5s ease-in-out !important;
+			-ms-transition: background-color 2.5s ease-in-out !important;
+			transition: background-color 2.5s ease-in-out !important;
+			-moz-transition-delay: 0.75s;
+			-webkit-transition-delay: 0.75s;
+			-ms-transition-delay: 0.75s;
+			transition-delay: 0.75s;
+			background-image: linear-gradient(to top, rgba(0, 0, 0, 0.60)), url("../../images/overlay.png");
+			background-size: 100%,
+ 256px 256px;
+			background-position: center,
+ center;
+			background-repeat: no-repeat,
+ repeat;
+			z-index: 2;
+		}
+
+		#bg1:after {
+			-moz-transform: scale(1.125);
+			-webkit-transform: scale(1.125);
+			-ms-transform: scale(1.125);
+			transform: scale(1.125);
+			-moz-transition: -moz-transform 0.325s ease-in-out, -moz-filter 0.325s ease-in-out;
+			-webkit-transition: -webkit-transform 0.325s ease-in-out, -webkit-filter 0.325s ease-in-out;
+			-ms-transition: -ms-transform 0.325s ease-in-out, -ms-filter 0.325s ease-in-out;
+			transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out;
+			background-image: url("../../images/bg1.jpeg");
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			z-index: 1;
+		}
+
+		body.is-article-visible #bg1:after {
+			-moz-transform: scale(1.0825);
+			-webkit-transform: scale(1.0825);
+			-ms-transform: scale(1.0825);
+			transform: scale(1.0825);
+			-moz-filter: blur(0.2rem);
+			-webkit-filter: blur(0.2rem);
+			-ms-filter: blur(0.2rem);
+			filter: blur(0.2rem);
+		}
+
+		body.is-preload #bg1:before {
+			background-color: #000000;
+		}
 
 /* Wrapper */
 
