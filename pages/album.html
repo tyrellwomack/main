@@ -41,7 +41,7 @@
 
 
     <style>
-      
+
       button{
         letter-spacing: 0 !important;
       }
@@ -52,7 +52,6 @@
         letter-spacing: .2rem !important;
         /*font-size: 15px !important;*/
         vertical-align: middle !important;
-        /*line-height: normal !important;*/
       }
 
       @media (min-width: 760px)  {      
@@ -62,30 +61,23 @@
         letter-spacing: .2rem !important;
         /*font-size: 15px !important;*/
         vertical-align: middle !important;
-        /*line-height: 1.25rem;*/
       }
       }
 
-      .button-height {
-        height: 2.5rem !important;
-      }
 
       .copy-emoji {
-        font-size: 1.1rem;
         color: black !important;
         letter-spacing: .2rem;
-        vertical-align: middle !important;
-        /*line-height: 1.3rem !important;*/
+        /*vertical-align: middle !important;*/
+        line-height: 1.3rem !important;
       }
-      
-
       
       .video-page-link{
         color: black !important;
         letter-spacing: .2rem;
         font-size: 15px !important;
         vertical-align: middle !important;
-        /*line-height: normal !important;*/
+        line-height: 1.6rem !important;
       }
 
       @media (min-width: 760px)  {      
@@ -94,7 +86,7 @@
         letter-spacing: .2rem;
         font-size: 15px !important;
         vertical-align: middle !important;
-        /*line-height: 1.55rem !important;*/
+        line-height: 1.6rem !important;
       }
     }
       
@@ -105,9 +97,6 @@
       .btn-outline-secondary:active .video-page-link {
         color: #fff;
       }
-
-      .btn-outline-secondary:active{
-        background-color:white !important;
 
       
       .belowsearch{
@@ -133,8 +122,8 @@
         cursor: not-allowed;*/
       }
 
-.playButton.playing { background-color: white; color: black; border-color: black; }
-.playButton { background-color: white; color: black; border-color: black; }
+.playButton.playing { background-color: black; color: white; border-color: black; }
+.playButton { background-color: transparent; color: black; border-color: black; }
 
 
       .homebutton{
@@ -229,10 +218,9 @@
         background-color: white;
       }
 
-      /*a:active {
+      a:active {
               color: white !important;
-              background-color: black;
-          }*/
+          }
 
       .navbar-fixed{
         position: fixed; 
@@ -259,7 +247,7 @@
           border-radius: 0px; /* Rounded corners */
           font-size: 15px;
           letter-spacing: .2rem;
-          padding-left: .75rem;
+          padding-left: .7rem;
           vertical-align: middle !important;
       }
 
@@ -460,12 +448,12 @@
       <div class="col-lg-6 col-md-8 mx-auto">
 
         <!--<h1 class="fw-light">Album example</h1>-->
-            <p>High speed wind in my face.</p>
-        <!--<p class="text-muted">High speed wind in my face.</p>-->
-        
+    <p class="text-muted">High speed wind in my face.</p>
         <p>
+
          <!-- <a href="#" class="btn btn-primary my-2">Main call to action</a>
           <a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
+
         </p>
       </div>
     </div>
@@ -491,30 +479,26 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button style="box-shadow: none;" type="button" data-for="myAudio14" class="playButton btn btn-sm btn-outline-secondary controls button-height">  🔇  </button>
+                  <button style="box-shadow: none;" type="button" data-for="myAudio14" class="playButton btn btn-sm btn-outline-secondary controls">  🔇  </button>
 
-                  <button id="stopButton" onclick="stopMusic()" style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">  🛑  </button>
+                  <button id="stopButton" onclick="stopMusic()" style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls">  🛑  </button>
 
                                 <audio id="myAudio14" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/aria'soutro.wav" type="audio/wav">
                                 </audio>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary control button-height">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a href="../music/musicfiles/aria'soutro.wav" download="Tyrell Womack - Aria's Outro">  📁  </a>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm copy-link-button button-height" data-link="../pages/album.html?q=aria's+outro">
+                    <button style="box-shadow: none;" type="button" class="btn copy-link-button" data-link="../pages/album.html?q=aria's+outro">
                       <span style="box-shadow: none;" class="copy-emoji">📲</span>
                       <span style="box-shadow: none;" id="copyStatus" aria-live="polite" class="video-page-link"></span>
                     </button>
                   
-                    <!--<a class="btn btn-outline-secondary video-page-link" style="box-shadow: none;" type="button" href="../videos/arias-outro.html"> VIDEO </a>-->
-
-                    <button style="box-shadow: none; background-color: white;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
-                      <a style="color: black; veritcal-align:middle; font-size: 15px;" href="../videos/arias-outro.html"> VIDEO </a>
-                    </button>
-                  
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <span class="btn btn-outline-secondary video-page-link" style="box-shadow: none;" href="../videos/arias-outro.html"> VIDEO </span>
+                    
+                    <button style="box-shadow: none; background-color: black;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a style="color: white;" href="../pages/banktransfer.html"> 💵 </a>
                     </button>
                   
@@ -536,24 +520,24 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button style="box-shadow: none;" type="button" data-for="myAudio13" class="playButton btn btn-sm btn-outline-secondary controls button-height">  🔇  </button>
+                  <button style="box-shadow: none;" type="button" data-for="myAudio13" class="playButton btn btn-sm btn-outline-secondary controls">  🔇  </button>
 
-                  <button id="stopButton" onclick="stopMusic()" style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">  🛑  </button>
+                  <button id="stopButton" onclick="stopMusic()" style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls">  🛑  </button>
 
                                 <audio id="myAudio13" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/cometasteit.wav" type="audio/wav">
                                 </audio>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a href="../music/musicfiles/cometasteit.wav" download="Tyrell Womack - Come Taste It">  📁  </a>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm copy-link-button button-height" data-link="../pages/album.html?q=come+taste+it">
+                    <button style="box-shadow: none;" type="button" class="btn copy-link-button" data-link="../pages/album.html?q=come+taste+it">
                       <span class="copy-emoji">📲</span>
                       <span id="copyStatus" aria-live="polite" class="video-page-link"></span>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none; background-color: black;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a style="color: white;" href="../pages/banktransfer.html"> 💵 </a>
                     </button>
                   
@@ -576,24 +560,24 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button  style="box-shadow: none;" type="button" data-for="myAudio12" class="playButton btn btn-sm btn-outline-secondary controls button-height">  🔇  </button>
+                  <button  style="box-shadow: none;" type="button" data-for="myAudio12" class="playButton btn btn-sm btn-outline-secondary controls">  🔇  </button>
 
-                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls button-height">  🛑  </button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls">  🛑  </button>
 
                                 <audio id="myAudio12" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/whatitmeans.wav" type="audio/wav">
                                 </audio>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a href="../music/musicfiles/whatitmeans.wav" download="Tyrell Womack - What It Means">  📁  </a>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm copy-link-button button-height" data-link="../pages/album.html?q=what+it+means">
+                    <button style="box-shadow: none;" type="button" class="btn copy-link-button" data-link="../pages/album.html?q=what+it+means">
                       <span class="copy-emoji">📲</span>
                       <span id="copyStatus" aria-live="polite" class="video-page-link"></span>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none; background-color: black;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a style="color: white;" href="../pages/banktransfer.html"> 💵 </a>
                     </button>
                                     
@@ -616,24 +600,24 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button style="box-shadow: none;" type="button" data-for="myAudio11" class="playButton btn btn-sm btn-outline-secondary controls button-height">  🔇  </button>
+                  <button style="box-shadow: none;" type="button" data-for="myAudio11" class="playButton btn btn-sm btn-outline-secondary controls">  🔇  </button>
 
-                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls button-height">  🛑  </button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls">  🛑  </button>
 
                                 <audio id="myAudio11" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/won'tgetthrough.wav" type="audio/wav">
                                 </audio>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a href="../music/musicfiles/won'tgetthrough.wav" download="Tyrell Womack - Won't Get Through">  📁  </a>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm copy-link-button button-height" data-link="../pages/album.html?q=won't+get+through">
+                    <button style="box-shadow: none;" type="button" class="btn copy-link-button" data-link="../pages/album.html?q=won't+get+through">
                       <span class="copy-emoji">📲</span>
                       <span id="copyStatus" aria-live="polite" class="video-page-link"></span>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none; background-color: black;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a style="color: white;" href="../pages/banktransfer.html"> 💵 </a>
                     </button>
                                     
@@ -655,24 +639,24 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button id="playButton" style="box-shadow: none;" type="button" data-for="myAudio10" class="playButton btn btn-sm btn-outline-secondary controls button-height">  🔇  </button>
+                  <button id="playButton" style="box-shadow: none;" type="button" data-for="myAudio10" class="playButton btn btn-sm btn-outline-secondary controls">  🔇  </button>
 
-                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls button-height">  🛑  </button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls">  🛑  </button>
 
                                 <audio id="myAudio10" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/whydon'tyou.wav" type="audio/wav">
                                 </audio>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a href="../music/musicfiles/whydon'tyou.wav" download="Tyrell Womack - Why Don't You">  📁  </a>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm copy-link-button button-height" data-link="../pages/album.html?q=why+don't+you">
+                    <button style="box-shadow: none;" type="button" class="btn copy-link-button" data-link="../pages/album.html?q=why+don't+you">
                       <span class="copy-emoji">📲</span>
                       <span id="copyStatus" aria-live="polite" class="video-page-link"></span>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none; background-color: black;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a style="color: white;" href="../pages/banktransfer.html"> 💵 </a>
                     </button>
                                     
@@ -694,24 +678,24 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button id="playButton" style="box-shadow: none;" type="button" data-for="myAudio9" class="playButton btn btn-sm btn-outline-secondary controls button-height">  🔇  </button>
+                  <button id="playButton" style="box-shadow: none;" type="button" data-for="myAudio9" class="playButton btn btn-sm btn-outline-secondary controls">  🔇  </button>
 
-                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls button-height">  🛑  </button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls">  🛑  </button>
 
                                 <audio id="myAudio9" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/thingsyousay.wav" type="audio/wav">
                                 </audio>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a href="../music/musicfiles/thingsyousay.wav" download="Tyrell Womack - Things You Say (ft. B-Rain)">  📁  </a>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm copy-link-button button-height" data-link="../pages/album.html?q=things+you+say">
+                    <button style="box-shadow: none;" type="button" class="btn copy-link-button" data-link="../pages/album.html?q=things+you+say">
                       <span class="copy-emoji">📲</span>
                       <span id="copyStatus" aria-live="polite" class="video-page-link"></span>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none; background-color: black;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a style="color: white;" href="../pages/banktransfer.html"> 💵 </a>
                     </button>
                                     
@@ -735,24 +719,24 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button style="box-shadow: none;" type="button" data-for="myAudio8" class="playButton btn btn-sm btn-outline-secondary controls button-height">  🔇  </button>
+                  <button style="box-shadow: none;" type="button" data-for="myAudio8" class="playButton btn btn-sm btn-outline-secondary controls">  🔇  </button>
 
-                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls button-height">  🛑  </button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls">  🛑  </button>
 
                                 <audio id="myAudio8" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/toofine.wav" type="audio/wav">
                                 </audio>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a href="../music/musicfiles/toofine.wav" download="Tyrell Womack - Too Fine">  📁  </a>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm copy-link-button button-height" data-link="../pages/album.html?q=too+fine">
+                    <button style="box-shadow: none;" type="button" class="btn copy-link-button" data-link="../pages/album.html?q=too+fine">
                       <span class="copy-emoji">📲</span>
                       <span id="copyStatus" aria-live="polite" class="video-page-link"></span>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none; background-color: black;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a style="color: white;" href="../pages/banktransfer.html"> 💵 </a>
                     </button>
                                     
@@ -774,24 +758,24 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button style="box-shadow: none;" type="button" data-for="myAudio7" class="playButton btn btn-sm btn-outline-secondary controls button-height">  🔇  </button>
+                  <button style="box-shadow: none;" type="button" data-for="myAudio7" class="playButton btn btn-sm btn-outline-secondary controls">  🔇  </button>
 
-                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls button-height">  🛑  </button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls">  🛑  </button>
 
                                 <audio id="myAudio7" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/sayhowyoufeel.wav" type="audio/wav">
                                 </audio>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a href="../music/musicfiles/sayhowyoufeel.wav" download="Tyrell Womack - Say How You Feel (ft. Leo Camp)">  📁  </a>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm copy-link-button button-height" data-link="../pages/album.html?q=Say+how+you+feel+%28ft.+Leo+camp%29">
+                    <button style="box-shadow: none;" type="button" class="btn copy-link-button" data-link="../pages/album.html?q=Say+how+you+feel+%28ft.+Leo+camp%29">
                       <span class="copy-emoji">📲</span>
                       <span id="copyStatus" aria-live="polite" class="video-page-link"></span>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none; background-color: black;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a style="color: white;" href="../pages/banktransfer.html"> 💵 </a>
                     </button>
                                     
@@ -815,24 +799,24 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button style="box-shadow: none;" type="button" data-for="myAudio6" class="playButton btn btn-sm btn-outline-secondary controls button-height">  🔇  </button>
+                  <button style="box-shadow: none;" type="button" data-for="myAudio6" class="playButton btn btn-sm btn-outline-secondary controls">  🔇  </button>
 
-                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls button-height">  🛑  </button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls">  🛑  </button>
 
                                 <audio id="myAudio6" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/youtookeverything.wav" type="audio/wav">
                                 </audio>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a href="../music/musicfiles/youtookeverything.wav" download="Tyrell Womack - You Took Everything">  📁  </a>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm copy-link-button button-height" data-link="../pages/album.html?q=you+took+everything">
+                    <button style="box-shadow: none;" type="button" class="btn copy-link-button" data-link="../pages/album.html?q=you+took+everything">
                       <span class="copy-emoji">📲</span>
                       <span id="copyStatus" aria-live="polite" class="video-page-link"></span>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none; background-color: black;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a style="color: white;" href="../pages/banktransfer.html"> 💵 </a>
                     </button>
                                     
@@ -855,24 +839,24 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button id="playButton" style="box-shadow: none;" type="button" data-for="myAudio5" class="playButton btn btn-sm btn-outline-secondary controls button-height">  🔇  </button>
+                  <button id="playButton" style="box-shadow: none;" type="button" data-for="myAudio5" class="playButton btn btn-sm btn-outline-secondary controls">  🔇  </button>
 
-                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls button-height">  🛑  </button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls">  🛑  </button>
 
                                 <audio id="myAudio5" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/justknowthat.wav" type="audio/wav">
                                 </audio>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a href="../music/musicfiles/justknowthat.wav" download="Tyrell Womack - Just Know That">  📁  </a>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm copy-link-button button-height" data-link="../pages/album.html?q=just+know+that">
+                    <button style="box-shadow: none;" type="button" class="btn copy-link-button" data-link="../pages/album.html?q=just+know+that">
                       <span class="copy-emoji">📲</span>
                       <span id="copyStatus" aria-live="polite" class="video-page-link"></span>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none; background-color: black;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a style="color: white;" href="../pages/banktransfer.html"> 💵 </a>
                     </button>
                                     
@@ -895,24 +879,24 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button id="playButton" style="box-shadow: none;" type="button" data-for="myAudio4" class="playButton btn btn-sm btn-outline-secondary controls button-height">  🔇  </button>
+                  <button id="playButton" style="box-shadow: none;" type="button" data-for="myAudio4" class="playButton btn btn-sm btn-outline-secondary controls">  🔇  </button>
 
-                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls button-height">  🛑  </button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls">  🛑  </button>
 
                                 <audio id="myAudio4" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/thesedays.wav" type="audio/wav">
                                 </audio>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a href="../music/musicfiles/thesedays.wav" download="Tyrell Womack - These Days">  📁  </a>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm copy-link-button button-height" data-link="../pages/album.html?q=these+days">
+                    <button style="box-shadow: none;" type="button" class="btn copy-link-button" data-link="../pages/album.html?q=these+days">
                       <span class="copy-emoji">📲</span>
                       <span id="copyStatus" aria-live="polite" class="video-page-link"></span>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none; background-color: black;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a style="color: white;" href="../pages/banktransfer.html"> 💵 </a>
                     </button>
                                     
@@ -935,24 +919,24 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button id="playButton" style="box-shadow: none;" type="button" data-for="myAudio3" class="playButton btn btn-sm btn-outline-secondary controls button-height">  🔇  </button>
+                  <button id="playButton" style="box-shadow: none;" type="button" data-for="myAudio3" class="playButton btn btn-sm btn-outline-secondary controls">  🔇  </button>
 
-                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls button-height">  🛑  </button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls">  🛑  </button>
 
                                 <audio id="myAudio3" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/ready.wav" type="audio/wav">
                                 </audio>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a href="../music/musicfiles/ready.wav" download="Tyrell Womack - Ready">  📁  </a>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm copy-link-button button-height" data-link="../pages/album.html?q=ready">
+                    <button style="box-shadow: none;" type="button" class="btn copy-link-button" data-link="../pages/album.html?q=ready">
                       <span class="copy-emoji">📲</span>
                       <span id="copyStatus" aria-live="polite" class="video-page-link"></span>
                     </button>
 
-                    <button style="box-shadow: none; " type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none; background-color: black;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a style="color: white;" href="../pages/banktransfer.html"> 💵 </a>
                     </button>
                                     
@@ -974,24 +958,24 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button id="playButton" style="box-shadow: none;" type="button" data-for="myAudio2" class="playButton btn btn-sm btn-outline-secondary controls button-height">  🔇  </button>
+                  <button id="playButton" style="box-shadow: none;" type="button" data-for="myAudio2" class="playButton btn btn-sm btn-outline-secondary controls">  🔇  </button>
 
-                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls button-height">  🛑  </button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls">  🛑  </button>
 
                                 <audio id="myAudio2" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/crime.wav" type="audio/wav">
                                 </audio>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a href="../music/musicfiles/crime.wav" download="Tyrell Womack - Crime">  📁  </a>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm copy-link-button button-height" data-link="../pages/album.html?q=crime">
+                    <button style="box-shadow: none;" type="button" class="btn copy-link-button" data-link="../pages/album.html?q=crime">
                       <span class="copy-emoji">📲</span>
                       <span id="copyStatus" aria-live="polite" class="video-page-link"></span>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none; background-color: black;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a style="color: white;" href="../pages/banktransfer.html"> 💵 </a>
                     </button>
                                     
@@ -1014,9 +998,9 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
-                  <button id="playButton" style="box-shadow: none;" type="button" data-for="myAudio1" class="playButton btn btn-sm btn-outline-secondary controls button-height">  🔇  </button>
+                  <button id="playButton" style="box-shadow: none;" type="button" data-for="myAudio1" class="playButton btn btn-sm btn-outline-secondary controls">  🔇  </button>
 
-                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls button-height">  🛑  </button>
+                  <button style="box-shadow: none;" type="button" onclick="stopMusic()" class="btn btn-sm btn-outline-secondary controls">  🛑  </button>
 
                                 <audio id="myAudio1" onplay="playAudio(this)">
                                     <source src="../music/musicfiles/letmeknow.wav" type="audio/wav">
@@ -1025,16 +1009,16 @@
 
 
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a href="../music/musicfiles/letmeknow.wav" download="Tyrell Womack - Let Me Know (ft. Leo Camp)">  📁  </a>
                     </button>
                     
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm copy-link-button button-height" data-link="../pages/album.html?q=Let+me+know+%28ft.+Leo+Camp%29">
+                    <button style="box-shadow: none;" type="button" class="btn copy-link-button" data-link="../pages/album.html?q=Let+me+know+%28ft.+Leo+Camp%29">
                       <span class="copy-emoji">📲</span>
                       <span id="copyStatus" aria-live="polite" class="video-page-link"></span>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-sm btn-outline-secondary controls button-height">
+                    <button style="box-shadow: none; background-color: black;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a style="color: white;" href="../pages/banktransfer.html"> 💵 </a>
                     </button>
                                     
