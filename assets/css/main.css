@@ -1405,7 +1405,7 @@ input, select, textarea {
 
 				#header .content .inner > :last-child {
 					margin-bottom: 0;
-					padding-left: .65rem !important;
+					padding-left: .3rem !important;
 					max-width: 100%;
 				}
 
