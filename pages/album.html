@@ -1458,20 +1458,24 @@ btn.addEventListener('click', () => btn.classList.add('clicked'));
 // share button & copy text 
 
   document.querySelectorAll(".copy-link-button").forEach((button) => {
-    const originalText = button.textContent;
+    const emoji = button.querySelector(".copy-emoji");
+    const status = button.querySelector("#copyStatus");
 
     button.addEventListener("click", async () => {
       try {
         const link = new URL(button.dataset.link, location.href).href;
         await navigator.clipboard.writeText(link);
-        button.textContent = "Copied";
+        status.textContent = "Copied";
       } catch (error) {
-        button.textContent = "failed";
+        status.textContent = "Failed";
         console.error(error);
       }
 
+      emoji.style.display = "none";
+
       setTimeout(() => {
-        button.textContent = originalText;
+        status.textContent = "";
+        emoji.style.display = "";
       }, 800);
     });
   });
