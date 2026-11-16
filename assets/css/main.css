@@ -154,7 +154,7 @@ input, select, textarea {
 	}
 
 		a:hover {
-			border-bottom-color: transparent;
+			/*border-bottom-color: transparent;*/
 		}
 
 	strong, b {
