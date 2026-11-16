@@ -91,6 +91,11 @@
       .video-page-link:active{
         color: white !important;
       }
+      .btn-outline-secondary.active .video-page-link,
+      .btn-outline-secondary:active .video-page-link {
+        color: #fff;
+      }
+
       
       .belowsearch{
         padding-top:6rem;
@@ -489,9 +494,7 @@
                       <span id="copyStatus" aria-live="polite" class="video-page-link"></span>
                     </button>
 
-                    <button style="box-shadow: none;" type="button" class="btn btn-outline-secondary">
-                      <a class="video-page-link" href="../videos/arias-outro.html"> Video </a>
-                    </button>
+                    <a class="btn btn-outline-secondary video-page-link" style="box-shadow: none;" href="../videos/arias-outro.html"> Video </a>
                     
                     <button style="box-shadow: none; background-color: black;" type="button" class="btn btn-sm btn-outline-secondary controls">
                       <a style="color: white;" href="../pages/banktransfer.html"> 💵 </a>
