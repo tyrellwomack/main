@@ -47,13 +47,6 @@ html,
     flex: 0 0 60px;
   } */
 
-  .navbar {
-    height: 100%;
-    box-sizing: border-box;
-    z-index: 1;
-    position: static !important;
-  }
-
   body > iframe {
     display: block;
     flex: 1 1 auto;
@@ -247,6 +240,12 @@ html,
               color: white !important;
           }
 
+      .navbar {
+        box-sizing: border-box;
+        z-index: 1;
+        position: static !important;
+      }
+
       /*
       .navbar-fixed{
         position: fixed; 
@@ -261,6 +260,10 @@ html,
         width: 100%;
       }
       */
+
+      .navbar>.container {
+        height: 2.4rem;
+      }
 
       .search-container {
           position: relative;
